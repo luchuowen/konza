@@ -29,6 +29,13 @@
 .ph-products{background:linear-gradient(135deg,#1f3a58,#0a1626);}
 .ph-projects{background:linear-gradient(135deg,#42302a,#181010);}
 .ph-trust{background:linear-gradient(135deg,#26405f,#0c1a2c);}
+.ph-map{
+  background-color:#0F2038;
+  background-image:
+    linear-gradient(rgba(232,69,61,.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232,69,61,.14) 1px, transparent 1px);
+  background-size:32px 32px;
+}
 
 .pre{opacity:0; transform:translateY(16px);}
 .reveal, .reveal-stagger{transition:opacity .6s ease, transform .6s ease;}
