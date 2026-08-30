@@ -100,11 +100,11 @@ export default function ServicesPage() {
           <RevealOnScroll>
             <span className={eyebrow}>Services</span>
             <h1 className="mt-4 max-w-2xl font-serif text-4xl font-bold leading-[1.1] text-white md:text-5xl">
-              Installation, modernization, maintenance, repair, construction and equipment hire.
+              Installation, construction, equipment hire, maintenance, repair and modernization.
             </h1>
             <p className="mt-6 max-w-xl text-base text-slate-dark md:text-lg">
-              Everything a building needs to move people safely — from a brand-new installation
-              to keeping an existing elevator running for years to come.
+              Complete elevator and escalator services, from installation and construction to
+              long-term maintenance, repairs and upgrades.
             </p>
           </RevealOnScroll>
         </Container>
