@@ -138,17 +138,12 @@ export default function Home() {
       >
         <Container className="pb-16 pt-16 md:pb-24 md:pt-24">
           <RevealOnScroll>
-            <span className="inline-block rounded-full bg-red/15 px-3 py-1 text-[0.72rem] font-bold uppercase tracking-[0.12em] text-[#ffb4b0]">
-              Vertical Transportation · Since 2013
-            </span>
-            <h1 className="mt-5 max-w-2xl font-serif text-4xl font-bold leading-[1.1] text-white md:text-6xl">
-              Nairobi is building up.
-              <br />
-              We&rsquo;ve been <em className="italic text-red">moving it</em> since 2013.
+            <h1 className="max-w-2xl font-serif text-4xl font-bold leading-[1.1] text-white md:text-6xl">
+              Elevators &amp; Escalators for Every Building
             </h1>
             <p className="mt-6 max-w-xl text-base text-slate-dark md:text-lg">
-              13 years, 50 completed installations, and Kenya&rsquo;s authorized Fuji Elevator
-              distributor — vertical transportation for the city&rsquo;s next skyline.
+              We supply, install, maintain and repair elevators and escalators for homes,
+              offices, hospitals, malls and industrial buildings.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button href="/quote" variant="cta">
