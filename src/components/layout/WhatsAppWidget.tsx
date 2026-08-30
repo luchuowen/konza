@@ -46,7 +46,7 @@ export function WhatsAppWidget() {
   if (drawerOpen) return null;
 
   return (
-    <div ref={panelRef} className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3">
+    <div ref={panelRef} className="fixed bottom-5 right-5 z-50 hidden flex-col items-end gap-3 min-[900px]:flex">
       {open && (
         <div
           role="dialog"

@@ -33,11 +33,7 @@ export const NAV_LINKS: NavLink[] = [
 
 export const PRIMARY_CTA: NavLink = { label: "Get a Quote", href: "/quote" };
 
-export const FOOTER_LINKS: NavLink[] = [
-  ...NAV_LINKS.slice(0, -1),
-  PRIMARY_CTA,
-  NAV_LINKS[NAV_LINKS.length - 1],
-];
+export const FOOTER_LINKS: NavLink[] = NAV_LINKS;
 
 export const SOCIAL_LINKS = {
   facebook: null as string | null,
@@ -45,11 +41,11 @@ export const SOCIAL_LINKS = {
   linkedin: null as string | null,
 };
 
-export const COPYRIGHT_NOTICE = "© 2026 Konza Elevators";
+export const COPYRIGHT_NOTICE = "Copyright © 2026 Konza Elevators";
 
 export const DESIGNER_CREDIT = {
-  text: "Designed by Navac Global",
+  text: "Designed by NAVAC Global",
   prefix: "Designed by",
-  linkLabel: "Navac Global",
+  linkLabel: "NAVAC Global",
   url: "https://navac.co.ke",
 };

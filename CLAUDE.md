@@ -116,3 +116,31 @@ These are a separate future prompt the client will provide explicitly.
   `/opt/pw-browsers` in this sandbox, `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1`
   used on install) so future sessions can run this file's mandated
   Playwright verification directly instead of only via `npx`.
+- **2026-08-30 — Session 3, Projects/Portfolio page — mockup file absent, not
+  fabricated.** The session brief calls `mockups/design-projects-page.html`
+  an approved, Playwright-verified mockup to match "exactly," but no
+  `mockups/` directory exists anywhere in this repo's git history — only
+  `docs/KONZA_SPEC.md` §4/§6's textual description of the locked layout
+  (dark stats header → sticky white filter-chip bar with live counts →
+  3-column hover-reveal card grid on `--paper` → dark closing CTA) is
+  actually available to build from. Rather than inventing a pixel-exact
+  match to a file that isn't there, `/projects` was built from that textual
+  spec plus the existing locked design system (tokens, `Chip`/`Button`/
+  `Container`/`RevealOnScroll` from Session 1) — get the real mockup file
+  from the client/agency before treating this page as pixel-locked. One
+  deliberate deviation from the brief's card description: the one-line spec
+  detail is NOT hidden until hover — CLAUDE.md's mobile-first mandate means
+  content gated behind `:hover` is permanently invisible on touch devices,
+  so the detail renders always-visible, with hover reserved for a decorative
+  card-lift/scrim-darken only. Curated 15 of the 50 real projects from
+  §2 (within its own "12–16" guidance), excluding the `[CONFIRM]`ed
+  "Apricot Property Solutions." Sector filter counts are computed from
+  `projects-data.ts` at render time, not hardcoded. Verified with Playwright
+  at 1440px/390px: all 6 filter chips' displayed counts matched actual
+  rendered card counts on click, the sticky filter bar pins at exactly the
+  header's real height (71px, measured — not assumed) and un-sticks after
+  the grid (initially over-stuck through the footer until the bar and grid
+  were wrapped in a shared positioning container; fixed and re-verified), no
+  console/page errors at either width. No project imagery exists in
+  `public/images/` yet, so every card uses the `.ph-projects` placeholder
+  per the non-negotiable against shipping a broken `<img>`.

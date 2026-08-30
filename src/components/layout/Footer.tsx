@@ -1,7 +1,15 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
-import { BRAND_TAGLINE, COMPANY_INFO, COPYRIGHT_NOTICE, DESIGNER_CREDIT, FOOTER_LINKS } from '@/lib/constants';
+import { Button } from '@/components/ui/Button';
+import {
+  BRAND_TAGLINE,
+  COMPANY_INFO,
+  COPYRIGHT_NOTICE,
+  DESIGNER_CREDIT,
+  FOOTER_LINKS,
+  PRIMARY_CTA,
+} from '@/lib/constants';
 import { SocialLinksRow } from '@/components/layout/SocialLinks';
 import { LocationIcon, MailboxIcon, PhoneIcon, MailIcon } from '@/components/ui/ContactIcons';
 
@@ -76,13 +84,10 @@ export function Footer() {
           <h3 className="mb-4 hidden text-xs font-bold uppercase tracking-[0.1em] text-red min-[900px]:block">
             Company
           </h3>
-          <ul className="hidden flex-col gap-3 min-[900px]:flex">
+          <ul className="hidden flex-col gap-2 min-[900px]:flex">
             {FOOTER_LINKS.map((link) => (
               <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="min-h-[44px] text-sm text-slate-dark transition-colors hover:text-white flex items-center"
-                >
+                <Link href={link.href} className="text-sm text-slate-dark transition-colors hover:text-white">
                   {link.label}
                 </Link>
               </li>
@@ -131,6 +136,9 @@ export function Footer() {
         <div className="flex flex-col items-center text-center min-[900px]:items-start min-[900px]:text-left">
           <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.1em] text-red">Connect</h3>
           <SocialLinksRow className="justify-center min-[900px]:justify-start" />
+          <Button href={PRIMARY_CTA.href} variant="cta" className="mt-6">
+            {PRIMARY_CTA.label}
+          </Button>
         </div>
       </Container>
 
