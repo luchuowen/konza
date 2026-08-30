@@ -46,3 +46,15 @@
 .reveal, .reveal-stagger{transition:opacity .6s ease, transform .6s ease;}
 .reveal-stagger.pre > *{opacity:0;}
 .reveal-stagger > *{transition:opacity .5s ease, transform .5s ease;}
+
+/* Signature "How It Works" lift-shaft motif — the one deliberate motion
+   moment on the home page. Gentle idle pulse, frozen to a static frame
+   under prefers-reduced-motion rather than removed. */
+@keyframes lift-car-pulse{
+  0%, 100%{transform:translateY(0);}
+  50%{transform:translateY(14px);}
+}
+.lift-car{animation:lift-car-pulse 3.6s ease-in-out infinite;}
+@media (prefers-reduced-motion: reduce){
+  .lift-car{animation:none;}
+}

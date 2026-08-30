@@ -13,10 +13,12 @@ export function Carousel({
   slides,
   intervalMs = 3000,
   className = '',
+  placeholderClass = 'ph-products',
 }: {
   slides: CarouselSlide[];
   intervalMs?: number;
   className?: string;
+  placeholderClass?: string;
 }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -56,7 +58,7 @@ export function Carousel({
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div className={`relative aspect-[4/3] w-full ${active.image ? '' : 'ph-products'}`}>
+      <div className={`relative aspect-[4/3] w-full ${active.image ? '' : placeholderClass}`}>
         {active.image && (
           <Image src={active.image} alt={active.title} fill className="object-cover" />
         )}
