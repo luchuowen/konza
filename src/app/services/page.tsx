@@ -22,7 +22,7 @@ const SERVICES: AccordionItemData[] = [
     id: 'installation',
     title: 'Installation',
     tag: 'New Builds & Developments',
-    body: 'We supply and install elevators and escalators for new buildings — passenger lifts, freight elevators, home lifts, escalators, moving walkways and more, coordinated from delivery through to a fully commissioned system.',
+    body: 'We supply and install elevators and escalators for new buildings — passenger lifts, freight lifts, home lifts, escalators, moving walkways and more, managing every stage from delivery to final commissioning.',
     ctaLabel: 'Request an Installation Quote',
     ctaHref: '/quote',
   },
@@ -126,7 +126,7 @@ export default function ServicesPage() {
             <div className="mx-auto text-center md:mx-0 md:text-left">
               <span className={eyebrow}>How an Engagement Works</span>
               <h2 className="mx-auto mt-3 max-w-lg font-serif text-3xl font-bold text-white md:mx-0 md:text-4xl">
-                FROM FREE CONDITION REPORT TO SCHEDULED WORK
+                From free condition report to scheduled work.
               </h2>
             </div>
           </RevealOnScroll>
@@ -158,15 +158,17 @@ export default function ServicesPage() {
             <div className="mx-auto max-w-2xl text-center">
               <span className={eyebrow}>Maintenance Contracts</span>
               <h2 className="mt-3 font-serif text-2xl font-bold text-navy-950 md:text-3xl">
-                Looking for an ongoing maintenance contract?
+                Keep Your Elevators Running Safely
               </h2>
               <p className="mt-4 text-base text-slate">
-                Response-time SLAs, condition reporting and compliance support, all under one
-                contract — see our dedicated Maintenance Contracts page for full details.
+                Keep your lifts and escalators reliable, safe and compliant with a maintenance
+                plan that works for your building. Our maintenance contracts include scheduled
+                servicing, quick response to faults, condition reports and ongoing technical
+                support.
               </p>
               <div className="mt-6">
                 <Button href="/maintenance" variant="cta">
-                  View Maintenance Contracts
+                  View Maintenance Plans
                 </Button>
               </div>
             </div>
@@ -178,7 +180,7 @@ export default function ServicesPage() {
         <Container className="flex flex-col items-center py-20 text-center">
           <RevealOnScroll>
             <h2 className="mx-auto max-w-xl font-serif text-3xl font-bold text-white md:text-4xl">
-              Tell us what your building needs, and we&rsquo;ll take it from there.
+              Let&rsquo;s plan your elevator solution.
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Button href="/quote" variant="cta" className="min-w-[190px]">

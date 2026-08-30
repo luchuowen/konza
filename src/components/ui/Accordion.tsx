@@ -37,7 +37,7 @@ export function Accordion({
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => setOpenId(isOpen ? null : item.id)}
-                className="flex min-h-[44px] w-full items-center justify-center gap-3 py-6 text-center md:justify-between md:gap-4 md:text-left"
+                className="flex min-h-[44px] w-full items-center justify-between gap-4 py-6 text-left"
               >
                 <span className="font-serif text-xl font-bold text-navy-950 md:text-2xl">
                   {item.title}
@@ -52,13 +52,7 @@ export function Accordion({
                 </span>
               </button>
             </h3>
-            <div
-              id={panelId}
-              role="region"
-              aria-labelledby={buttonId}
-              hidden={!isOpen}
-              className="flex flex-col items-center pb-8 text-center md:items-start md:text-left"
-            >
+            <div id={panelId} role="region" aria-labelledby={buttonId} hidden={!isOpen} className="pb-8">
               <span className="inline-block text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">
                 {item.tag}
               </span>

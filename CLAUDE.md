@@ -180,3 +180,46 @@ These are a separate future prompt the client will provide explicitly.
   and the accordion's `aria-expanded` state confirmed via
   `page.$eval` before/after both Enter and Space on a Tab-focused button
   (toggles `true`→`false` correctly, panel's `hidden` attribute tracks it).
+- **2026-08-30 — PR #5 merged mid-build; branch restarted from `main`, not
+  restacked.** Same situation as PR #1: the client merged PR #5 (Session 4's
+  About/Services work, plus follow-up polish commits) into `main` before this
+  session's work landed. Since this branch carried no unmerged commits beyond
+  `main` (all prior work was already in the merge), the branch was reset to
+  `origin/main` rather than stacked further onto now-closed history, per the
+  house rule for a merged designated branch.
+- **2026-08-30 — Session 6, Maintenance Contracts & Resources/Blog.**
+  **Maintenance** (`/maintenance`): §6 specifies no concrete pricing tiers
+  exist in source material, so per the "never fabricate pricing" mandate this
+  is a single "What's Included" numbered-card section (5 items — free
+  condition report, scheduled servicing, response-time SLA, KS ISO
+  8100/NCA-aware compliance support, the 10-person technical team) reusing
+  the compliance-strip/timeline numbered-card visual language already
+  established on Home/About, not an invented tier comparison table. No FAQ
+  section — KONZA_SPEC.md has no real FAQ content, and §6 only calls for one
+  "if real FAQ content exists." No image slot used even though
+  `Maintenance — Technician Inspection.jpg` is named in KONZA_MEDIA_PROMPTS.md
+  for this page: following the precedent already set by About/Services (both
+  also have designated-but-unused prompt images), the page didn't structurally
+  need a photo section, and no file exists yet in `public/images/` to place
+  there anyway. Closing CTA is worded "Get a Maintenance Quote" throughout,
+  not the generic "Get a Quote." **Resources/Blog** (`/resources` +
+  `/resources/[slug]`): the 2 real articles from §2 ("How to Choose the Right
+  Elevator for Your Building," "Top Construction Trends to Watch in 2026")
+  were reframed as original prose in `src/lib/resources-data.ts`, keeping the
+  real Kenya price bands (residential KES 2.5–6M, freight/service KES 5–12M,
+  home KES 1.5–3M), the 6–12 month servicing guidance, and the Statista
+  $79.06B→$116.14B market-sizing data intact and unaltered. Publish dates
+  (15 Jul / 5 Aug 2026) are original editorial metadata for the relaunch, not
+  a business fact from source material. Built as real static pages under the
+  dynamic route (`generateStaticParams`, per-article `generateMetadata`,
+  `notFound()` on an unknown slug) rather than treating them as a stub. The
+  index page's card grid reuses `/projects`' card visual language
+  (`ph-projects` placeholder, sector-tag-style category label) per §6, with a
+  third "More Guides on the Way" card as the honest, intentionally-styled
+  empty-state slot §6 calls for (dashed border, muted tone) rather than
+  fabricated filler articles. Verified with Playwright at 1440px/390px across
+  all 4 pages (index + both articles + maintenance), full scroll-through
+  screenshots at both widths, zero console/page errors; confirmed every
+  numeric claim traces to KONZA_SPEC.md and the empty-state card reads as
+  intentional rather than broken. `npm run build`, `tsc --noEmit` and
+  `eslint` all clean.
