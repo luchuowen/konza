@@ -54,19 +54,18 @@ export default function QuotePage() {
             <div className="mx-auto text-center md:mx-0 md:text-left">
               <span className={eyebrow}>Get a Quote</span>
               <h1 className="mx-auto mt-4 max-w-2xl font-serif text-4xl font-bold leading-[1.1] text-white md:mx-0 md:text-5xl">
-                Tell us about your building. We&rsquo;ll take it from there.
+                Tell us about your project. We&rsquo;ll take care of the rest.
               </h1>
               <p className="mx-auto mt-6 max-w-xl text-base text-slate-dark md:mx-0 md:text-lg">
-                Share a few details about your elevator or escalator project — new
-                installation, modernization, maintenance or repair — and our team will
-                contact you directly by phone or WhatsApp, Kenya&rsquo;s authorized Fuji
-                Elevator distributor since 2013.
+                Fill out the form below for new installations, modernizations, or
+                maintenance. Our engineers will review your building requirements and
+                reach out via phone call or WhatsApp.
               </p>
               <a
                 href="#whatsapp-quote"
                 className="mt-6 inline-block text-sm font-semibold text-red hover:text-white"
               >
-                Prefer WhatsApp? Message us directly ↓
+                Prefer a quick chat? Message us directly on WhatsApp ↓
               </a>
             </div>
           </RevealOnScroll>
