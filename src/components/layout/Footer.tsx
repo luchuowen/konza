@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { COMPANY_INFO, COPYRIGHT_NOTICE, DESIGNER_CREDIT, FOOTER_LINKS } from '@/lib/constants';
 import { SocialLinksRow } from '@/components/layout/SocialLinks';
+import { LocationIcon, MailboxIcon, PhoneIcon, MailIcon } from '@/components/ui/ContactIcons';
 
 function ChevronIcon({ className = '' }: { className?: string }) {
   return (
@@ -76,23 +77,33 @@ export function Footer() {
           <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.1em] text-red">
             Get in Touch
           </h3>
-          <ul className="flex flex-col gap-3 text-sm text-slate-dark">
-            <li>
-              {COMPANY_INFO.addressLines.map((line) => (
-                <span key={line} className="block">
-                  {line}
-                </span>
-              ))}
+          <ul className="flex flex-col gap-4 text-sm text-slate-dark">
+            <li className="flex items-start gap-3">
+              <LocationIcon className="mt-0.5 h-4 w-4 shrink-0 text-red" />
+              <span>
+                {COMPANY_INFO.addressLines.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+              </span>
             </li>
-            <li>{COMPANY_INFO.poBox}</li>
-            {COMPANY_INFO.phones.map((phone) => (
-              <li key={phone}>
-                <a href={`tel:${phone.replace(/\s+/g, '')}`} className="hover:text-white">
-                  {phone}
-                </a>
-              </li>
-            ))}
-            <li>
+            <li className="flex items-start gap-3">
+              <MailboxIcon className="mt-0.5 h-4 w-4 shrink-0 text-red" />
+              <span>{COMPANY_INFO.poBox}</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <PhoneIcon className="mt-0.5 h-4 w-4 shrink-0 text-red" />
+              <span className="flex flex-col gap-1">
+                {COMPANY_INFO.phones.map((phone) => (
+                  <a key={phone} href={`tel:${phone.replace(/\s+/g, '')}`} className="hover:text-white">
+                    {phone}
+                  </a>
+                ))}
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <MailIcon className="mt-0.5 h-4 w-4 shrink-0 text-red" />
               <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-white">
                 {COMPANY_INFO.email}
               </a>
