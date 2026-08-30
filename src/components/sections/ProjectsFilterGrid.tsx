@@ -1,7 +1,9 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import Image from 'next/image';
 import { PROJECTS, SECTOR_LABELS, type ProjectSector } from '@/lib/projects-data';
+import { projectImageSrc } from '@/lib/images';
 import { Container } from '@/components/ui/Container';
 import { Chip } from '@/components/ui/Chip';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
@@ -64,7 +66,17 @@ export function ProjectsFilterGrid() {
                 key={project.name}
                 className="group relative aspect-[4/3] overflow-hidden rounded-xl transition-transform hover:-translate-y-1"
               >
-                <div className="ph-projects absolute inset-0" />
+                {project.image ? (
+                  <Image
+                    src={projectImageSrc(project.image)}
+                    alt={project.name}
+                    fill
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="ph-projects absolute inset-0" />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-950/95 via-navy-950/40 to-navy-950/5 transition-colors group-hover:from-navy-950" />
                 <div className="absolute inset-x-0 bottom-0 translate-y-2 p-5 text-center transition-transform duration-300 group-hover:translate-y-0">
                   <span className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">

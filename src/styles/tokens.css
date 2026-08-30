@@ -29,6 +29,14 @@
 .ph-products{background:linear-gradient(135deg,#1f3a58,#0a1626);}
 .ph-projects{background:linear-gradient(135deg,#42302a,#181010);}
 .ph-trust{background:linear-gradient(135deg,#26405f,#0c1a2c);}
+.ph-map{
+  background-color:#0F2038;
+  background-image:
+    radial-gradient(ellipse at center, rgba(232,69,61,.10) 0%, rgba(10,22,40,0) 60%),
+    linear-gradient(rgba(232,69,61,.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232,69,61,.10) 1px, transparent 1px);
+  background-size:100% 100%, 32px 32px, 32px 32px;
+}
 
 .pre{opacity:0; transform:translateY(16px);}
 .reveal, .reveal-stagger{transition:opacity .6s ease, transform .6s ease;}

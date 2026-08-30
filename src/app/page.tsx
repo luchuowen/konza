@@ -1,9 +1,13 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { Carousel, type CarouselSlide } from '@/components/ui/Carousel';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
+import { HeroBackground } from '@/components/ui/HeroBackground';
+import { LiftShaftVideo } from '@/components/ui/LiftShaftVideo';
+import { IMAGES, projectImageSrc } from '@/lib/images';
 
 export const metadata: Metadata = {
   title: "Vertical Transportation for Nairobi's Skyline",
@@ -17,17 +21,29 @@ export const metadata: Metadata = {
 };
 
 const PRODUCT_SLIDES: CarouselSlide[] = [
-  { tag: 'Product', title: 'Passenger Lifts' },
-  { tag: 'Product', title: 'Escalators' },
-  { tag: 'Product', title: 'Home Lifts' },
-  { tag: 'Product', title: 'Moving Walkways' },
+  { tag: 'Product', title: 'Passenger Lifts', image: IMAGES.productPassengerLifts },
+  { tag: 'Product', title: 'Escalators', image: IMAGES.productEscalators },
+  { tag: 'Product', title: 'Home Lifts', image: IMAGES.productHomeLifts },
+  { tag: 'Product', title: 'Moving Walkways', image: IMAGES.productMovingWalkways },
 ];
 
 const PROJECT_SLIDES: CarouselSlide[] = [
-  { tag: 'Project', title: 'Junction Trade Centre, Nairobi CBD' },
-  { tag: 'Project', title: 'Radiant Group of Hospitals' },
-  { tag: 'Project', title: 'Village Market' },
-  { tag: 'Project', title: 'MPESA Foundation Academy' },
+  {
+    tag: 'Project',
+    title: 'Junction Trade Centre, Nairobi CBD',
+    image: projectImageSrc('Project — Junction Trade Centre.jpg'),
+  },
+  {
+    tag: 'Project',
+    title: 'Radiant Group of Hospitals',
+    image: projectImageSrc('Project — Radiant Hospital.jpg'),
+  },
+  { tag: 'Project', title: 'Village Market', image: projectImageSrc('Project — Village Market.jpg') },
+  {
+    tag: 'Project',
+    title: 'MPESA Foundation Academy',
+    image: projectImageSrc('Project — MPESA Foundation Academy.jpg'),
+  },
 ];
 
 const TRUST_SLIDES: CarouselSlide[] = [
@@ -71,31 +87,37 @@ const FEATURED_PROJECTS = [
     sector: 'Commercial',
     name: 'Junction Trade Centre',
     spec: '2× 10-stop panoramic elevators, Fuji — Nairobi CBD.',
+    image: projectImageSrc('Project — Junction Trade Centre.jpg'),
   },
   {
     sector: 'Institutional',
     name: 'MPESA Foundation Academy',
     spec: 'Glarie-supplied 2-stop elevator installation.',
+    image: projectImageSrc('Project — MPESA Foundation Academy.jpg'),
   },
   {
     sector: 'Healthcare',
     name: 'Radiant Group of Hospitals',
     spec: '2× 11-stop + 1× 5-stop elevators, Fuji & Delfar.',
+    image: projectImageSrc('Project — Radiant Hospital.jpg'),
   },
   {
     sector: 'Commercial',
     name: 'Village Market',
     spec: '11 escalators + 1× 3-stop elevator, Fuji — our largest single installation.',
+    image: projectImageSrc('Project — Village Market.jpg'),
   },
   {
     sector: 'Residential',
     name: 'The Moon Apartments, Ruaka',
     spec: 'Passenger lift installation for a residential apartment development.',
+    image: projectImageSrc('Project — The Moon Apartments Ruaka.jpg'),
   },
   {
     sector: 'Residential',
     name: 'Blessed House, Thika Road',
     spec: 'Passenger lift installation on the Thika Road corridor.',
+    image: projectImageSrc('Project — Blessed House Thika Road.jpg'),
   },
 ];
 
@@ -104,21 +126,25 @@ const INDUSTRY_TILES = [
     n: '01',
     name: 'Residential Highrise',
     body: 'Elevators for apartments and residential buildings, from planning to installation and maintenance.',
+    image: IMAGES.industryResidentialHighrise,
   },
   {
     n: '02',
     name: 'Commercial & Office',
     body: 'Elevator systems for offices and commercial buildings, designed for reliable daily use.',
+    image: IMAGES.industryCommercialOffice,
   },
   {
     n: '03',
     name: 'Hospital & Institutional',
     body: 'Safe and reliable elevator systems for hospitals, schools and other public institutions.',
+    image: IMAGES.industryHospitalInstitutional,
   },
   {
     n: '04',
     name: 'Retail & Escalators',
     body: 'Escalators and elevators built for shopping malls and other high-traffic commercial spaces.',
+    image: IMAGES.industryRetailEscalators,
   },
 ];
 
@@ -128,14 +154,13 @@ const eyebrow =
 export default function Home() {
   return (
     <>
-      <section
-        className="relative overflow-hidden"
-        style={{
-          backgroundImage:
-            'linear-gradient(180deg, rgba(10,22,40,.35) 0%, rgba(10,22,40,.92) 100%), linear-gradient(125deg, #1d3a5f 0%, #0d2036 45%, #081422 100%)',
-        }}
-      >
-        <Container className="pb-16 pt-16 md:pb-24 md:pt-24">
+      <section className="relative overflow-hidden">
+        <HeroBackground images={[IMAGES.heroVerticalCity, IMAGES.heroTechnician, IMAGES.heroHospitalLobby]} />
+        <div
+          className="absolute inset-0"
+          style={{ backgroundImage: 'linear-gradient(180deg, rgba(10,22,40,.55) 0%, rgba(10,22,40,.94) 100%)' }}
+        />
+        <Container className="relative pb-16 pt-16 md:pb-24 md:pt-24">
           <RevealOnScroll>
             <h1 className="max-w-2xl font-serif text-4xl font-bold leading-[1.1] text-white md:text-6xl">
               Elevators &amp; Escalators for Every Building
@@ -182,6 +207,11 @@ export default function Home() {
         </Container>
       </section>
 
+      <div className="relative aspect-[16/9] w-full overflow-hidden sm:aspect-[21/9]">
+        <Image src={IMAGES.complianceBand} alt="" fill className="object-cover" />
+        <div className="absolute inset-0 bg-navy-950/40" />
+      </div>
+
       <section className="bg-white">
         <Container className="py-14">
           <RevealOnScroll stagger>
@@ -216,30 +246,7 @@ export default function Home() {
           </RevealOnScroll>
 
           <RevealOnScroll className="mt-10">
-            <svg
-              width="120"
-              height="180"
-              viewBox="0 0 120 180"
-              fill="none"
-              aria-hidden="true"
-              className="mx-auto"
-            >
-              <rect x="10" y="10" width="100" height="160" rx="4" stroke="#E8453D" strokeWidth="2" />
-              <line x1="30" y1="10" x2="30" y2="170" stroke="#E8453D" strokeWidth="1" strokeOpacity="0.5" />
-              <line x1="90" y1="10" x2="90" y2="170" stroke="#E8453D" strokeWidth="1" strokeOpacity="0.5" />
-              <rect
-                className="lift-car"
-                x="24"
-                y="70"
-                width="72"
-                height="46"
-                rx="3"
-                fill="#142A47"
-                stroke="#E8453D"
-                strokeWidth="2"
-              />
-              <line x1="24" y1="93" x2="96" y2="93" stroke="#E8453D" strokeWidth="1" strokeOpacity="0.6" />
-            </svg>
+            <LiftShaftVideo src={IMAGES.videoLiftShaftCutaway} poster={IMAGES.heroVerticalCity} />
           </RevealOnScroll>
         </Container>
       </section>
@@ -267,7 +274,15 @@ export default function Home() {
                   key={project.name}
                   className="overflow-hidden rounded-xl border border-line-light bg-white transition-transform hover:-translate-y-1"
                 >
-                  <div className="ph-projects aspect-[4/3] w-full" />
+                  <div className="relative aspect-[4/3] w-full">
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      fill
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
                   <div className="p-5 text-center md:text-left">
                     <span className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">
                       {project.sector}
@@ -317,11 +332,16 @@ export default function Home() {
                 <Link
                   key={tile.n}
                   href="/industries"
-                  className="block rounded-xl border border-line-light bg-white p-6 text-center transition-transform hover:-translate-y-1 md:text-left"
+                  className="block overflow-hidden rounded-xl border border-line-light bg-white text-center transition-transform hover:-translate-y-1 md:text-left"
                 >
-                  <span className="font-serif text-2xl font-bold text-red">{tile.n}</span>
-                  <h3 className="mt-3 font-serif text-lg font-bold text-navy-950">{tile.name}</h3>
-                  <p className="mt-2 text-sm text-slate">{tile.body}</p>
+                  <div className="relative aspect-[16/10] w-full">
+                    <Image src={tile.image} alt={tile.name} fill className="object-cover" />
+                  </div>
+                  <div className="p-6">
+                    <span className="font-serif text-2xl font-bold text-red">{tile.n}</span>
+                    <h3 className="mt-3 font-serif text-lg font-bold text-navy-950">{tile.name}</h3>
+                    <p className="mt-2 text-sm text-slate">{tile.body}</p>
+                  </div>
                 </Link>
               ))}
             </div>

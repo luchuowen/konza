@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
+import { IMAGES } from '@/lib/images';
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -143,6 +145,10 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[21/9]">
+        <Image src={IMAGES.aboutTeamAtWork} alt="The Konza Elevators team at work" fill className="object-cover" />
+      </div>
+
       <section className="bg-white">
         <Container className="py-20">
           <RevealOnScroll stagger>
@@ -206,7 +212,10 @@ export default function AboutPage() {
 
           <RevealOnScroll className="mt-16 border-t border-white/10 pt-12 text-center md:text-left">
             <span className={eyebrow}>Our Team</span>
-            <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
+            <div className="relative mt-6 aspect-[16/9] w-full overflow-hidden rounded-xl sm:aspect-[21/9]">
+              <Image src={IMAGES.careersWorkshopBench} alt="A Konza Elevators technical workshop bench" fill className="object-cover" />
+            </div>
+            <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
               <div>
                 <p className="font-serif text-lg font-bold text-white">David Gachari</p>
                 <p className="mt-1 text-sm text-slate-dark">

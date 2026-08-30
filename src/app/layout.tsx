@@ -22,12 +22,22 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://konzaelevators.co.ke"),
   title: {
     default: "Konza Elevators & Escalator Co. Ltd | Vertical Transportation, Nairobi",
     template: "%s | Konza Elevators & Escalator Co. Ltd",
   },
   description:
     "Nairobi's authorized Fuji Elevator distributor since 2013 — 13 years, 50 completed installations, vertical transportation for the city's next skyline.",
+  openGraph: {
+    images: [
+      {
+        url: "/images/OG — Social Share Card.jpg",
+        width: 1424,
+        height: 752,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
