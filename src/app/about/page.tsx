@@ -20,22 +20,22 @@ const MILESTONES = [
   {
     n: '01',
     label: '2013 — Founded',
-    body: 'A small group of skilled tradespeople came together to take on general elevator and escalator works in Nairobi.',
+    body: 'A skilled team came together to provide elevator and escalator services in Nairobi.',
   },
   {
     n: '02',
     label: '2020 — Fuji Authorization',
-    body: 'Became an authorized Fuji Elevator distributor in Kenya, backed by a signed authorization letter.',
+    body: 'Became an authorized Fuji Elevator distributor, supplying and supporting customers across Kenya.',
   },
   {
     n: '03',
-    label: '50 Projects',
-    body: 'Reached 50 completed elevator and escalator installations across Nairobi and beyond.',
+    label: '50 — Projects Completed',
+    body: 'Completed 50 elevator and escalator installations across Nairobi and other parts of Kenya.',
   },
   {
     n: '04',
     label: 'Today — 13 Years',
-    body: 'A 10-person technical and administrative team serving developers, institutions and homeowners.',
+    body: 'A 10-person team serving developers, institutions, businesses and homeowners across Kenya.',
   },
 ];
 
@@ -99,14 +99,12 @@ export default function AboutPage() {
           <RevealOnScroll>
             <span className={eyebrow}>Since 2013</span>
             <h1 className="mt-4 max-w-2xl font-serif text-4xl font-bold leading-[1.1] text-white md:text-5xl">
-              Started by a small group of tradespeople. Grown into Nairobi&rsquo;s
-              vertical-transportation partner.
+              From a Small Team to a Trusted Elevator Partner
             </h1>
             <p className="mt-6 max-w-xl text-base text-slate-dark md:text-lg">
-              In 2013, a small group of skilled tradespeople came together to take on general
-              elevator and escalator works. As more professionals joined, we grew our customer
-              base and expanded the range of services we offer — building the technical team and
-              project history we have today.
+              Konza Elevators was established in 2013 by a team of skilled professionals
+              providing elevator and escalator services. Over the years, we have grown our
+              team, expanded our services and completed projects across Kenya.
             </p>
           </RevealOnScroll>
         </Container>
