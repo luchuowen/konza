@@ -71,7 +71,6 @@ export function Footer() {
         </div>
 
         <div>
-          {/* Desktop: always-expanded. */}
           <h3 className="mb-4 hidden text-xs font-bold uppercase tracking-[0.1em] text-red min-[900px]:block">
             Company
           </h3>
@@ -88,8 +87,6 @@ export function Footer() {
             ))}
           </ul>
 
-          {/* Mobile: a native <details> disclosure — collapsible with zero JS,
-              so it can never end up stuck open/closed if a script fails. */}
           <details className="group min-[900px]:hidden">
             <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between text-xs font-bold uppercase tracking-[0.1em] text-red [&::-webkit-details-marker]:hidden">
               Company
@@ -111,7 +108,6 @@ export function Footer() {
         </div>
 
         <div>
-          {/* Desktop: always-expanded. */}
           <h3 className="mb-4 hidden text-xs font-bold uppercase tracking-[0.1em] text-red min-[900px]:block">
             Get in Touch
           </h3>
@@ -119,7 +115,6 @@ export function Footer() {
             <ContactList />
           </div>
 
-          {/* Mobile: same zero-JS <details> disclosure as Company. */}
           <details className="group min-[900px]:hidden">
             <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between text-xs font-bold uppercase tracking-[0.1em] text-red [&::-webkit-details-marker]:hidden">
               Get in Touch

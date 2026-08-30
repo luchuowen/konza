@@ -1,17 +1,3 @@
-// Firestore client init — CONFIG ONLY. Per docs/BLUEPRINT.md and CLAUDE.md
-// "Deferred", do not provision a live Firestore project or run `firebase`
-// CLI deploy commands from inside a build session. Real wiring happens in a
-// separate, explicitly-requested prompt after Session 9.
-//
-// Collections this schema will back (docs/KONZA_SPEC.md §7):
-//   leads         — name, phone, email, projectType, buildingType, floorCount,
-//                   timeline, message, source ("form" | "whatsapp"), page,
-//                   createdAt
-//   projects      — name, location, sector, brand, units, image
-//   products      — name, category, specs, image
-//   blogPosts     — title, slug, body, publishedAt
-//   testimonials  — quote, name, role, org
-
 import { initializeApp, getApps, type FirebaseOptions } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 

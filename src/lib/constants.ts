@@ -1,12 +1,5 @@
-// Sourced from docs/KONZA_SPEC.md §2 "Grounded Truth" and §9 "Footer + Designer
-// Credit". Values marked [CONFIRM] are unresolved in the source spec — never
-// upgrade a [CONFIRM] placeholder to a stated fact without the client's sign-off
-// landing in KONZA_SPEC.md first.
-
 export const SITE_NAME = "Konza Elevators & Escalator Co. Ltd";
 
-// Adapted from docs/KONZA_SPEC.md §1's approved one-line positioning
-// statement — trimmed for footer-column length, not a new claim.
 export const BRAND_TAGLINE =
   "The vertical-transportation partner for Nairobi's next skyline — a 13-year, Fuji-authorized installer with 50 real projects behind it, from Parliament-adjacent office towers to hospital bed lifts.";
 
@@ -14,23 +7,12 @@ export const COMPANY_INFO = {
   legalName: "Konza Elevators & Escalator Co. Ltd",
   foundedYear: 2013,
   address: "Ramco Court, Office C23, off Mombasa Road, Nairobi",
-  // Same address, split for display contexts that put "off Mombasa Road,
-  // Nairobi" on its own line — concatenating the two must read identically
-  // to `address` above.
   addressLines: ["Ramco Court, Office C23,", "Off Mombasa Road, Nairobi"],
   poBox: "P.O. Box 406–00511",
   phones: ["+254 726 053 238", "+254 706 811 818"],
-  // [CONFIRM] Spec recommends a general inbox rather than publishing a named
-  // individual's address. Do not present this as the final public contact
-  // email until Konza confirms — see docs/KONZA_SPEC.md §10, item 2.
-  email: "david@konzaelevators.co.ke", // [CONFIRM]
-  // [CONFIRM] Header vs. footer hours conflict on the live site; spec says
-  // stage a placeholder that is visually obvious during client review rather
-  // than silently guessing. See docs/KONZA_SPEC.md §2 and §10, item 1.
-  hours: "Business hours — to be confirmed by Konza", // [CONFIRM]
-  // [CONFIRM] No dedicated WhatsApp Business number identified; using the
-  // primary phone number provisionally. See docs/KONZA_SPEC.md §10, item 6.
-  whatsappNumber: "+254726053238", // [CONFIRM]
+  email: "david@konzaelevators.co.ke",
+  hours: "Business hours — to be confirmed by Konza",
+  whatsappNumber: "+254726053238",
 } as const;
 
 export type NavLink = {
@@ -38,9 +20,6 @@ export type NavLink = {
   href: string;
 };
 
-// Primary navigation — the ten core IA pages, docs/KONZA_SPEC.md §5. Home has
-// no separate nav entry: the logo (wrapped in a Link to "/" in Header) serves
-// as the home link.
 export const NAV_LINKS: NavLink[] = [
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
@@ -52,31 +31,20 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Contact Us", href: "/contact" },
 ];
 
-// Persistent header CTA, always visible per docs/KONZA_SPEC.md §5.
 export const PRIMARY_CTA: NavLink = { label: "Get a Quote", href: "/quote" };
 
-// Footer "Company" column — every organizational page, docs/KONZA_SPEC.md §5,
-// in IA order (Home omitted: the footer brand mark already links there).
 export const FOOTER_LINKS: NavLink[] = [
   ...NAV_LINKS.slice(0, -1),
   PRIMARY_CTA,
   NAV_LINKS[NAV_LINKS.length - 1],
 ];
 
-// [CONFIRM] Facebook presence is currently fragmented across 3 uncoordinated
-// pages (docs/KONZA_SPEC.md §2, "Known site defects"); Instagram and LinkedIn
-// are net-new per §3/§9. No confirmed URLs exist yet for any of the three —
-// do not invent handles. Populate once Konza supplies real links.
 export const SOCIAL_LINKS = {
-  facebook: null as string | null, // [CONFIRM]
-  instagram: null as string | null, // [CONFIRM] — new presence
-  linkedin: null as string | null, // [CONFIRM] — new presence
+  facebook: null as string | null,
+  instagram: null as string | null,
+  linkedin: null as string | null,
 };
 
-// Footer bottom bar: a short copyright notice on the left, a designer credit
-// on the right — per client direction, revising docs/KONZA_SPEC.md §9's
-// original longer wording. `prefix` + `linkLabel` split out only so the UI
-// can link just "Navac Global" — concatenating them reproduces `text`.
 export const COPYRIGHT_NOTICE = "© 2026 Konza Elevators";
 
 export const DESIGNER_CREDIT = {

@@ -103,22 +103,22 @@ const INDUSTRY_TILES = [
   {
     n: '01',
     name: 'Residential Highrise',
-    body: 'Price clarity, aesthetics, and a straightforward path to booking a consultation.',
+    body: 'Elevators for apartments and residential buildings, from planning to installation and maintenance.',
   },
   {
     n: '02',
     name: 'Commercial & Office',
-    body: 'Compliance, delivery timelines, and technical specs for multi-unit, high-rise capability.',
+    body: 'Elevator systems for offices and commercial buildings, designed for reliable daily use.',
   },
   {
     n: '03',
     name: 'Hospital & Institutional',
-    body: 'Verifiable references, safety record, and procurement-friendly documentation.',
+    body: 'Safe and reliable elevator systems for hospitals, schools and other public institutions.',
   },
   {
     n: '04',
     name: 'Retail & Escalators',
-    body: 'High-traffic reliability and maintenance SLAs facility managers can plan around.',
+    body: 'Escalators and elevators built for shopping malls and other high-traffic commercial spaces.',
   },
 ];
 
@@ -128,7 +128,6 @@ const eyebrow =
 export default function Home() {
   return (
     <>
-      {/* 1. Hero */}
       <section
         className="relative overflow-hidden"
         style={{
@@ -166,7 +165,6 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 2. Proof band */}
       <section className="bg-navy-900">
         <Container className="py-14">
           <RevealOnScroll stagger>
@@ -184,7 +182,6 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 3. Compliance strip — deliberate "break up the dark" white section */}
       <section className="bg-white">
         <Container className="py-14">
           <RevealOnScroll stagger>
@@ -192,7 +189,7 @@ export default function Home() {
               {COMPLIANCE_ITEMS.map((item, i) => (
                 <div
                   key={item.n}
-                  className={`pr-4 ${
+                  className={`text-center md:pr-4 md:text-left ${
                     i < COMPLIANCE_ITEMS.length - 1 ? 'md:border-r md:border-line-light' : ''
                   }`}
                 >
@@ -208,7 +205,6 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 4. Signature motion moment — lift-shaft cutaway motif */}
       <section className="bg-navy-950">
         <Container className="flex flex-col items-center py-20 text-center">
           <RevealOnScroll>
@@ -248,16 +244,12 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 5. Featured projects */}
       <section className="bg-paper">
         <Container className="py-20">
           <RevealOnScroll>
             <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
               <div>
                 <span className={eyebrow}>Our Work</span>
-                <h2 className="mt-3 max-w-lg font-serif text-3xl font-bold text-navy-950 md:text-4xl">
-                  Real projects, not stock photography.
-                </h2>
               </div>
               <Link
                 href="/projects"
@@ -276,7 +268,7 @@ export default function Home() {
                   className="overflow-hidden rounded-xl border border-line-light bg-white transition-transform hover:-translate-y-1"
                 >
                   <div className="ph-projects aspect-[4/3] w-full" />
-                  <div className="p-5">
+                  <div className="p-5 text-center md:text-left">
                     <span className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">
                       {project.sector}
                     </span>
@@ -292,12 +284,11 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 6. Testimonial */}
       <section className="bg-navy-950">
         <Container className="py-20">
           <RevealOnScroll>
             <blockquote className="mx-auto max-w-3xl text-center">
-              <p className="font-serif text-2xl italic leading-relaxed text-white md:text-3xl">
+              <p className="font-serif text-2xl font-normal italic leading-relaxed text-white md:text-3xl">
                 &ldquo;Konza elevators and Escalators have staff who impressed us with their
                 exceptional expertise, professionalism, and attention to detail. From the start,
                 they showcased their extensive knowledge and meticulous planning, ensuring a
@@ -311,13 +302,12 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 7. Industries grid */}
       <section className="bg-paper">
         <Container className="py-20">
           <RevealOnScroll>
             <span className={eyebrow}>Where We Work</span>
             <h2 className="mt-3 max-w-lg font-serif text-3xl font-bold text-navy-950 md:text-4xl">
-              Four ways buildings use Konza.
+              Elevator and escalator solutions for different types of buildings.
             </h2>
           </RevealOnScroll>
 
@@ -327,7 +317,7 @@ export default function Home() {
                 <Link
                   key={tile.n}
                   href="/industries"
-                  className="block rounded-xl border border-line-light bg-white p-6 transition-transform hover:-translate-y-1"
+                  className="block rounded-xl border border-line-light bg-white p-6 text-center transition-transform hover:-translate-y-1 md:text-left"
                 >
                   <span className="font-serif text-2xl font-bold text-red">{tile.n}</span>
                   <h3 className="mt-3 font-serif text-lg font-bold text-navy-950">{tile.name}</h3>
