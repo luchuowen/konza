@@ -45,9 +45,13 @@ function ContactList({ compact = false }: { compact?: boolean }) {
       </li>
       <li className="flex items-start gap-3">
         <PhoneIcon className={`mt-0.5 ${iconSize} shrink-0 text-red`} />
-        <span className="flex flex-col gap-1">
+        <span className="flex flex-col">
           {COMPANY_INFO.phones.map((phone) => (
-            <a key={phone} href={`tel:${phone.replace(/\s+/g, '')}`} className="hover:text-white">
+            <a
+              key={phone}
+              href={`tel:${phone.replace(/\s+/g, '')}`}
+              className="inline-flex min-h-[44px] items-center hover:text-white"
+            >
               {phone}
             </a>
           ))}
@@ -55,7 +59,10 @@ function ContactList({ compact = false }: { compact?: boolean }) {
       </li>
       <li className="flex items-start gap-3">
         <MailIcon className={`mt-0.5 ${iconSize} shrink-0 text-red`} />
-        <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-white">
+        <a
+          href={`mailto:${COMPANY_INFO.email}`}
+          className="inline-flex min-h-[44px] items-center hover:text-white"
+        >
           {COMPANY_INFO.email}
         </a>
       </li>
@@ -147,7 +154,12 @@ export function Footer() {
           <p>{COPYRIGHT_NOTICE}</p>
           <p>
             {DESIGNER_CREDIT.prefix}{' '}
-            <a href={DESIGNER_CREDIT.url} target="_blank" rel="noreferrer" className="font-semibold text-red">
+            <a
+              href={DESIGNER_CREDIT.url}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-[44px] items-center font-semibold text-red"
+            >
               {DESIGNER_CREDIT.linkLabel}
             </a>
           </p>

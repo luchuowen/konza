@@ -85,7 +85,7 @@ export function WhatsAppWidget() {
             target="_blank"
             rel="noreferrer"
             onClick={() => setOpen(false)}
-            className="flex min-h-[44px] w-full items-center justify-center rounded-md bg-[#25D366] text-sm font-semibold text-white transition-transform hover:scale-[1.02]"
+            className="flex min-h-[44px] w-full items-center justify-center rounded-md bg-[#075E54] text-sm font-semibold text-white transition-transform hover:scale-[1.02]"
           >
             Send on WhatsApp
           </a>
@@ -97,10 +97,10 @@ export function WhatsAppWidget() {
         aria-label={open ? 'Close WhatsApp chat panel' : 'Chat with Konza Elevators on WhatsApp'}
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-105 motion-reduce:transition-none"
+        className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#075E54] text-white shadow-lg transition-transform hover:scale-105 motion-reduce:transition-none"
       >
         {!open && (
-          <span className="absolute inset-0 rounded-full bg-[#25D366] opacity-75 animate-ping motion-reduce:hidden" />
+          <span className="absolute inset-0 rounded-full bg-[#075E54] opacity-75 animate-ping motion-reduce:hidden" />
         )}
         <WhatsAppIcon className="relative h-7 w-7" />
       </button>

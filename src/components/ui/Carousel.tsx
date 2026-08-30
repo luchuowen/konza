@@ -79,10 +79,15 @@ export function Carousel({
               aria-label={`Go to slide ${i + 1}: ${s.title}`}
               aria-current={i === index}
               onClick={() => setIndex(i)}
-              className={`h-2 w-2 rounded-full transition-colors ${
-                i === index ? 'bg-red' : 'bg-white/40 hover:bg-white/70'
-              }`}
-            />
+              className="-m-[18px] flex h-11 w-11 items-center justify-center"
+            >
+              <span
+                aria-hidden="true"
+                className={`h-2 w-2 rounded-full transition-colors ${
+                  i === index ? 'bg-red' : 'bg-white/40 hover:bg-white/70'
+                }`}
+              />
+            </button>
           ))}
         </div>
       )}
