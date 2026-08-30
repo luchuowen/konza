@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppWidget } from "@/components/layout/WhatsAppWidget";
+import { MobileNavProvider } from "@/lib/mobile-nav-context";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,10 +38,12 @@ export default function RootLayout({
       className={`h-full antialiased ${inter.variable} ${playfairDisplay.variable}`}
     >
       <body className="min-h-full flex flex-col font-sans">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <WhatsAppWidget />
+        <MobileNavProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <WhatsAppWidget />
+        </MobileNavProvider>
       </body>
     </html>
   );

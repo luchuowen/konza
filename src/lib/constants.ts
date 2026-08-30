@@ -9,6 +9,10 @@ export const COMPANY_INFO = {
   legalName: "Konza Elevators & Escalator Co. Ltd",
   foundedYear: 2013,
   address: "Ramco Court, Office C23, off Mombasa Road, Nairobi",
+  // Same address, split for display contexts that put "off Mombasa Road,
+  // Nairobi" on its own line — concatenating the two must read identically
+  // to `address` above.
+  addressLines: ["Ramco Court, Office C23,", "Off Mombasa Road, Nairobi"],
   poBox: "P.O. Box 406–00511",
   phones: ["+254 726 053 238", "+254 706 811 818"],
   // [CONFIRM] Spec recommends a general inbox rather than publishing a named
@@ -46,14 +50,12 @@ export const NAV_LINKS: NavLink[] = [
 // Persistent header CTA, always visible per docs/KONZA_SPEC.md §5.
 export const PRIMARY_CTA: NavLink = { label: "Get a Quote", href: "/quote" };
 
-// Footer sitemap row, docs/KONZA_SPEC.md §9.
+// Footer "Company" column — every organizational page, docs/KONZA_SPEC.md §5,
+// in IA order (Home omitted: the footer brand mark already links there).
 export const FOOTER_LINKS: NavLink[] = [
-  { label: "Sitemap", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "Products", href: "/products" },
-  { label: "Projects", href: "/projects" },
-  { label: "Get a Quote", href: "/quote" },
-  { label: "Contact", href: "/contact" },
+  ...NAV_LINKS.slice(0, -1),
+  PRIMARY_CTA,
+  NAV_LINKS[NAV_LINKS.length - 1],
 ];
 
 // [CONFIRM] Facebook presence is currently fragmented across 3 uncoordinated
@@ -66,13 +68,15 @@ export const SOCIAL_LINKS = {
   linkedin: null as string | null, // [CONFIRM] — new presence
 };
 
-// Footer credit line, docs/KONZA_SPEC.md §9 — exact, verbatim approved
-// wording (including the year), no trailing full stop on the line itself.
-// `prefix` + `linkLabel` split out only so the UI can render "NAVAC GLOBAL"
-// as a link — concatenating them must reproduce `text` exactly.
+// Footer bottom bar: a short copyright notice on the left, a designer credit
+// on the right — per client direction, revising docs/KONZA_SPEC.md §9's
+// original longer wording. `prefix` + `linkLabel` split out only so the UI
+// can link just "Navac Global" — concatenating them reproduces `text`.
+export const COPYRIGHT_NOTICE = "© 2026 Konza Elevators";
+
 export const DESIGNER_CREDIT = {
-  text: "© 2026 Konza Elevators & Escalator Co. Ltd. Designed by NAVAC GLOBAL",
-  prefix: "© 2026 Konza Elevators & Escalator Co. Ltd. Designed by",
-  linkLabel: "NAVAC GLOBAL",
-  url: "https://navac.co.ke/",
+  text: "Designed by Navac Global",
+  prefix: "Designed by",
+  linkLabel: "Navac Global",
+  url: "https://navac.co.ke",
 };

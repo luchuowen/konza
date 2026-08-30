@@ -1,7 +1,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
-import { COMPANY_INFO, DESIGNER_CREDIT, FOOTER_LINKS, SOCIAL_LINKS } from '@/lib/constants';
+import { COMPANY_INFO, COPYRIGHT_NOTICE, DESIGNER_CREDIT, FOOTER_LINKS } from '@/lib/constants';
+import { SocialLinksRow } from '@/components/layout/SocialLinks';
+
+function ChevronIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={className}>
+      <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 export function Footer() {
   return (
@@ -24,8 +33,11 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.1em] text-red">Sitemap</h3>
-          <ul className="flex flex-col gap-3">
+          {/* Desktop: always-expanded. */}
+          <h3 className="mb-4 hidden text-xs font-bold uppercase tracking-[0.1em] text-red min-[900px]:block">
+            Company
+          </h3>
+          <ul className="hidden flex-col gap-3 min-[900px]:flex">
             {FOOTER_LINKS.map((link) => (
               <li key={link.href}>
                 <Link
@@ -37,6 +49,27 @@ export function Footer() {
               </li>
             ))}
           </ul>
+
+          {/* Mobile: a native <details> disclosure — collapsible with zero JS,
+              so it can never end up stuck open/closed if a script fails. */}
+          <details className="group min-[900px]:hidden">
+            <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between text-xs font-bold uppercase tracking-[0.1em] text-red [&::-webkit-details-marker]:hidden">
+              Company
+              <ChevronIcon className="h-4 w-4 shrink-0 transition-transform duration-200 group-open:rotate-180" />
+            </summary>
+            <ul className="flex flex-col gap-1 pb-1 pt-2">
+              {FOOTER_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="flex min-h-[40px] items-center text-xs text-slate-dark transition-colors hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </details>
         </div>
 
         <div>
@@ -44,7 +77,13 @@ export function Footer() {
             Get in Touch
           </h3>
           <ul className="flex flex-col gap-3 text-sm text-slate-dark">
-            <li>{COMPANY_INFO.address}</li>
+            <li>
+              {COMPANY_INFO.addressLines.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
+            </li>
             <li>{COMPANY_INFO.poBox}</li>
             {COMPANY_INFO.phones.map((phone) => (
               <li key={phone}>
@@ -63,49 +102,16 @@ export function Footer() {
 
         <div>
           <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.1em] text-red">Connect</h3>
-          <ul className="flex flex-col gap-3 text-sm text-slate-dark">
-            <li>
-              {SOCIAL_LINKS.facebook ? (
-                <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noreferrer" className="hover:text-white">
-                  Facebook
-                </a>
-              ) : (
-                <span className="opacity-60">Facebook — coming soon</span>
-              )}
-            </li>
-            <li>
-              {SOCIAL_LINKS.instagram ? (
-                <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noreferrer" className="hover:text-white">
-                  Instagram
-                </a>
-              ) : (
-                <span className="opacity-60">Instagram — coming soon</span>
-              )}
-            </li>
-            <li>
-              {SOCIAL_LINKS.linkedin ? (
-                <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noreferrer" className="hover:text-white">
-                  LinkedIn
-                </a>
-              ) : (
-                <span className="opacity-60">LinkedIn — coming soon</span>
-              )}
-            </li>
-          </ul>
+          <SocialLinksRow />
         </div>
       </Container>
 
       <div className="border-t border-navy-800">
         <Container className="flex flex-col gap-2 py-6 text-xs text-slate-dark min-[900px]:flex-row min-[900px]:items-center min-[900px]:justify-between">
-          <p>{COMPANY_INFO.address}</p>
+          <p>{COPYRIGHT_NOTICE}</p>
           <p>
             {DESIGNER_CREDIT.prefix}{' '}
-            <a
-              href={DESIGNER_CREDIT.url}
-              target="_blank"
-              rel="noreferrer"
-              className="font-semibold text-red hover:underline"
-            >
+            <a href={DESIGNER_CREDIT.url} target="_blank" rel="noreferrer" className="font-semibold text-red">
               {DESIGNER_CREDIT.linkLabel}
             </a>
           </p>
