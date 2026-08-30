@@ -65,23 +65,23 @@ const VALUES = [
 const CREDENTIALS = [
   {
     name: 'KS ISO 8100',
-    body: 'We design and install to KS ISO 8100 practice, and stay current with KEBS and NCA requirements.',
+    body: 'We design and install elevators to KS ISO 8100 and follow current KEBS and NCA requirements.',
   },
   {
     name: 'Fuji Elevator',
-    body: 'Authorized Fuji Elevator distributor in Kenya.',
+    body: 'Authorized Fuji Elevator distributor in Kenya, supplying and installing Fuji elevator systems.',
   },
   {
     name: 'Delfar Elevator',
-    body: 'Delfar units installed at Radiant Group of Hospitals and Jesse Kay Hospital, Roysambu.',
+    body: 'Delfar elevators installed at Radiant Group of Hospitals and Jesse Kay Hospital, Roysambu.',
   },
   {
     name: 'Glarie',
-    body: 'Featured brand — a Glarie elevator installed at MPESA Foundation Academy.',
+    body: 'Glarie elevators installed at MPESA Foundation Academy as part of our project portfolio.',
   },
   {
     name: 'Maurer',
-    body: 'Maurer elevator range available through our catalogue.',
+    body: 'Maurer elevators are available through our range of elevator systems and solutions.',
   },
 ];
 
@@ -97,15 +97,21 @@ export default function AboutPage() {
       >
         <Container className="py-16 md:py-24">
           <RevealOnScroll>
-            <span className={eyebrow}>Since 2013</span>
-            <h1 className="mt-4 max-w-2xl font-serif text-4xl font-bold leading-[1.1] text-white md:text-5xl">
-              From a Small Team to a Trusted Elevator Partner
-            </h1>
-            <p className="mt-6 max-w-xl text-base text-slate-dark md:text-lg">
-              Konza Elevators was established in 2013 by a team of skilled professionals
-              providing elevator and escalator services. Over the years, we have grown our
-              team, expanded our services and completed projects across Kenya.
-            </p>
+            <div className="mx-auto text-center md:mx-0 md:text-left">
+              <span className={eyebrow}>Since 2013</span>
+              <h1 className="mx-auto mt-4 max-w-2xl font-serif text-4xl font-bold leading-[1.1] text-white md:mx-0 md:text-5xl">
+                From a Small Team to a Trusted Elevator Partner
+              </h1>
+              <p className="mx-auto mt-6 hidden max-w-xl text-base text-slate-dark md:mx-0 md:block md:text-lg">
+                Konza Elevators was established in 2013 by a team of skilled professionals
+                providing elevator and escalator services. Over the years, we have grown our
+                team, expanded our services and completed projects across Kenya.
+              </p>
+              <p className="mx-auto mt-6 max-w-xl text-base text-slate-dark md:hidden">
+                Established in 2013, providing trusted elevator and escalator services across
+                Kenya.
+              </p>
+            </div>
           </RevealOnScroll>
         </Container>
       </section>
@@ -174,17 +180,24 @@ export default function AboutPage() {
       <section className="bg-navy-950">
         <Container className="py-20">
           <RevealOnScroll>
-            <span className={eyebrow}>Credentials &amp; Brand Partners</span>
-            <h2 className="mt-3 max-w-lg font-serif text-3xl font-bold text-white md:text-4xl">
-              Honest about who we work with, and how we build.
-            </h2>
+            <div className="mx-auto text-center md:mx-0 md:text-left">
+              <span className={eyebrow}>Credentials &amp; Brand Partners</span>
+              <h2 className="mx-auto mt-3 max-w-lg font-serif text-3xl font-bold text-white md:mx-0 md:text-4xl">
+                The standards we follow and the elevator brands we supply and install.
+              </h2>
+            </div>
           </RevealOnScroll>
 
           <RevealOnScroll stagger className="mt-12">
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-5">
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-5">
               {CREDENTIALS.map((item) => (
-                <div key={item.name} className="text-center md:text-left">
-                  <p className="font-serif text-lg font-bold text-white">{item.name}</p>
+                <div
+                  key={item.name}
+                  className="group rounded-xl border border-white/10 bg-white/[0.03] p-5 text-center transition-all duration-300 hover:-translate-y-1.5 hover:border-red hover:bg-white/[0.06] md:text-left"
+                >
+                  <p className="font-serif text-lg font-bold tracking-wide text-white transition-colors duration-300 group-hover:text-red">
+                    {item.name}
+                  </p>
                   <p className="mt-2 text-sm text-slate-dark">{item.body}</p>
                 </div>
               ))}
@@ -197,18 +210,22 @@ export default function AboutPage() {
               <div>
                 <p className="font-serif text-lg font-bold text-white">David Gachari</p>
                 <p className="mt-1 text-sm text-slate-dark">
-                  Technical Director — Electrical &amp; Electronic Engineering, 10 years&rsquo;
+                  Technical Director — Electrical &amp; Electronic Engineering with 10 years of
                   experience.
                 </p>
               </div>
               <div>
                 <p className="font-serif text-lg font-bold text-white">Denis Kitili</p>
-                <p className="mt-1 text-sm text-slate-dark">Leadership Team.</p>
+                <p className="mt-1 text-sm text-slate-dark">
+                  Leadership Team member supporting the company&rsquo;s projects, operations and
+                  continued growth.
+                </p>
               </div>
               <div>
                 <p className="font-serif text-lg font-bold text-white">10-Person Team</p>
                 <p className="mt-1 text-sm text-slate-dark">
-                  Permanent technical and administrative staff supporting every project.
+                  A dedicated technical and administrative team supporting projects from start to
+                  completion.
                 </p>
               </div>
             </div>
@@ -220,13 +237,13 @@ export default function AboutPage() {
         <Container className="flex flex-col items-center py-20 text-center">
           <RevealOnScroll>
             <h2 className="mx-auto max-w-xl font-serif text-3xl font-bold text-white md:text-4xl">
-              13 years of experience, ready for your next project.
+              13 years of experience, ready to deliver your next elevator or escalator project.
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Button href="/quote" variant="cta">
+              <Button href="/quote" variant="cta" className="min-w-[190px]">
                 Get a Quote
               </Button>
-              <Button href="/projects" variant="ghost">
+              <Button href="/projects" variant="ghost" className="min-w-[190px]">
                 See Our Work
               </Button>
             </div>
