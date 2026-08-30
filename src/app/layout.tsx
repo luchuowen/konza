@@ -8,7 +8,7 @@ import { MobileNavProvider } from "@/lib/mobile-nav-context";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "variable",
   variable: "--font-inter",
   display: "swap",
 });
@@ -16,6 +16,7 @@ const inter = Inter({
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   weight: ["700"],
+  style: ["normal", "italic"],
   variable: "--font-playfair",
   display: "swap",
 });
