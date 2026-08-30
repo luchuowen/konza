@@ -214,7 +214,8 @@ export default function Home() {
           <RevealOnScroll>
             <span className={eyebrow}>How It Works</span>
             <h2 className="mx-auto mt-4 max-w-2xl font-serif text-3xl font-bold text-white md:text-4xl">
-              Installation, modernization, and maintenance — one system, not three vendors.
+              From installation to modernization and maintenance, we handle your elevator
+              needs from start to finish.
             </h2>
           </RevealOnScroll>
 
