@@ -46,23 +46,23 @@ const PROOF_STATS = [
 const COMPLIANCE_ITEMS = [
   {
     n: '01',
-    label: 'Standard',
-    body: "We design and install to KS ISO 8100 practice — Kenya's domesticated lift standard — and stay current with KEBS requirements.",
+    label: 'Kenyan Standards',
+    body: 'We design and install elevators in line with KS ISO 8100 and current KEBS requirements.',
   },
   {
     n: '02',
-    label: 'Distributor',
-    body: 'Authorized Fuji Elevator distributor in Kenya, backed by a signed distributor authorization letter.',
+    label: 'Authorized Fuji Distributor',
+    body: 'We are an authorized Fuji Elevator distributor in Kenya, officially supplied and supported by Fuji.',
   },
   {
     n: '03',
-    label: 'Delivery',
-    body: 'Site scheduling and delivery coordination that stays aware of NCA requirements on every project.',
+    label: 'Delivery & Installation',
+    body: 'We coordinate delivery, site preparation and elevator installation throughout every stage of the project.',
   },
   {
     n: '04',
-    label: 'Support',
-    body: 'Every repair engagement starts with a free condition report and estimate — no obligation.',
+    label: 'Repair & Maintenance',
+    body: 'We inspect, repair and maintain elevators, starting with a free condition report and quotation.',
   },
 ];
 
