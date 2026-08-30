@@ -7,11 +7,14 @@ import { QuoteForm } from '@/components/forms/QuoteForm';
 export const metadata: Metadata = {
   title: 'Get a Quote',
   description:
-    "Tell us about your elevator or escalator project and Kenya's authorized Fuji Elevator distributor will contact you directly by phone or WhatsApp.",
+    "Tell us about your elevator or escalator project and Kenya's authorized Fuji Elevator distributor will contact you directly by phone or WhatsApp, no obligation.",
+  alternates: {
+    canonical: '/quote',
+  },
   openGraph: {
     title: 'Get a Quote | Konza Elevators & Escalator Co. Ltd',
     description:
-      "Tell us about your elevator or escalator project and Kenya's authorized Fuji Elevator distributor will contact you directly by phone or WhatsApp.",
+      "Tell us about your elevator or escalator project and Kenya's authorized Fuji Elevator distributor will contact you directly by phone or WhatsApp, no obligation.",
   },
 };
 
@@ -48,7 +51,7 @@ export default function QuotePage() {
               </p>
               <a
                 href="#whatsapp-quote"
-                className="mt-6 inline-block text-sm font-semibold text-red hover:text-white"
+                className="mt-6 inline-flex min-h-[44px] items-center text-sm font-semibold text-red hover:text-white"
               >
                 Prefer a quick chat? Message us directly on WhatsApp ↓
               </a>

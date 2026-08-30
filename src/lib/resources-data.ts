@@ -58,7 +58,7 @@ export const ARTICLES: Article[] = [
     category: 'Industry Trends',
     title: 'Top Construction Trends to Watch in 2026',
     excerpt:
-      'From carbon-sequestering materials to AI-assisted scheduling, four trends shaping construction projects in 2026 — and what they mean for buildings going up in Nairobi.',
+      'From carbon-sequestering materials to AI-assisted scheduling, four trends shaping construction in 2026 — and what they mean for buildings going up in Nairobi.',
     publishedAt: '2026-08-05',
     intro:
       'Vertical transportation doesn’t exist in isolation — it goes into buildings shaped by the wider construction industry. Here are four trends worth watching this year, and why they matter for anyone planning a new build.',

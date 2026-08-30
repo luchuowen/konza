@@ -8,11 +8,15 @@ import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { HeroBackground } from '@/components/ui/HeroBackground';
 import { LiftShaftVideo } from '@/components/ui/LiftShaftVideo';
 import { IMAGES, projectImageSrc } from '@/lib/images';
+import { HomeJsonLd } from '@/components/seo/HomeJsonLd';
 
 export const metadata: Metadata = {
   title: "Vertical Transportation for Nairobi's Skyline",
   description:
     "Nairobi's authorized Fuji Elevator distributor since 2013 — 13 years, 50 completed installations, vertical transportation for the city's next skyline.",
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: "Konza Elevators & Escalator Co. Ltd | Vertical Transportation, Nairobi",
     description:
@@ -154,6 +158,7 @@ const eyebrow =
 export default function Home() {
   return (
     <>
+      <HomeJsonLd />
       <section className="relative overflow-hidden">
         <HeroBackground images={[IMAGES.heroVerticalCity, IMAGES.heroTechnician, IMAGES.heroHospitalLobby]} />
         <div

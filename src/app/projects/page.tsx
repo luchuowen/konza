@@ -7,11 +7,14 @@ import { ProjectsFilterGrid } from '@/components/sections/ProjectsFilterGrid';
 export const metadata: Metadata = {
   title: 'Projects & Portfolio',
   description:
-    "50 completed elevator and escalator installations across Nairobi — from hospitals to CBD office towers, filterable by sector.",
+    "50 completed elevator and escalator installations across Nairobi — from hospitals to CBD office towers, filterable by sector, from Konza Elevators & Escalator.",
+  alternates: {
+    canonical: '/projects',
+  },
   openGraph: {
     title: 'Projects & Portfolio | Konza Elevators & Escalator Co. Ltd',
     description:
-      "50 completed elevator and escalator installations across Nairobi — from hospitals to CBD office towers, filterable by sector.",
+      "50 completed elevator and escalator installations across Nairobi — from hospitals to CBD office towers, filterable by sector, from Konza Elevators & Escalator.",
   },
 };
 

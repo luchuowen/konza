@@ -8,11 +8,14 @@ import { IMAGES } from '@/lib/images';
 export const metadata: Metadata = {
   title: 'Maintenance Contracts',
   description:
-    'Scheduled servicing, a free condition report, response-time SLAs and compliance support — one maintenance contract for your elevators and escalators.',
+    'Scheduled servicing, a free condition report, response-time SLAs and compliance support — one maintenance contract for your elevators and escalators in Nairobi.',
+  alternates: {
+    canonical: '/maintenance',
+  },
   openGraph: {
     title: 'Maintenance Contracts | Konza Elevators & Escalator Co. Ltd',
     description:
-      'Scheduled servicing, a free condition report, response-time SLAs and compliance support — one maintenance contract for your elevators and escalators.',
+      'Scheduled servicing, a free condition report, response-time SLAs and compliance support — one maintenance contract for your elevators and escalators in Nairobi.',
   },
 };
 

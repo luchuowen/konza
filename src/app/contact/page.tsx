@@ -11,11 +11,14 @@ import { LocationIcon, MailIcon, MailboxIcon, MapPinIcon, PhoneIcon } from '@/co
 export const metadata: Metadata = {
   title: 'Contact Us',
   description:
-    'Reach Konza Elevators & Escalator Co. Ltd by phone, WhatsApp, email or our Nairobi office — for general enquiries, not just quotes.',
+    'Reach Konza Elevators & Escalator Co. Ltd by phone, WhatsApp, email or our Ramco Court office off Mombasa Road, Nairobi — for general enquiries, not quotes.',
+  alternates: {
+    canonical: '/contact',
+  },
   openGraph: {
     title: 'Contact Us | Konza Elevators & Escalator Co. Ltd',
     description:
-      'Reach Konza Elevators & Escalator Co. Ltd by phone, WhatsApp, email or our Nairobi office — for general enquiries, not just quotes.',
+      'Reach Konza Elevators & Escalator Co. Ltd by phone, WhatsApp, email or our Ramco Court office off Mombasa Road, Nairobi — for general enquiries, not quotes.',
   },
 };
 
@@ -82,9 +85,13 @@ export default function ContactPage() {
                   </li>
                   <li className="flex items-start gap-3">
                     <PhoneIcon className="mt-0.5 h-5 w-5 shrink-0 text-red" />
-                    <span className="flex flex-col gap-1">
+                    <span className="flex flex-col">
                       {COMPANY_INFO.phones.map((phone) => (
-                        <a key={phone} href={`tel:${phone.replace(/\s+/g, '')}`} className="hover:text-red">
+                        <a
+                          key={phone}
+                          href={`tel:${phone.replace(/\s+/g, '')}`}
+                          className="inline-flex min-h-[44px] items-center hover:text-red"
+                        >
                           {phone}
                         </a>
                       ))}
@@ -92,7 +99,10 @@ export default function ContactPage() {
                   </li>
                   <li className="flex items-start gap-3">
                     <MailIcon className="mt-0.5 h-5 w-5 shrink-0 text-red" />
-                    <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-red">
+                    <a
+                      href={`mailto:${COMPANY_INFO.email}`}
+                      className="inline-flex min-h-[44px] items-center hover:text-red"
+                    >
                       {COMPANY_INFO.email}
                     </a>
                   </li>
@@ -125,7 +135,7 @@ export default function ContactPage() {
                   href={directionsHref}
                   target="_blank"
                   rel="noreferrer"
-                  className="absolute bottom-3 right-3 inline-flex min-h-[36px] items-center gap-1.5 rounded-full bg-white px-3 py-2 text-xs font-semibold text-navy-950 shadow-lg transition-colors hover:text-red"
+                  className="absolute bottom-3 right-3 inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-white px-3 py-2 text-xs font-semibold text-navy-950 shadow-lg transition-colors hover:text-red"
                 >
                   Get Directions →
                 </a>

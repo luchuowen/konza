@@ -1,5 +1,7 @@
 export const SITE_NAME = "Konza Elevators & Escalator Co. Ltd";
 
+export const SITE_URL = "https://konzaelevators.co.ke";
+
 export const BRAND_TAGLINE =
   "Konza Elevators is a Kenyan company providing elevator and escalator supply, installation, maintenance, repair and modernization services. Established in 2013, we are an authorized Fuji Elevator distributor with 50 completed projects.";
 
