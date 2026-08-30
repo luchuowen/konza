@@ -5,6 +5,11 @@
 
 export const SITE_NAME = "Konza Elevators & Escalator Co. Ltd";
 
+// Adapted from docs/KONZA_SPEC.md §1's approved one-line positioning
+// statement — trimmed for footer-column length, not a new claim.
+export const BRAND_TAGLINE =
+  "The vertical-transportation partner for Nairobi's next skyline — a 13-year, Fuji-authorized installer with 50 real projects behind it, from Parliament-adjacent office towers to hospital bed lifts.";
+
 export const COMPANY_INFO = {
   legalName: "Konza Elevators & Escalator Co. Ltd",
   foundedYear: 2013,
