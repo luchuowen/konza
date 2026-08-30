@@ -65,10 +65,10 @@ export default function ProjectsPage() {
               Let&rsquo;s add your building to this list.
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Button href="/quote" variant="cta">
+              <Button href="/quote" variant="cta" className="min-w-[190px]">
                 Get a Quote
               </Button>
-              <Button href="/contact" variant="ghost">
+              <Button href="/contact" variant="ghost" className="min-w-[190px]">
                 Talk to Our Team
               </Button>
             </div>

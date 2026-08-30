@@ -1,7 +1,7 @@
 export const SITE_NAME = "Konza Elevators & Escalator Co. Ltd";
 
 export const BRAND_TAGLINE =
-  "The vertical-transportation partner for Nairobi's next skyline — a 13-year, Fuji-authorized installer with 50 real projects behind it, from Parliament-adjacent office towers to hospital bed lifts.";
+  "Konza Elevators is a Kenyan company providing elevator and escalator supply, installation, maintenance, repair and modernization services. Established in 2013, we are an authorized Fuji Elevator distributor with 50 completed projects.";
 
 export const COMPANY_INFO = {
   legalName: "Konza Elevators & Escalator Co. Ltd",
@@ -10,7 +10,7 @@ export const COMPANY_INFO = {
   addressLines: ["Ramco Court, Office C23,", "Off Mombasa Road, Nairobi"],
   poBox: "P.O. Box 406–00511",
   phones: ["+254 726 053 238", "+254 706 811 818"],
-  email: "david@konzaelevators.co.ke",
+  email: "info@konzaelevators.co.ke",
   hours: "Business hours — to be confirmed by Konza",
   whatsappNumber: "+254726053238",
 } as const;

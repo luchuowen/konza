@@ -144,3 +144,39 @@ These are a separate future prompt the client will provide explicitly.
   console/page errors at either width. No project imagery exists in
   `public/images/` yet, so every card uses the `.ph-projects` placeholder
   per the non-negotiable against shipping a broken `<img>`.
+- **2026-08-30 — Session 4, About & Services.** Both pages use the locked
+  design system only — Header/Footer/`Container`/`RevealOnScroll`, same
+  eyebrow/numbered-card language as the home page's compliance strip — with
+  creative latitude on layout per the brief. **About:** dark founding-story
+  hero → a `--paper` milestone strip (2013 founded → 2020 Fuji authorization
+  → 50 projects → today) reusing the compliance-strip's numbered-card
+  pattern for the company timeline → a `--white` editorial 2-column section
+  (Playfair pull-quote reframed from the real vision/mission statement,
+  paired with the 5 real values as a short list, not an icon grid) → a dark
+  credentials/brand-partner row naming Fuji (authorized distributor),
+  Delfar (past-tense project mentions only — Radiant Group of Hospitals,
+  Jesse Kay Hospital — no present-tense partnership claim, since its
+  authorization is confirmed expired), Glarie ("featured brand"), Maurer
+  ("catalogue range"), and KS ISO 8100 (design/install practice, not a
+  certification) → closing CTA. Leadership: David Gachari's confirmed title
+  and experience are stated as fact; Denis Kitili is named but given no
+  specific title, since his title is a `[CONFIRM]` item where the source
+  document contradicts itself (Sales Technical Director vs. Electrical
+  Supervisor) — per the non-negotiable against presenting `[CONFIRM]` items
+  as fact, he's listed under "Leadership Team" with no title claim rather
+  than guessing between the two. **Services:** dark hero → a white section
+  holding a custom, keyboard-operable accordion (`Accordion.tsx`, native
+  `<button>` per item so Enter/Space work with no extra JS, real
+  `aria-expanded` + `aria-controls`/`aria-labelledby`, first item open by
+  default so the page isn't empty without interaction) for the six real
+  service lines in the spec's exact order (Installation / Modernization /
+  Maintenance & Repair / Repair / Construction & Contracting / Equipment &
+  Plant Hire) → a dark 3-step "How an Engagement Works" strip (free
+  condition report → quotation → scheduled work, the sequence §2 actually
+  describes for Repair) → a short `--paper` Maintenance Contracts teaser
+  linking to the not-yet-built `/maintenance` page rather than duplicating
+  its content → closing CTA. Verified with Playwright at 1440px/390px: full
+  scroll-through screenshots at both widths, zero console/page errors,
+  and the accordion's `aria-expanded` state confirmed via
+  `page.$eval` before/after both Enter and Space on a Tab-focused button
+  (toggles `true`→`false` correctly, panel's `hidden` attribute tracks it).

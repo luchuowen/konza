@@ -145,10 +145,10 @@ export default function Home() {
               offices, hospitals, malls and industrial buildings.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button href="/quote" variant="cta">
+              <Button href="/quote" variant="cta" className="min-w-[190px]">
                 Get a Quote
               </Button>
-              <Button href="/projects" variant="ghost">
+              <Button href="/projects" variant="ghost" className="min-w-[190px]">
                 See Our Work
               </Button>
             </div>

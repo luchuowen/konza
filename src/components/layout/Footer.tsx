@@ -136,7 +136,7 @@ export function Footer() {
         <div className="flex flex-col items-center text-center min-[900px]:items-start min-[900px]:text-left">
           <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.1em] text-red">Connect</h3>
           <SocialLinksRow className="justify-center min-[900px]:justify-start" />
-          <Button href={PRIMARY_CTA.href} variant="cta" className="mt-6">
+          <Button href={PRIMARY_CTA.href} variant="cta" className="mt-6 w-[212px]">
             {PRIMARY_CTA.label}
           </Button>
         </div>
