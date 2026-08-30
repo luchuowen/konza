@@ -29,15 +29,16 @@ export type NavLink = {
   href: string;
 };
 
-// Primary navigation — the ten core IA pages, docs/KONZA_SPEC.md §5.
+// Primary navigation — the ten core IA pages, docs/KONZA_SPEC.md §5. Home has
+// no separate nav entry: the logo (wrapped in a Link to "/" in Header) serves
+// as the home link.
 export const NAV_LINKS: NavLink[] = [
-  { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Products", href: "/products" },
   { label: "Projects", href: "/projects" },
-  { label: "Industries We Serve", href: "/industries" },
-  { label: "Maintenance Contracts", href: "/maintenance" },
+  { label: "Industries", href: "/industries" },
+  { label: "Maintenance", href: "/maintenance" },
   { label: "Resources", href: "/resources" },
   { label: "Contact Us", href: "/contact" },
 ];
