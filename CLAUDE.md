@@ -283,3 +283,47 @@ These are a separate future prompt the client will provide explicitly.
   `type="tel" inputmode="tel"` on both pages and both WhatsApp links resolve
   to the real number in `lib/constants.ts`. `npm run build`, `tsc --noEmit`
   and `eslint` all clean.
+- **2026-08-30 — Session 7 follow-up — Business hours `[CONFIRM]` resolved by
+  direct instruction; a flex-shrink bug silently collapsed the Contact map.**
+  `COMPANY_INFO.hours` in `lib/constants.ts` was the honest "to be confirmed
+  by Konza" placeholder docs/KONZA_SPEC.md required while unresolved. Asked
+  explicitly whether Konza had actually confirmed real hours before
+  overwriting it (the spec flags this exact field as contradictory between
+  the old site's header and footer) — confirmed by direct instruction, so it
+  now reads "Monday–Friday, 9:00AM–5:00PM" as a real fact, styled as a normal
+  labeled field rather than the italic placeholder treatment. Real office
+  coordinates (-1.3188588346016903, 36.83547029202306) were also supplied and
+  added to `COMPANY_INFO.coordinates`; the Contact page's "Get Directions"
+  link now points at those coordinates instead of a text-address search, and
+  the static `.ph-map` placeholder got a proper red `MapPinIcon` (new, in
+  `ContactIcons.tsx`) labeled "Konza Elevators", plus a radial-vignette layer
+  so it reads as an intentional map rather than a flat grid.
+  **Testimonials removed from the Quote page's WhatsApp sidebar** (the
+  session's own build brief had put them there, but they read as
+  out-of-place next to a WhatsApp panel) — replaced with a same-component
+  "Why WhatsApp" / "What to Expect" filler section (`WhatsAppInline.tsx`,
+  `ContactForm.tsx`) so the WhatsApp card and the form/map stack can match
+  height without dead space, and the floating `WhatsAppWidget` now hides
+  itself on `/quote` and `/contact` (`usePathname` check) since both pages
+  already carry their own always-visible WhatsApp panel — confirmed via
+  Playwright that the floating bubble is gone on those two pages but still
+  renders everywhere else.
+  **Real bug hit and fixed while wiring up the height-matching:** giving
+  `WhatsAppInline` an unconditional `h-full` (added for the Quote page, where
+  it's the sole sidebar card) broke the Contact page, where the same
+  component is one of three stacked siblings (office card, map, WhatsApp).
+  Once Contact's own form column also got taller (from adding its own
+  "What to Expect" filler) and the grid stretched both columns to match, the
+  WhatsApp card's `h-full` tried to consume the *entire* stretched column for
+  itself, and flex-shrink's default `min-height:auto` behavior sacrificed the
+  map (a replaced-like aspect-ratio box with no text content forcing a
+  floor) to make room — collapsing it from ~325px to ~50px and clipping the
+  pin out of view entirely, while the office and WhatsApp cards barely
+  shrank. This was invisible from reading the JSX and only caught by
+  rendering and measuring actual computed heights — exactly the failure mode
+  this file's Verification standard exists to catch. Fixed by making
+  `h-full` opt-in via the existing `className` prop instead of hardcoded, so
+  a shared component's sizing behavior can't silently break a different page
+  reusing it. Re-verified with Playwright (fresh dev server, full rebuild)
+  that the map, pin, and both sidebar cards render at the correct height on
+  both pages at 1440px and 390px with zero console/page errors.
