@@ -158,15 +158,17 @@ export default function ServicesPage() {
             <div className="mx-auto max-w-2xl text-center">
               <span className={eyebrow}>Maintenance Contracts</span>
               <h2 className="mt-3 font-serif text-2xl font-bold text-navy-950 md:text-3xl">
-                Looking for an ongoing maintenance contract?
+                Keep Your Elevators Running Safely
               </h2>
               <p className="mt-4 text-base text-slate">
-                Response-time SLAs, condition reporting and compliance support, all under one
-                contract — see our dedicated Maintenance Contracts page for full details.
+                Keep your lifts and escalators reliable, safe and compliant with a maintenance
+                plan that works for your building. Our maintenance contracts include scheduled
+                servicing, quick response to faults, condition reports and ongoing technical
+                support.
               </p>
               <div className="mt-6">
                 <Button href="/maintenance" variant="cta">
-                  View Maintenance Contracts
+                  View Maintenance Plans
                 </Button>
               </div>
             </div>
