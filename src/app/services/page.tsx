@@ -98,14 +98,16 @@ export default function ServicesPage() {
       >
         <Container className="py-16 md:py-24">
           <RevealOnScroll>
-            <span className={eyebrow}>Services</span>
-            <h1 className="mt-4 max-w-2xl font-serif text-4xl font-bold leading-[1.1] text-white md:text-5xl">
-              Installation, construction, equipment hire, maintenance, repair and modernization.
-            </h1>
-            <p className="mt-6 max-w-xl text-base text-slate-dark md:text-lg">
-              Complete elevator and escalator services, from installation and construction to
-              long-term maintenance, repairs and upgrades.
-            </p>
+            <div className="mx-auto text-center md:mx-0 md:text-left">
+              <span className={eyebrow}>Services</span>
+              <h1 className="mx-auto mt-4 max-w-2xl font-serif text-4xl font-bold leading-[1.1] text-white md:mx-0 md:text-5xl">
+                Installation, construction, equipment hire, maintenance, repair and modernization.
+              </h1>
+              <p className="mx-auto mt-6 max-w-xl text-base text-slate-dark md:mx-0 md:text-lg">
+                Complete elevator and escalator services, from installation and construction to
+                long-term maintenance, repairs and upgrades.
+              </p>
+            </div>
           </RevealOnScroll>
         </Container>
       </section>
@@ -121,10 +123,12 @@ export default function ServicesPage() {
       <section className="bg-navy-950">
         <Container className="py-20">
           <RevealOnScroll>
-            <span className={eyebrow}>How an Engagement Works</span>
-            <h2 className="mt-3 max-w-lg font-serif text-3xl font-bold text-white md:text-4xl">
-              FROM FREE CONDITION REPORT TO SCHEDULED WORK
-            </h2>
+            <div className="mx-auto text-center md:mx-0 md:text-left">
+              <span className={eyebrow}>How an Engagement Works</span>
+              <h2 className="mx-auto mt-3 max-w-lg font-serif text-3xl font-bold text-white md:mx-0 md:text-4xl">
+                FROM FREE CONDITION REPORT TO SCHEDULED WORK
+              </h2>
+            </div>
           </RevealOnScroll>
 
           <RevealOnScroll stagger className="mt-12">
@@ -174,7 +178,7 @@ export default function ServicesPage() {
         <Container className="flex flex-col items-center py-20 text-center">
           <RevealOnScroll>
             <h2 className="mx-auto max-w-xl font-serif text-3xl font-bold text-white md:text-4xl">
-              Tell us what you need moved, and we&rsquo;ll take it from there.
+              Tell us what your building needs, and we&rsquo;ll take it from there.
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Button href="/quote" variant="cta" className="min-w-[190px]">
