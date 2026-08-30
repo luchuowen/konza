@@ -223,3 +223,63 @@ These are a separate future prompt the client will provide explicitly.
   numeric claim traces to KONZA_SPEC.md and the empty-state card reads as
   intentional rather than broken. `npm run build`, `tsc --noEmit` and
   `eslint` all clean.
+- **2026-08-30 — Session 7, Get a Quote & Contact Us — Lead schema followed
+  the already-established spec fields, not the session-brief's own draft
+  schema.** The build brief's suggested `Lead` type (`propertyType`,
+  `status`-only, no `page`) conflicts with the exact schema docs/KONZA_SPEC.md
+  §7 already specifies (`name, phone, email, projectType, buildingType,
+  floorCount, timeline, message, source (form|whatsapp), page, createdAt`) —
+  a schema an earlier session had already encoded verbatim in
+  `src/types/content.ts` (unused until now). Per CLAUDE.md's non-negotiable
+  that facts and structures come from the spec, `src/types/lead.ts` uses the
+  spec's real field names (`buildingType`/`page`, not the brief's
+  `propertyType`/`source:'quote'|'contact'`) and only adds an internal
+  `status` field for future CRM triage, since that's additive operational
+  metadata, not a business fact. The duplicate `Lead`/`LeadSource` in
+  `content.ts` was removed (nothing imported it yet). `.env.example` already
+  anticipated this exact build (unset `FIREBASE_ADMIN_*` vars and a
+  `[CONFIRM]`-flagged `SALES_NOTIFICATION_EMAIL`, added in an earlier
+  session), confirming this was the intended shape rather than a deviation.
+  **Split "use server" file:** `submitQuoteLead`/`submitContactLead` live in
+  `src/app/actions/submit-lead.ts`; the shared `initialSubmitLeadState`
+  constant had to move to `src/lib/lead-form-state.ts` because Next.js
+  rejects a non-async-function export from a `"use server"` file (build
+  failed on this exact line before the fix — logged here so a future session
+  doesn't reintroduce it). **Graceful-degradation write path:** with
+  `firebase-admin` unconfigured (true in every environment until Konza's
+  Firestore project exists), `submit-lead.ts` logs the full lead payload and
+  still returns success to the visitor, so the form's real UX is verifiable
+  pre-launch; once real admin credentials are set, the same code path
+  attempts a real write and surfaces a genuine failure to the visitor instead
+  of silently swallowing it. Email notification is a clearly-marked
+  `// TODO` stub (`src/lib/notify-lead-email.ts`) that never blocks or fails
+  the lead write. **Contact form is deliberately simpler** (name, phone,
+  optional email, message — no project segmentation per §6); since the
+  shared `Lead` type still requires `buildingType`/`projectType`/`timeline`,
+  contact-sourced leads get honest internal placeholders ("Not specified" /
+  "General Inquiry"), not fabricated answers. **No invented turnaround
+  time:** KONZA_SPEC.md states no SLA for how fast a quote request gets a
+  response, so the hero and success copy describe the real next step (a
+  phone/WhatsApp follow-up) instead of a fabricated "24 hours" promise.
+  **WhatsApp, not buried:** built a new inline, always-visible
+  `WhatsAppInline` component (`src/components/ui/WhatsAppInline.tsx`) for
+  both pages, since the existing floating `WhatsAppWidget` is hidden below
+  900px width and so isn't a mobile-visible option on its own — both inline
+  cards keep the non-negotiable in-page-panel-first pattern (message
+  editable, only the panel's own Send button opens `wa.me`). Real, verbatim
+  testimonials from §2 (Sanjay Shah, Pastor Jimmy Macharia) reinforce trust
+  beside the Quote form. Contact page's map is a static `.ph-map` placeholder
+  (new class in `tokens.css`, grid pattern, no iframe) with a working
+  "Get Directions" link to a Google Maps search on the real confirmed
+  address — no API key needed, never a silently-broken embed. Business hours
+  render the exact `[CONFIRM]` fallback string from `lib/constants.ts`, not
+  a guessed range. **Verification:** Playwright at 1440px/390px on both
+  pages, full scroll-through screenshots, zero console/page errors;
+  functional test of both forms confirmed client-side validation blocks an
+  empty submit (inline errors appear, no server round-trip) and a valid
+  submit reaches the real success state end-to-end through the actual server
+  action (not mocked) via the graceful-degradation path, with server logs
+  confirming the exact Lead payload shape. Confirmed phone fields use
+  `type="tel" inputmode="tel"` on both pages and both WhatsApp links resolve
+  to the real number in `lib/constants.ts`. `npm run build`, `tsc --noEmit`
+  and `eslint` all clean.
