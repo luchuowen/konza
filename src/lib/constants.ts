@@ -67,7 +67,11 @@ export const SOCIAL_LINKS = {
 
 // Footer credit line, docs/KONZA_SPEC.md §9 — exact, verbatim approved
 // wording (including the year), no trailing full stop on the line itself.
+// `prefix` + `linkLabel` split out only so the UI can render "NAVAC GLOBAL"
+// as a link — concatenating them must reproduce `text` exactly.
 export const DESIGNER_CREDIT = {
   text: "© 2026 Konza Elevators & Escalator Co. Ltd. Designed by NAVAC GLOBAL",
+  prefix: "© 2026 Konza Elevators & Escalator Co. Ltd. Designed by",
+  linkLabel: "NAVAC GLOBAL",
   url: "https://navac.co.ke/",
 };

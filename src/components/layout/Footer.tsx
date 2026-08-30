@@ -4,8 +4,6 @@ import { Container } from '@/components/ui/Container';
 import { COMPANY_INFO, DESIGNER_CREDIT, FOOTER_LINKS, SOCIAL_LINKS } from '@/lib/constants';
 
 export function Footer() {
-  const year = new Date().getFullYear();
-
   return (
     <footer className="border-t-[3px] border-red bg-navy-950 text-white">
       <Container className="grid grid-cols-1 gap-10 py-14 min-[900px]:grid-cols-4">
@@ -101,14 +99,14 @@ export function Footer() {
         <Container className="flex flex-col gap-2 py-6 text-xs text-slate-dark min-[900px]:flex-row min-[900px]:items-center min-[900px]:justify-between">
           <p>{COMPANY_INFO.address}</p>
           <p>
-            © {year} Konza Elevators &amp; Escalator Co. Ltd · Designed by{' '}
+            {DESIGNER_CREDIT.prefix}{' '}
             <a
               href={DESIGNER_CREDIT.url}
               target="_blank"
               rel="noreferrer"
               className="font-semibold text-red hover:underline"
             >
-              NAVAC GLOBAL
+              {DESIGNER_CREDIT.linkLabel}
             </a>
           </p>
         </Container>
