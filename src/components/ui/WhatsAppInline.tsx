@@ -17,25 +17,34 @@ const WHY_WHATSAPP = [
 // click. Laid out as a flex column with a flex-1 "Why WhatsApp" filler so it
 // CAN match the height of a taller sidebar — but only when the caller opts in
 // via `className="h-full"` (e.g. Quote, where this is the sole sidebar card).
-// Deliberately does NOT default to h-full: on Contact this card is one of
-// several stacked siblings, and an unconditional h-full there would demand
-// the whole stretched column's height for itself, starving its siblings via
-// flex-shrink (this exact bug shrank the map card to ~50px before the fix).
+// Deliberately does NOT default to h-full: an unconditional h-full broke a
+// prior Contact layout where this sat among sibling cards — an unconditional
+// h-full there demanded the whole stretched column's height for itself,
+// starving its siblings via flex-shrink (shrank the map card to ~50px).
+// `variant="inline"` drops the card's own border/bg/padding so it can be
+// embedded as a trailing section inside another card (e.g. Contact's office
+// card) instead of nested as a card-within-a-card.
 export function WhatsAppInline({
   heading = 'Prefer WhatsApp?',
   defaultMessage,
   className = '',
+  variant = 'card',
 }: {
   heading?: string;
   defaultMessage: string;
   className?: string;
+  variant?: 'card' | 'inline';
 }) {
   const [message, setMessage] = useState(defaultMessage);
   const number = COMPANY_INFO.whatsappNumber.replace(/[^\d]/g, '');
   const sendHref = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 
   return (
-    <div className={`flex flex-col rounded-xl border border-line-light bg-white p-8 ${className}`}>
+    <div
+      className={`flex flex-col ${
+        variant === 'card' ? 'rounded-xl border border-line-light bg-white p-8' : 'mt-6 border-t border-line-light pt-6'
+      } ${className}`}
+    >
       <div className="flex items-center gap-3">
         <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#25D366]">
           <WhatsAppIcon className="h-7 w-7 text-white" />

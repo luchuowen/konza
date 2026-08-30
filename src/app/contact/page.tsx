@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Container } from '@/components/ui/Container';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
+import { WhatsAppInline } from '@/components/ui/WhatsAppInline';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { COMPANY_INFO } from '@/lib/constants';
 import { LocationIcon, MailIcon, MailboxIcon, MapPinIcon, PhoneIcon } from '@/components/ui/ContactIcons';
@@ -55,7 +56,7 @@ export default function ContactPage() {
             </RevealOnScroll>
 
             <RevealOnScroll className="h-full">
-              <div className="flex h-full flex-col justify-center rounded-xl border border-line-light bg-white p-6 sm:p-8">
+              <div className="flex h-full flex-col rounded-xl border border-line-light bg-white p-6 sm:p-8">
                 <span className={eyebrow}>Our Office</span>
                 <ul className="mt-5 flex flex-col gap-4 text-sm text-slate">
                   <li className="flex items-start gap-3">
@@ -93,6 +94,12 @@ export default function ContactPage() {
                   <p className="text-xs font-bold uppercase tracking-[0.08em] text-red">Business Hours</p>
                   <p className="mt-1 text-sm text-navy-950">{COMPANY_INFO.hours}</p>
                 </div>
+
+                <WhatsAppInline
+                  heading="Message Us on WhatsApp"
+                  defaultMessage="Hi Konza Elevators, I have a question."
+                  variant="inline"
+                />
               </div>
             </RevealOnScroll>
           </div>
