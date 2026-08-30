@@ -22,7 +22,7 @@ const SERVICES: AccordionItemData[] = [
     id: 'installation',
     title: 'Installation',
     tag: 'New Builds & Developments',
-    body: 'We supply and install elevators and escalators for new buildings — passenger lifts, freight elevators, home lifts, escalators, moving walkways and more, coordinated from delivery through to a fully commissioned system.',
+    body: 'We supply and install elevators and escalators for new buildings — passenger lifts, freight lifts, home lifts, escalators, moving walkways and more, managing every stage from delivery to final commissioning.',
     ctaLabel: 'Request an Installation Quote',
     ctaHref: '/quote',
   },
@@ -126,7 +126,7 @@ export default function ServicesPage() {
             <div className="mx-auto text-center md:mx-0 md:text-left">
               <span className={eyebrow}>How an Engagement Works</span>
               <h2 className="mx-auto mt-3 max-w-lg font-serif text-3xl font-bold text-white md:mx-0 md:text-4xl">
-                FROM FREE CONDITION REPORT TO SCHEDULED WORK
+                From free condition report to scheduled work.
               </h2>
             </div>
           </RevealOnScroll>
