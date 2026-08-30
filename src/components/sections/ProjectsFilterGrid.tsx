@@ -42,7 +42,7 @@ export function ProjectsFilterGrid() {
   return (
     <div className="relative bg-paper">
       <div className="sticky top-[71px] z-40 border-b border-line-light bg-white/90 backdrop-blur-md">
-        <Container className="flex flex-wrap gap-3 py-4">
+        <Container className="flex flex-wrap justify-center gap-3 py-4">
           <Chip label="All" active={active === 'all'} count={counts.all} onClick={() => setActive('all')} />
           {SECTOR_ORDER.map((sector) => (
             <Chip
@@ -66,7 +66,7 @@ export function ProjectsFilterGrid() {
               >
                 <div className="ph-projects absolute inset-0" />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-950/95 via-navy-950/40 to-navy-950/5 transition-colors group-hover:from-navy-950" />
-                <div className="absolute inset-x-0 bottom-0 translate-y-2 p-5 text-left transition-transform duration-300 group-hover:translate-y-0">
+                <div className="absolute inset-x-0 bottom-0 translate-y-2 p-5 text-center transition-transform duration-300 group-hover:translate-y-0">
                   <span className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">
                     {SECTOR_LABELS[project.sector]}
                   </span>

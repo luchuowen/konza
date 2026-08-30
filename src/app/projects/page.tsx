@@ -20,7 +20,7 @@ const eyebrow = 'inline-block text-[0.72rem] font-bold uppercase tracking-[0.12e
 const HEADER_STATS = [
   { value: '50', label: 'Projects' },
   { value: '5', label: 'Sectors' },
-  { value: '13', label: 'Years' },
+  { value: '13+', label: 'Years of Experience' },
 ];
 
 export default function ProjectsPage() {
@@ -37,12 +37,11 @@ export default function ProjectsPage() {
           <RevealOnScroll>
             <span className={eyebrow}>Portfolio</span>
             <h1 className="mt-4 max-w-2xl font-serif text-4xl font-bold leading-[1.1] text-white md:text-5xl">
-              50 completed installations across Nairobi — real buildings, real clients.
+              50 completed elevator and escalator installations across Nairobi and beyond.
             </h1>
             <p className="mt-6 max-w-xl text-base text-slate-dark md:text-lg">
-              From hospital bed lifts to CBD office towers, every project below is a real,
-              named installation drawn from 13 years of work as Kenya&rsquo;s authorized Fuji
-              Elevator distributor.
+              Real projects for hospitals, offices, residential buildings, commercial spaces
+              and other facilities, delivered over 13+ years.
             </p>
           </RevealOnScroll>
 
