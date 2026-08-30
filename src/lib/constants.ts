@@ -11,8 +11,9 @@ export const COMPANY_INFO = {
   poBox: "P.O. Box 406–00511",
   phones: ["+254 726 053 238", "+254 706 811 818"],
   email: "info@konzaelevators.co.ke",
-  hours: "Business hours — to be confirmed by Konza",
+  hours: "Monday–Friday, 9:00AM–5:00PM",
   whatsappNumber: "+254726053238",
+  coordinates: { lat: -1.3188588346016903, lng: 36.83547029202306 },
 } as const;
 
 export type NavLink = {

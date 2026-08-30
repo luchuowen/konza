@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { COMPANY_INFO } from '@/lib/constants';
 import { WhatsAppIcon } from '@/components/ui/SocialIcons';
 import { useMobileNav } from '@/lib/mobile-nav-context';
@@ -8,7 +9,12 @@ import { useMobileNav } from '@/lib/mobile-nav-context';
 const DEFAULT_MESSAGE =
   "Hi Konza Elevators, I'd like to enquire about a project.";
 
+// Quote and Contact already carry their own always-visible WhatsAppInline
+// panel, so the floating widget would just duplicate it on those two pages.
+const PAGES_WITH_INLINE_WHATSAPP = ['/quote', '/contact'];
+
 export function WhatsAppWidget() {
+  const pathname = usePathname();
   const { open: drawerOpen } = useMobileNav();
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState(DEFAULT_MESSAGE);
@@ -44,6 +50,7 @@ export function WhatsAppWidget() {
   const sendHref = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 
   if (drawerOpen) return null;
+  if (pathname && PAGES_WITH_INLINE_WHATSAPP.includes(pathname)) return null;
 
   return (
     <div ref={panelRef} className="fixed bottom-5 right-5 z-50 hidden flex-col items-end gap-3 min-[900px]:flex">

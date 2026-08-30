@@ -3,33 +3,49 @@
 import { useState } from 'react';
 import { COMPANY_INFO } from '@/lib/constants';
 import { WhatsAppIcon } from '@/components/ui/SocialIcons';
+import { CheckIcon } from '@/components/ui/ContactIcons';
 
-// Inline, always-visible counterpart to the floating WhatsAppWidget (which is
-// desktop-only) — per docs/KONZA_SPEC.md §7's "in-page panel first" rule, this
-// still only opens wa.me from its own explicit Send button, never on load or
-// on a container click.
+const WHY_WHATSAPP = [
+  'A real member of our team replies personally — no bots.',
+  'Share photos of your site or building right in the chat.',
+  'Keep the conversation going after you submit the form.',
+];
+
+// Inline, always-visible counterpart to the floating WhatsAppWidget — per
+// docs/KONZA_SPEC.md §7's "in-page panel first" rule, this still only opens
+// wa.me from its own explicit Send button, never on load or on a container
+// click. Laid out as a flex column with a flex-1 "Why WhatsApp" filler so it
+// CAN match the height of a taller sidebar — but only when the caller opts in
+// via `className="h-full"` (e.g. Quote, where this is the sole sidebar card).
+// Deliberately does NOT default to h-full: on Contact this card is one of
+// several stacked siblings, and an unconditional h-full there would demand
+// the whole stretched column's height for itself, starving its siblings via
+// flex-shrink (this exact bug shrank the map card to ~50px before the fix).
 export function WhatsAppInline({
   heading = 'Prefer WhatsApp?',
   defaultMessage,
+  className = '',
 }: {
   heading?: string;
   defaultMessage: string;
+  className?: string;
 }) {
   const [message, setMessage] = useState(defaultMessage);
   const number = COMPANY_INFO.whatsappNumber.replace(/[^\d]/g, '');
   const sendHref = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 
   return (
-    <div className="rounded-xl border border-line-light bg-white p-6">
+    <div className={`flex flex-col rounded-xl border border-line-light bg-white p-8 ${className}`}>
       <div className="flex items-center gap-3">
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#25D366]">
-          <WhatsAppIcon className="h-6 w-6 text-white" />
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#25D366]">
+          <WhatsAppIcon className="h-7 w-7 text-white" />
         </span>
         <div>
-          <p className="font-serif text-lg font-bold text-navy-950">{heading}</p>
+          <p className="font-serif text-xl font-bold text-navy-950">{heading}</p>
           <p className="text-sm text-slate">Message us directly — most Kenyan buyers do.</p>
         </div>
       </div>
+
       <label htmlFor="whatsapp-inline-message" className="sr-only">
         Your WhatsApp message
       </label>
@@ -38,7 +54,7 @@ export function WhatsAppInline({
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         rows={3}
-        className="mt-4 w-full resize-none rounded-md border border-line-light bg-paper p-3 text-sm text-navy-950 focus:border-red focus:outline-none"
+        className="mt-6 w-full resize-none rounded-md border border-line-light bg-paper p-3 text-sm text-navy-950 focus:border-red focus:outline-none"
       />
       <a
         href={sendHref}
@@ -49,6 +65,18 @@ export function WhatsAppInline({
         <WhatsAppIcon className="h-4 w-4" />
         Send on WhatsApp
       </a>
+
+      <div className="mt-8 flex flex-1 flex-col justify-center border-t border-line-light pt-6">
+        <p className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">Why WhatsApp</p>
+        <ul className="mt-4 flex flex-col gap-3">
+          {WHY_WHATSAPP.map((item) => (
+            <li key={item} className="flex items-start gap-3 text-sm text-slate">
+              <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-red" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

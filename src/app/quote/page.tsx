@@ -24,21 +24,6 @@ const PROOF_STATS = [
   { value: '10', label: 'Person Technical Team' },
 ];
 
-const TESTIMONIALS = [
-  {
-    quote:
-      "Konza staff's expertise in installation was evident in their precise planning and flawless execution, resulting in a top-of-the-line elevators that perfectly catered to our requirements.",
-    name: 'Sanjay Shah',
-    role: 'Director, Greenhills Investment Ltd (Village Market)',
-  },
-  {
-    quote:
-      'The elevators and escalators they installed were not only smooth and reliable but also showcased a remarkable level of craftsmanship. We highly recommend Konza elevators for their outstanding workmanship and dedication to excellence.',
-    name: 'Pastor Jimmy Macharia',
-    role: 'Founder, Harvest Family Church Ministries',
-  },
-];
-
 export default function QuotePage() {
   return (
     <>
@@ -89,33 +74,18 @@ export default function QuotePage() {
 
       <section className="bg-paper">
         <Container className="py-16 md:py-20">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-[1.5fr_1fr]">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-[1.5fr_1fr] md:items-stretch">
             <RevealOnScroll>
               <QuoteForm />
             </RevealOnScroll>
 
-            <div id="whatsapp-quote">
-              <RevealOnScroll className="flex flex-col gap-6">
+            <div id="whatsapp-quote" className="h-full">
+              <RevealOnScroll className="h-full">
                 <WhatsAppInline
                   heading="Prefer WhatsApp?"
                   defaultMessage="Hi Konza Elevators, I'd like a quote for my building."
+                  className="h-full"
                 />
-
-                <div className="flex flex-col gap-4">
-                  {TESTIMONIALS.map((t) => (
-                    <blockquote
-                      key={t.name}
-                      className="rounded-xl border border-line-light bg-white p-5"
-                    >
-                      <p className="font-serif text-sm italic leading-relaxed text-navy-950">
-                        &ldquo;{t.quote}&rdquo;
-                      </p>
-                      <footer className="mt-3 text-xs font-semibold uppercase tracking-[0.06em] text-slate">
-                        {t.name} — {t.role}
-                      </footer>
-                    </blockquote>
-                  ))}
-                </div>
               </RevealOnScroll>
             </div>
           </div>
