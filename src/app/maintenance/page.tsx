@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
+import { IMAGES } from '@/lib/images';
 
 export const metadata: Metadata = {
   title: 'Maintenance Contracts',
@@ -94,6 +96,11 @@ export default function MaintenancePage() {
         </Container>
       </section>
 
+      <div className="relative aspect-[16/9] w-full overflow-hidden sm:aspect-[21/9]">
+        <Image src={IMAGES.complianceBand} alt="" fill className="object-cover" />
+        <div className="absolute inset-0 bg-navy-950/40" />
+      </div>
+
       <section className="bg-white">
         <Container className="py-16 md:py-20">
           <RevealOnScroll>
@@ -125,6 +132,15 @@ export default function MaintenancePage() {
           </RevealOnScroll>
         </Container>
       </section>
+
+      <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[21/9]">
+        <Image
+          src={IMAGES.maintenanceInspection}
+          alt="A Konza Elevators technician carrying out a maintenance inspection"
+          fill
+          className="object-cover"
+        />
+      </div>
 
       <section className="bg-navy-950">
         <Container className="py-20">

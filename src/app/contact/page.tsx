@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { WhatsAppInline } from '@/components/ui/WhatsAppInline';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { COMPANY_INFO } from '@/lib/constants';
+import { IMAGES } from '@/lib/images';
 import { LocationIcon, MailIcon, MailboxIcon, MapPinIcon, PhoneIcon } from '@/components/ui/ContactIcons';
 
 export const metadata: Metadata = {
@@ -24,14 +26,19 @@ const directionsHref = `https://www.google.com/maps/search/?api=1&query=${COMPAN
 export default function ContactPage() {
   return (
     <>
-      <section
-        className="relative overflow-hidden"
-        style={{
-          backgroundImage:
-            'linear-gradient(180deg, rgba(10,22,40,.35) 0%, rgba(10,22,40,.92) 100%), linear-gradient(125deg, #1d3a5f 0%, #0d2036 45%, #081422 100%)',
-        }}
-      >
-        <Container className="py-16 md:py-24">
+      <section className="relative overflow-hidden">
+        <Image
+          src={IMAGES.contactOfficeExterior}
+          alt=""
+          fill
+          priority
+          className="object-cover"
+        />
+        <div
+          className="absolute inset-0"
+          style={{ backgroundImage: 'linear-gradient(180deg, rgba(10,22,40,.55) 0%, rgba(10,22,40,.94) 100%)' }}
+        />
+        <Container className="relative py-16 md:py-24">
           <RevealOnScroll>
             <div className="mx-auto text-center md:mx-0 md:text-left">
               <span className={eyebrow}>Contact Us</span>
