@@ -82,7 +82,7 @@ const ENGAGEMENT_STEPS = [
   {
     n: '03',
     label: 'Scheduled Work',
-    body: 'We schedule and carry out the work, coordinated to minimize disruption to your building.',
+    body: 'We schedule and carry out the work while minimizing disruption to your building.',
   },
 ];
 
@@ -123,7 +123,7 @@ export default function ServicesPage() {
           <RevealOnScroll>
             <span className={eyebrow}>How an Engagement Works</span>
             <h2 className="mt-3 max-w-lg font-serif text-3xl font-bold text-white md:text-4xl">
-              From free condition report to scheduled work.
+              FROM FREE CONDITION REPORT TO SCHEDULED WORK
             </h2>
           </RevealOnScroll>
 
