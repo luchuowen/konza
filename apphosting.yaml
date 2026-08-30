@@ -1,0 +1,17 @@
+# Firebase App Hosting config — SCAFFOLDING ONLY.
+# Not connected to a live Firebase project; deploy is explicitly deferred
+# per docs/BLUEPRINT.md and CLAUDE.md "Deferred". Do not run
+# `firebase deploy --only apphosting` from inside a numbered build session.
+
+runConfig:
+  runtime: nodejs20
+  minInstances: 0
+  maxInstances: 1
+  concurrency: 80
+  cpu: 1
+  memoryMiB: 512
+
+# Environment variables are injected via Secret Manager / the Firebase console
+# once a real project exists — see .env.example for the full key list. None
+# are declared here to avoid committing placeholder values that look real.
+env: []
