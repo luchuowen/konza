@@ -66,7 +66,7 @@ function ContactList({ compact = false }: { compact?: boolean }) {
 export function Footer() {
   return (
     <footer className="border-t-[3px] border-red bg-navy-950 text-white">
-      <Container className="grid grid-cols-1 gap-10 py-14 min-[900px]:grid-cols-4">
+      <Container className="flex flex-col items-center gap-10 py-14 min-[900px]:flex-row min-[900px]:flex-nowrap min-[900px]:items-start min-[900px]:justify-between">
         <div className="flex flex-col items-center gap-4 text-center min-[900px]:items-start min-[900px]:text-left">
           <span className="inline-flex w-fit items-center overflow-hidden rounded-md bg-paper px-2 py-1">
             <Image
