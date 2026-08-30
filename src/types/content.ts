@@ -1,19 +1,3 @@
-export type LeadSource = "form" | "whatsapp";
-
-export interface Lead {
-  name: string;
-  phone: string;
-  email?: string;
-  projectType: string;
-  buildingType: string;
-  floorCount?: number;
-  timeline: string;
-  message?: string;
-  source: LeadSource;
-  page: string;
-  createdAt: string;
-}
-
 export interface Project {
   name: string;
   location: string;
