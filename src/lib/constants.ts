@@ -5,10 +5,19 @@
 
 export const SITE_NAME = "Konza Elevators & Escalator Co. Ltd";
 
+// Adapted from docs/KONZA_SPEC.md §1's approved one-line positioning
+// statement — trimmed for footer-column length, not a new claim.
+export const BRAND_TAGLINE =
+  "The vertical-transportation partner for Nairobi's next skyline — a 13-year, Fuji-authorized installer with 50 real projects behind it, from Parliament-adjacent office towers to hospital bed lifts.";
+
 export const COMPANY_INFO = {
   legalName: "Konza Elevators & Escalator Co. Ltd",
   foundedYear: 2013,
   address: "Ramco Court, Office C23, off Mombasa Road, Nairobi",
+  // Same address, split for display contexts that put "off Mombasa Road,
+  // Nairobi" on its own line — concatenating the two must read identically
+  // to `address` above.
+  addressLines: ["Ramco Court, Office C23,", "Off Mombasa Road, Nairobi"],
   poBox: "P.O. Box 406–00511",
   phones: ["+254 726 053 238", "+254 706 811 818"],
   // [CONFIRM] Spec recommends a general inbox rather than publishing a named
@@ -29,15 +38,16 @@ export type NavLink = {
   href: string;
 };
 
-// Primary navigation — the ten core IA pages, docs/KONZA_SPEC.md §5.
+// Primary navigation — the ten core IA pages, docs/KONZA_SPEC.md §5. Home has
+// no separate nav entry: the logo (wrapped in a Link to "/" in Header) serves
+// as the home link.
 export const NAV_LINKS: NavLink[] = [
-  { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Products", href: "/products" },
   { label: "Projects", href: "/projects" },
-  { label: "Industries We Serve", href: "/industries" },
-  { label: "Maintenance Contracts", href: "/maintenance" },
+  { label: "Industries", href: "/industries" },
+  { label: "Maintenance", href: "/maintenance" },
   { label: "Resources", href: "/resources" },
   { label: "Contact Us", href: "/contact" },
 ];
@@ -45,14 +55,12 @@ export const NAV_LINKS: NavLink[] = [
 // Persistent header CTA, always visible per docs/KONZA_SPEC.md §5.
 export const PRIMARY_CTA: NavLink = { label: "Get a Quote", href: "/quote" };
 
-// Footer sitemap row, docs/KONZA_SPEC.md §9.
+// Footer "Company" column — every organizational page, docs/KONZA_SPEC.md §5,
+// in IA order (Home omitted: the footer brand mark already links there).
 export const FOOTER_LINKS: NavLink[] = [
-  { label: "Sitemap", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "Products", href: "/products" },
-  { label: "Projects", href: "/projects" },
-  { label: "Get a Quote", href: "/quote" },
-  { label: "Contact", href: "/contact" },
+  ...NAV_LINKS.slice(0, -1),
+  PRIMARY_CTA,
+  NAV_LINKS[NAV_LINKS.length - 1],
 ];
 
 // [CONFIRM] Facebook presence is currently fragmented across 3 uncoordinated
@@ -65,9 +73,15 @@ export const SOCIAL_LINKS = {
   linkedin: null as string | null, // [CONFIRM] — new presence
 };
 
-// Footer credit line, docs/KONZA_SPEC.md §9 — exact, verbatim approved
-// wording (including the year), no trailing full stop on the line itself.
+// Footer bottom bar: a short copyright notice on the left, a designer credit
+// on the right — per client direction, revising docs/KONZA_SPEC.md §9's
+// original longer wording. `prefix` + `linkLabel` split out only so the UI
+// can link just "Navac Global" — concatenating them reproduces `text`.
+export const COPYRIGHT_NOTICE = "© 2026 Konza Elevators";
+
 export const DESIGNER_CREDIT = {
-  text: "© 2026 Konza Elevators & Escalator Co. Ltd. Designed by NAVAC GLOBAL",
-  url: "https://navac.co.ke/",
+  text: "Designed by Navac Global",
+  prefix: "Designed by",
+  linkLabel: "Navac Global",
+  url: "https://navac.co.ke",
 };

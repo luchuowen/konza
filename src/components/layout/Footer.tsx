@@ -1,0 +1,153 @@
+import Link from 'next/link';
+import Image from 'next/image';
+import { Container } from '@/components/ui/Container';
+import { BRAND_TAGLINE, COMPANY_INFO, COPYRIGHT_NOTICE, DESIGNER_CREDIT, FOOTER_LINKS } from '@/lib/constants';
+import { SocialLinksRow } from '@/components/layout/SocialLinks';
+import { LocationIcon, MailboxIcon, PhoneIcon, MailIcon } from '@/components/ui/ContactIcons';
+
+function ChevronIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={className}>
+      <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function ContactList({ compact = false }: { compact?: boolean }) {
+  const textSize = compact ? 'text-xs' : 'text-sm';
+  const iconSize = compact ? 'h-3.5 w-3.5' : 'h-4 w-4';
+  const gap = compact ? 'gap-3' : 'gap-4';
+  return (
+    <ul className={`flex flex-col ${gap} ${textSize} text-slate-dark`}>
+      <li className="flex items-start gap-3">
+        <LocationIcon className={`mt-0.5 ${iconSize} shrink-0 text-red`} />
+        <span>
+          {COMPANY_INFO.addressLines.map((line) => (
+            <span key={line} className="block">
+              {line}
+            </span>
+          ))}
+        </span>
+      </li>
+      <li className="flex items-start gap-3">
+        <MailboxIcon className={`mt-0.5 ${iconSize} shrink-0 text-red`} />
+        <span>{COMPANY_INFO.poBox}</span>
+      </li>
+      <li className="flex items-start gap-3">
+        <PhoneIcon className={`mt-0.5 ${iconSize} shrink-0 text-red`} />
+        <span className="flex flex-col gap-1">
+          {COMPANY_INFO.phones.map((phone) => (
+            <a key={phone} href={`tel:${phone.replace(/\s+/g, '')}`} className="hover:text-white">
+              {phone}
+            </a>
+          ))}
+        </span>
+      </li>
+      <li className="flex items-start gap-3">
+        <MailIcon className={`mt-0.5 ${iconSize} shrink-0 text-red`} />
+        <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-white">
+          {COMPANY_INFO.email}
+        </a>
+      </li>
+    </ul>
+  );
+}
+
+export function Footer() {
+  return (
+    <footer className="border-t-[3px] border-red bg-navy-950 text-white">
+      <Container className="grid grid-cols-1 gap-10 py-14 min-[900px]:grid-cols-4">
+        <div className="flex flex-col gap-4">
+          <span className="inline-flex w-fit items-center overflow-hidden rounded-md bg-paper px-2 py-1">
+            <Image
+              src="/brand/konza-logo-hires.jpg"
+              alt="Konza Elevators & Escalator Co. Ltd"
+              width={116}
+              height={43}
+              className="h-9 w-auto"
+            />
+          </span>
+          <p className="max-w-xs text-sm text-slate-dark">{BRAND_TAGLINE}</p>
+        </div>
+
+        <div>
+          {/* Desktop: always-expanded. */}
+          <h3 className="mb-4 hidden text-xs font-bold uppercase tracking-[0.1em] text-red min-[900px]:block">
+            Company
+          </h3>
+          <ul className="hidden flex-col gap-3 min-[900px]:flex">
+            {FOOTER_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="min-h-[44px] text-sm text-slate-dark transition-colors hover:text-white flex items-center"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Mobile: a native <details> disclosure — collapsible with zero JS,
+              so it can never end up stuck open/closed if a script fails. */}
+          <details className="group min-[900px]:hidden">
+            <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between text-xs font-bold uppercase tracking-[0.1em] text-red [&::-webkit-details-marker]:hidden">
+              Company
+              <ChevronIcon className="h-4 w-4 shrink-0 transition-transform duration-200 group-open:rotate-180" />
+            </summary>
+            <ul className="flex flex-col gap-1 pb-1 pt-2">
+              {FOOTER_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="flex min-h-[40px] items-center text-xs text-slate-dark transition-colors hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </details>
+        </div>
+
+        <div>
+          {/* Desktop: always-expanded. */}
+          <h3 className="mb-4 hidden text-xs font-bold uppercase tracking-[0.1em] text-red min-[900px]:block">
+            Get in Touch
+          </h3>
+          <div className="hidden min-[900px]:block">
+            <ContactList />
+          </div>
+
+          {/* Mobile: same zero-JS <details> disclosure as Company. */}
+          <details className="group min-[900px]:hidden">
+            <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between text-xs font-bold uppercase tracking-[0.1em] text-red [&::-webkit-details-marker]:hidden">
+              Get in Touch
+              <ChevronIcon className="h-4 w-4 shrink-0 transition-transform duration-200 group-open:rotate-180" />
+            </summary>
+            <div className="pb-1 pt-2">
+              <ContactList compact />
+            </div>
+          </details>
+        </div>
+
+        <div>
+          <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.1em] text-red">Connect</h3>
+          <SocialLinksRow />
+        </div>
+      </Container>
+
+      <div className="border-t border-navy-800">
+        <Container className="flex flex-col gap-2 py-6 text-xs text-slate-dark min-[900px]:flex-row min-[900px]:items-center min-[900px]:justify-between">
+          <p>{COPYRIGHT_NOTICE}</p>
+          <p>
+            {DESIGNER_CREDIT.prefix}{' '}
+            <a href={DESIGNER_CREDIT.url} target="_blank" rel="noreferrer" className="font-semibold text-red">
+              {DESIGNER_CREDIT.linkLabel}
+            </a>
+          </p>
+        </Container>
+      </div>
+    </footer>
+  );
+}

@@ -1,0 +1,55 @@
+import { COMPANY_INFO, SOCIAL_LINKS } from '@/lib/constants';
+import { FacebookIcon, InstagramIcon, LinkedInIcon, WhatsAppIcon } from '@/components/ui/SocialIcons';
+
+const iconLinkClasses =
+  'flex h-11 w-11 items-center justify-center rounded-full border border-navy-800 bg-navy-900 text-slate-dark transition-colors hover:border-red hover:text-red';
+
+function SocialIcon({
+  href,
+  label,
+  children,
+}: {
+  href: string | null;
+  label: string;
+  children: React.ReactNode;
+}) {
+  if (!href) {
+    // [CONFIRM] — no confirmed URL yet (docs/KONZA_SPEC.md §9/§10). Rendered
+    // inert rather than linked so nothing is invented, but still announced to
+    // screen readers even with no visible "coming soon" text.
+    return (
+      <span className={`${iconLinkClasses} cursor-default opacity-40`} role="img" aria-label={`${label} — coming soon`}>
+        {children}
+      </span>
+    );
+  }
+  return (
+    <a href={href} target="_blank" rel="noreferrer" aria-label={label} className={iconLinkClasses}>
+      {children}
+    </a>
+  );
+}
+
+// Every social/connect entry point — Facebook, Instagram, LinkedIn, WhatsApp —
+// grouped as one row. Used in the Footer's "Connect" column and in the mobile
+// full-screen drawer, so WhatsApp is never the one icon floating alone.
+export function SocialLinksRow({ className = '' }: { className?: string }) {
+  const whatsappHref = `https://wa.me/${COMPANY_INFO.whatsappNumber.replace(/[^\d]/g, '')}`;
+
+  return (
+    <div className={`flex flex-wrap gap-3 ${className}`}>
+      <SocialIcon href={SOCIAL_LINKS.facebook} label="Facebook">
+        <FacebookIcon className="h-5 w-5" />
+      </SocialIcon>
+      <SocialIcon href={SOCIAL_LINKS.instagram} label="Instagram">
+        <InstagramIcon className="h-5 w-5" />
+      </SocialIcon>
+      <SocialIcon href={SOCIAL_LINKS.linkedin} label="LinkedIn">
+        <LinkedInIcon className="h-5 w-5" />
+      </SocialIcon>
+      <SocialIcon href={whatsappHref} label="WhatsApp">
+        <WhatsAppIcon className="h-5 w-5" />
+      </SocialIcon>
+    </div>
+  );
+}

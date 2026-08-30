@@ -1,0 +1,48 @@
+/*
+  Design tokens — "Vertical City" system, docs/KONZA_SPEC.md §4.
+  Client-approved and final. Do not change palette/spacing without being told to.
+*/
+
+:root{
+  --navy-950:#0A1628;
+  --navy-900:#0F2038;
+  --navy-800:#142A47;
+  --red:#E8453D;
+  --maroon:#7A1014;
+  --white:#FFFFFF;
+  --paper:#F6F4F1;
+  --line-light:#E4E1DB;
+  --slate:#5B6672;
+  --slate-dark:#93A2B2;
+}
+
+/* Wire the tokens above into Tailwind v4's CSS-first theme (no tailwind.config.js). */
+@theme inline {
+  --color-navy-950: var(--navy-950);
+  --color-navy-900: var(--navy-900);
+  --color-navy-800: var(--navy-800);
+  --color-red: var(--red);
+  --color-maroon: var(--maroon);
+  --color-paper: var(--paper);
+  --color-line-light: var(--line-light);
+  --color-slate: var(--slate);
+  --color-slate-dark: var(--slate-dark);
+
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+}
+
+/* Placeholder backgrounds — used whenever a real photo isn't in public/images/
+   yet. Must look intentional, never "broken". Never ship a bare <img src>
+   pointing at a file that doesn't exist. */
+.ph-products{background:linear-gradient(135deg,#1f3a58,#0a1626);}
+.ph-projects{background:linear-gradient(135deg,#42302a,#181010);}
+.ph-trust{background:linear-gradient(135deg,#26405f,#0c1a2c);}
+
+/* Scroll-reveal — fail-safe pattern. Content has NO base opacity:0; RevealOnScroll
+   only ever applies `.pre` immediately before observing, and removes it on
+   intersection. If JS fails entirely, content stays visible. */
+.pre{opacity:0; transform:translateY(16px);}
+.reveal, .reveal-stagger{transition:opacity .6s ease, transform .6s ease;}
+.reveal-stagger.pre > *{opacity:0;}
+.reveal-stagger > *{transition:opacity .5s ease, transform .5s ease;}

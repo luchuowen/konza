@@ -89,3 +89,30 @@ These are a separate future prompt the client will provide explicitly.
   app doesn't call — no GCS usage) — the fix downgrades `firebase-admin` to
   v10. Left both as-is; revisit if upstream patches land on the pinned major
   versions.
+- **2026-08-30 — PR #1 merged mid-build; branch rebased, not restacked.**
+  The client merged PR #1 (Session 0's scaffold) into `main` immediately
+  after opening it, before Session 1's commit landed on this branch. Per the
+  house rule for a merged designated branch, `main` was fetched and the
+  Session 1 commit was rebased onto the new `main` (a clean, conflict-free
+  replay — `main`'s merge commit already contained Session 0's tree exactly)
+  and force-pushed, rather than stacking further work on now-closed history.
+  A new PR will be needed for this branch going forward since #1 is merged
+  and closed.
+- **2026-08-30 — Session 1 spot-check fixes.** Verified the merged-in Session
+  1 shell (tokens, Header, Footer, WhatsAppWidget, Carousel, Button, Chip,
+  Container, RevealOnScroll) against KONZA_SPEC.md with Playwright before
+  trusting the commit's own "verified" claim, per this file's Verification
+  standard. Found and fixed two real deviations: (1) the footer credit line
+  was hand-assembled with a dynamic `{year}` and a "·" separator instead of
+  §9's exact verbatim string — now renders `DESIGNER_CREDIT.prefix` +
+  `DESIGNER_CREDIT.linkLabel` from `src/lib/constants.ts` so the source of
+  truth can't drift from the rendered output; (2) `WhatsAppWidget` was a
+  plain `<a target="_blank">` that redirected to `wa.me` on a single click —
+  §7 requires an in-page panel first, with only the panel's own "Send"
+  button opening WhatsApp with the message pre-filled. Rebuilt it as a
+  toggleable panel (Escape/outside-click to close, `aria-expanded`, editable
+  pre-filled message) that only hands off on explicit Send. Also added
+  `playwright` as a devDependency (browsers already present at
+  `/opt/pw-browsers` in this sandbox, `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1`
+  used on install) so future sessions can run this file's mandated
+  Playwright verification directly instead of only via `npx`.
