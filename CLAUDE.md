@@ -327,3 +327,39 @@ These are a separate future prompt the client will provide explicitly.
   reusing it. Re-verified with Playwright (fresh dev server, full rebuild)
   that the map, pin, and both sidebar cards render at the correct height on
   both pages at 1440px and 390px with zero console/page errors.
+- **2026-08-30 — Real image/video assets landed on `main` mid-build; merged
+  in and wired up everywhere a filename maps exactly.** The client uploaded
+  the complete asset set from `docs/KONZA_MEDIA_PROMPTS.md` (28 photos + 2
+  videos + a bonus logo file) directly to `main`'s `public/images/` as two
+  plain commits, bypassing this branch. Fetched and merged `origin/main`
+  (a clean, conflict-free merge — main's new commits only touched binary
+  assets, this branch's only touched code) rather than losing that content,
+  then replaced `.ph-*` placeholders with real `next/image` usage wherever
+  an asset's filename exactly named an existing page's slot: Home (hero
+  background, product/project carousel slides, all 6 featured-project
+  cards, all 4 industry tiles, the compliance-band divider, and the Lift
+  Shaft Cutaway video replacing the hand-drawn SVG in "How It Works"),
+  Projects (`ProjectsFilterGrid` now honors `project.image` — already
+  populated for 6 of 15 projects in `projects-data.ts` from an earlier
+  session, just never rendered until now), About (Team At Work + Workshop
+  Bench photos), Maintenance (compliance band + Technician Inspection
+  photo), Contact (office exterior photo as the hero background), and a
+  sitewide OG image + `metadataBase` on the root layout. New
+  `src/lib/images.ts` centralizes the filename-to-path mapping so no path
+  is ever hand-typed twice. Built `HeroBackground` (crossfading hero photo
+  rotation) and `LiftShaftVideo` (video with a graceful fallback to the
+  original SVG animation on load error, per this file's fail-safe mandate)
+  as the two new pieces of real functionality this required.
+  **Two assets deliberately left unused, not silently dropped:**
+  `Logo — High-Resolution Recreation.png` is an AI-recreated mark (the
+  media-prompts doc's own prompt #29 admits as much) — this file's
+  non-negotiable against regenerating the logo means branding still uses
+  the real `konza-logo-hires.jpg`, not this file, regardless of it now
+  being present in the repo. `Video — Escalator Ambient Loop.mp4` is slotted
+  for Industries/Products pages that don't exist yet in this build (only
+  linked to from Home's preview tiles) — left unreferenced rather than
+  forcing it into an unrelated page; worth revisiting once those pages are
+  built. Verified with Playwright across Home (1440/390), Projects, About,
+  Maintenance and Contact: zero console/page errors and zero failed image
+  requests (checked via response-status monitoring, not just visual
+  inspection). `npm run build`, `tsc --noEmit` and `eslint` all clean.
