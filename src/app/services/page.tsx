@@ -180,7 +180,7 @@ export default function ServicesPage() {
         <Container className="flex flex-col items-center py-20 text-center">
           <RevealOnScroll>
             <h2 className="mx-auto max-w-xl font-serif text-3xl font-bold text-white md:text-4xl">
-              Tell us what your building needs, and we&rsquo;ll take it from there.
+              Let&rsquo;s plan your elevator solution.
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Button href="/quote" variant="cta" className="min-w-[190px]">
