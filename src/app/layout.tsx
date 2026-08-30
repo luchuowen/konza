@@ -15,7 +15,7 @@ const inter = Inter({
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
-  weight: ["700"],
+  weight: ["400", "700"],
   style: ["normal", "italic"],
   variable: "--font-playfair",
   display: "swap",

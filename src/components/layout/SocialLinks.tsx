@@ -14,9 +14,6 @@ function SocialIcon({
   children: React.ReactNode;
 }) {
   if (!href) {
-    // [CONFIRM] — no confirmed URL yet (docs/KONZA_SPEC.md §9/§10). Rendered
-    // inert rather than linked so nothing is invented, but still announced to
-    // screen readers even with no visible "coming soon" text.
     return (
       <span className={`${iconLinkClasses} cursor-default opacity-40`} role="img" aria-label={`${label} — coming soon`}>
         {children}
@@ -30,9 +27,6 @@ function SocialIcon({
   );
 }
 
-// Every social/connect entry point — Facebook, Instagram, LinkedIn, WhatsApp —
-// grouped as one row. Used in the Footer's "Connect" column and in the mobile
-// full-screen drawer, so WhatsApp is never the one icon floating alone.
 export function SocialLinksRow({ className = '' }: { className?: string }) {
   const whatsappHref = `https://wa.me/${COMPANY_INFO.whatsappNumber.replace(/[^\d]/g, '')}`;
 

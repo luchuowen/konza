@@ -8,17 +8,12 @@ import { useMobileNav } from '@/lib/mobile-nav-context';
 const DEFAULT_MESSAGE =
   "Hi Konza Elevators, I'd like to enquire about a project.";
 
-// Per docs/KONZA_SPEC.md §7: this widget opens an in-page panel first — never
-// an immediate external hand-off. Only the panel's own "Send" button opens
-// wa.me, with the message pre-filled.
 export function WhatsAppWidget() {
   const { open: drawerOpen } = useMobileNav();
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState(DEFAULT_MESSAGE);
   const panelRef = useRef<HTMLDivElement>(null);
 
-  // The mobile drawer carries its own Connect row (WhatsApp included) — while
-  // it's open, this floating button would just sit isolated on top of it.
   useEffect(() => {
     if (drawerOpen) setOpen(false);
   }, [drawerOpen]);

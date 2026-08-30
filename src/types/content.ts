@@ -1,6 +1,3 @@
-// Firestore document shapes, per docs/KONZA_SPEC.md §7 "Features & Data Model".
-// All content seeded from real KONZA_SPEC.md data — never placeholder rows.
-
 export type LeadSource = "form" | "whatsapp";
 
 export interface Lead {

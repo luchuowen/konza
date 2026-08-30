@@ -51,22 +51,12 @@ export function Header() {
       style={{ backgroundColor: scrolled ? 'rgba(10,22,40,.92)' : 'rgba(10,22,40,.72)' }}
     >
       <Container className="grid grid-cols-[44px_1fr_44px] items-center py-3 min-[900px]:flex min-[900px]:justify-between">
-        {/* Balances the hamburger button's width on mobile so the centered
-            grid column actually centers the logo, not just visually guesses. */}
         <span aria-hidden="true" className="min-[900px]:hidden" />
         <Link
           href="/"
           aria-label="Konza Elevators home"
           className="flex shrink-0 items-center justify-self-center min-[900px]:justify-self-auto"
         >
-          {/*
-            The real transparent-PNG logo (public/brand/konza-logo.png) has not
-            been supplied by the client yet — see CLAUDE.md Decisions Log,
-            2026-08-29. Only the solid-maroon-background hi-res JPEG exists.
-            Wrapping it in a paper chip avoids a maroon box artifact directly
-            on the navy bar without regenerating or reinterpreting the logo.
-            Swap to next/image on konza-logo.png directly once it lands.
-          */}
           <span className="inline-flex items-center overflow-hidden rounded-md bg-paper px-2 py-1">
             <Image
               src="/brand/konza-logo-hires.jpg"
@@ -108,15 +98,6 @@ export function Header() {
         </button>
       </Container>
 
-      {/* Full-screen mobile drawer per docs/KONZA_SPEC.md §5. Portalled to
-          document.body: `header` has backdrop-blur (a backdrop-filter), which
-          makes it a containing block for `position: fixed` descendants — left
-          in place, this drawer would size itself to the header's own small
-          box instead of the viewport, and the page behind would show through
-          beneath it. It also carries its own Connect row so WhatsApp is
-          grouped with the other social icons here too, instead of the
-          floating widget sitting isolated on top of it (WhatsAppWidget hides
-          itself while this is open). */}
       {drawerOpen && createPortal(
         <div className="fixed inset-0 z-[60] flex flex-col bg-navy-950 min-[900px]:hidden">
           <div className="flex items-center justify-between border-b-[3px] border-red px-5 py-3">
