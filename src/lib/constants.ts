@@ -10,7 +10,7 @@ export const COMPANY_INFO = {
   foundedYear: 2013,
   address: "Ramco Court, Office C23, off Mombasa Road, Nairobi",
   addressLines: ["Ramco Court, Office C23,", "Off Mombasa Road, Nairobi"],
-  poBox: "P.O. Box 406–00511",
+  poBox: "P.O. Box 406–00511, NBI",
   phones: ["+254 726 053 238", "+254 706 811 818"],
   email: "info@konzaelevators.co.ke",
   hours: "Monday–Friday, 9:00AM–5:00PM",
@@ -36,7 +36,7 @@ export const NAV_LINKS: NavLink[] = [
 
 export const PRIMARY_CTA: NavLink = { label: "Get a Quote", href: "/quote" };
 
-export const FOOTER_LINKS: NavLink[] = NAV_LINKS;
+export const FOOTER_LINKS: NavLink[] = NAV_LINKS.filter((link) => link.href !== "/resources");
 
 export const SOCIAL_LINKS = {
   facebook: "https://www.facebook.com/people/Konza-Elevators/61579318184195/" as string | null,
@@ -47,8 +47,8 @@ export const SOCIAL_LINKS = {
 export const COPYRIGHT_NOTICE = "Copyright © 2026 Konza Elevators";
 
 export const DESIGNER_CREDIT = {
-  text: "Designed by NAVAC Global",
+  text: "Designed by NAVAC GLOBAL",
   prefix: "Designed by",
-  linkLabel: "NAVAC Global",
+  linkLabel: "NAVAC GLOBAL",
   url: "https://navac.co.ke",
 };

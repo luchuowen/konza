@@ -10,9 +10,10 @@ const DEFAULT_MESSAGE =
   "Hi Konza Elevators, I'd like to enquire about a project.";
 
 // Quote carries its own always-visible WhatsAppInline panel, so the floating
-// widget would just duplicate it there. Contact dropped its inline panel, so
-// this floating widget is Contact's only WhatsApp path now — keep it showing.
-const PAGES_WITH_INLINE_WHATSAPP = ['/quote'];
+// widget would just duplicate it there. Contact dropped both its inline panel
+// and this floating widget per direct request — WhatsApp is still reachable
+// there via the footer's WhatsApp icon and the phone numbers on the page.
+const PAGES_WITHOUT_FLOATING_WHATSAPP = ['/quote', '/contact'];
 
 export function WhatsAppWidget() {
   const pathname = usePathname();
@@ -51,7 +52,7 @@ export function WhatsAppWidget() {
   const sendHref = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 
   if (drawerOpen) return null;
-  if (pathname && PAGES_WITH_INLINE_WHATSAPP.includes(pathname)) return null;
+  if (pathname && PAGES_WITHOUT_FLOATING_WHATSAPP.includes(pathname)) return null;
 
   return (
     <div ref={panelRef} className="fixed bottom-5 right-5 z-50 hidden flex-col items-end gap-3 min-[900px]:flex">
