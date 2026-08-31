@@ -1,8 +1,17 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import type { ReactNode } from 'react';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
+import { FeatureCard } from '@/components/ui/FeatureCard';
+import {
+  ElevatorIcon,
+  RefreshIcon,
+  WrenchIcon,
+  ClipboardCheckIcon,
+  BuildingIcon,
+  TruckIcon,
+} from '@/components/ui/FeatureIcons';
 
 type ServiceItem = {
   id: string;
@@ -11,6 +20,7 @@ type ServiceItem = {
   body: string;
   ctaLabel: string;
   ctaHref: string;
+  icon: ReactNode;
 };
 
 export const metadata: Metadata = {
@@ -37,6 +47,7 @@ const SERVICES: ServiceItem[] = [
     body: 'We supply and install elevators and escalators for new buildings — passenger lifts, freight lifts, home lifts, escalators, moving walkways and more, managing every stage from delivery to final commissioning.',
     ctaLabel: 'Request an Installation Quote',
     ctaHref: '/quote',
+    icon: <ElevatorIcon className="h-full w-full" />,
   },
   {
     id: 'modernization',
@@ -45,14 +56,16 @@ const SERVICES: ServiceItem[] = [
     body: 'We upgrade existing elevator and escalator systems — improving reliability and bringing older installations up to current standards, with minimal disruption to an occupied building.',
     ctaLabel: 'Request a Modernization Quote',
     ctaHref: '/quote',
+    icon: <RefreshIcon className="h-full w-full" />,
   },
   {
-    id: 'maintenance-repair',
-    title: 'Maintenance & Repair',
+    id: 'maintenance',
+    title: 'Maintenance',
     tag: 'All Building Types',
     body: 'Scheduled inspection and servicing to keep elevators and escalators running safely and reliably, with a maintenance-frequency schedule tailored to how heavily each system is used.',
     ctaLabel: 'Request a Maintenance Quote',
     ctaHref: '/quote',
+    icon: <WrenchIcon className="h-full w-full" />,
   },
   {
     id: 'repair',
@@ -61,6 +74,7 @@ const SERVICES: ServiceItem[] = [
     body: 'Cost-effective repairs focused on minimizing downtime. Every repair engagement starts with a free condition report and estimate, so you know exactly what needs fixing before we begin.',
     ctaLabel: 'Request a Free Condition Report',
     ctaHref: '/quote',
+    icon: <ClipboardCheckIcon className="h-full w-full" />,
   },
   {
     id: 'construction',
@@ -69,6 +83,7 @@ const SERVICES: ServiceItem[] = [
     body: 'General, civil, mechanical and electrical construction services delivered alongside our vertical-transportation work, for projects that need both under one contractor.',
     ctaLabel: 'Discuss a Contracting Project',
     ctaHref: '/quote',
+    icon: <BuildingIcon className="h-full w-full" />,
   },
   {
     id: 'equipment-hire',
@@ -77,6 +92,7 @@ const SERVICES: ServiceItem[] = [
     body: 'When our vehicles and plant equipment aren’t in use on our own contracts, we make them available for hire — a practical option for contractors who need equipment on short notice.',
     ctaLabel: 'Enquire About Equipment Hire',
     ctaHref: '/contact',
+    icon: <TruckIcon className="h-full w-full" />,
   },
 ];
 
@@ -120,31 +136,21 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      <section className="bg-white">
+      <section className="bg-paper">
         <Container className="py-16 md:py-20">
           <RevealOnScroll stagger>
-            <div className="grid grid-cols-1 gap-x-12 gap-y-12 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {SERVICES.map((item, i) => (
-                <div key={item.id} className="border-t border-line-light pt-6">
-                  <div className="flex items-baseline gap-3">
-                    <span className="font-sans text-2xl font-bold text-red">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <span className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">
-                      {item.tag}
-                    </span>
-                  </div>
-                  <h3 className="mt-3 font-sans text-xl font-bold text-navy-950 md:text-2xl">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 max-w-md text-sm text-slate md:text-base">{item.body}</p>
-                  <Link
-                    href={item.ctaHref}
-                    className="mt-4 inline-flex min-h-[44px] items-center gap-1 text-sm font-semibold text-red hover:text-maroon"
-                  >
-                    {item.ctaLabel} →
-                  </Link>
-                </div>
+                <FeatureCard
+                  key={item.id}
+                  n={String(i + 1).padStart(2, '0')}
+                  tag={item.tag}
+                  label={item.title}
+                  body={item.body}
+                  icon={item.icon}
+                  href={item.ctaHref}
+                  ctaLabel={item.ctaLabel}
+                />
               ))}
             </div>
           </RevealOnScroll>
@@ -162,20 +168,23 @@ export default function ServicesPage() {
             </div>
           </RevealOnScroll>
 
-          <RevealOnScroll stagger className="mt-12">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {ENGAGEMENT_STEPS.map((step, i) => (
-                <div
-                  key={step.n}
-                  className={`text-center md:pr-4 md:text-left ${
-                    i < ENGAGEMENT_STEPS.length - 1 ? 'md:border-r md:border-white/10' : ''
-                  }`}
-                >
-                  <span className="font-sans text-2xl font-bold text-red">{step.n}</span>
-                  <p className="mt-2 text-xs font-bold uppercase tracking-[0.1em] text-white">
+          <RevealOnScroll stagger className="relative mt-14">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute left-0 right-0 top-6 hidden h-px bg-gradient-to-r from-red/40 via-white/15 to-transparent md:block"
+            />
+            <div className="grid grid-cols-1 gap-10 text-center md:grid-cols-3 md:text-left">
+              {ENGAGEMENT_STEPS.map((step) => (
+                <div key={step.n} className="relative">
+                  <div className="relative z-10 mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-red/50 bg-navy-950 font-sans text-base font-bold text-red md:mx-0">
+                    {step.n}
+                  </div>
+                  <p className="mt-4 text-xs font-bold uppercase tracking-[0.1em] text-white">
                     {step.label}
                   </p>
-                  <p className="mt-2 text-sm text-slate-dark">{step.body}</p>
+                  <p className="mx-auto mt-2 max-w-xs text-sm text-slate-dark md:mx-0">
+                    {step.body}
+                  </p>
                 </div>
               ))}
             </div>

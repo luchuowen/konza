@@ -4,7 +4,6 @@ import { useActionState, useState, type FormEvent } from 'react';
 import { useFormStatus } from 'react-dom';
 import { Button } from '@/components/ui/Button';
 import { SelectField, TextAreaField, TextField } from '@/components/forms/fields';
-import { CheckIcon } from '@/components/ui/ContactIcons';
 import {
   CONTACT_REASONS,
   validateContactForm,
@@ -15,12 +14,6 @@ import { submitContactLead } from '@/app/actions/submit-lead';
 import { initialSubmitLeadState } from '@/lib/lead-form-state';
 
 const emptyValues: ContactFormValues = { name: '', phone: '', email: '', reason: '', message: '' };
-
-const WHAT_TO_EXPECT = [
-  'We read and personally respond to every message.',
-  'Include your phone number so we can call you back quickly.',
-  'For anything urgent, message us on WhatsApp instead.',
-];
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -75,9 +68,10 @@ export function ContactForm() {
   if (state.status === 'success') {
     return (
       <div
-        className="flex h-full flex-col justify-center rounded-xl border border-line-light bg-white p-8 text-center sm:text-left"
+        className="relative flex flex-col justify-center overflow-hidden rounded-2xl border border-line-light bg-white p-8 text-center shadow-[0_1px_3px_rgba(10,22,40,0.06),0_24px_48px_-28px_rgba(10,22,40,0.18)] sm:text-left"
         role="status"
       >
+        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-red via-maroon to-red" />
         <p className="text-[0.72rem] font-bold uppercase tracking-[0.12em] text-red">Message Sent</p>
         <h3 className="mt-3 font-sans text-2xl font-bold text-navy-950">Thanks for reaching out.</h3>
         <p className="mt-4 text-sm leading-relaxed text-slate">
@@ -93,8 +87,17 @@ export function ContactForm() {
       action={formAction}
       onSubmit={handleSubmit}
       noValidate
-      className="flex h-full flex-col rounded-xl border border-line-light bg-white p-6 sm:p-8"
+      className="relative flex flex-col overflow-hidden rounded-2xl border border-line-light bg-white p-6 shadow-[0_1px_3px_rgba(10,22,40,0.06),0_24px_48px_-28px_rgba(10,22,40,0.18)] sm:p-8"
     >
+      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-red via-maroon to-red" />
+
+      <div className="mb-7">
+        <span className="text-[0.72rem] font-bold uppercase tracking-[0.12em] text-red">Send a Message</span>
+        <h2 className="mt-2 font-sans text-xl font-bold text-navy-950 sm:text-2xl">
+          We read and personally respond to every message.
+        </h2>
+      </div>
+
       {state.status === 'error' && (
         <p role="alert" className="mb-6 rounded-md bg-red/10 p-3 text-sm font-medium text-red">
           {state.message}
@@ -145,18 +148,6 @@ export function ContactForm() {
 
       <div className="mt-8">
         <SubmitButton />
-      </div>
-
-      <div className="mt-8 flex flex-1 flex-col justify-center border-t border-line-light pt-6">
-        <p className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">What to Expect</p>
-        <ul className="mt-4 flex flex-col gap-3">
-          {WHAT_TO_EXPECT.map((item) => (
-            <li key={item} className="flex items-start gap-3 text-sm text-slate">
-              <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-red" />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
       </div>
     </form>
   );

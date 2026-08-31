@@ -50,7 +50,7 @@ export const CONTACT_REASONS = [
   "General Enquiry",
   "Installation",
   "Modernization",
-  "Maintenance & Repair",
+  "Maintenance",
   "Repair",
   "Construction & Contracting",
   "Equipment & Plant Hire",

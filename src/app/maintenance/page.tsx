@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
+import { FeatureCard } from '@/components/ui/FeatureCard';
+import { ClipboardCheckIcon, CalendarIcon, ClockIcon, ShieldCheckIcon, UsersIcon } from '@/components/ui/FeatureIcons';
 import { IMAGES } from '@/lib/images';
 
 export const metadata: Metadata = {
@@ -25,26 +27,31 @@ const INCLUDED = [
   {
     n: '01',
     label: 'Free Condition Report',
+    icon: <ClipboardCheckIcon className="h-full w-full" />,
     body: 'Every contract starts with a free condition report and estimate, so you know the real state of your system before anything is agreed.',
   },
   {
     n: '02',
     label: 'Scheduled Servicing',
+    icon: <CalendarIcon className="h-full w-full" />,
     body: 'Inspection and servicing on a schedule tailored to how heavily your elevators and escalators are actually used.',
   },
   {
     n: '03',
     label: 'Response-Time SLA',
+    icon: <ClockIcon className="h-full w-full" />,
     body: 'A response-time service level, set out clearly in your contract, so you know what to expect when you call.',
   },
   {
     n: '04',
     label: 'Compliance Support',
+    icon: <ShieldCheckIcon className="h-full w-full" />,
     body: 'Designed and serviced to KS ISO 8100 practice, staying current with KEBS and NCA requirements.',
   },
   {
     n: '05',
     label: 'Our Technical Team',
+    icon: <UsersIcon className="h-full w-full" />,
     body: 'Backed by our 10-person technical and administrative team, the same one behind 50 completed installations.',
   },
 ];
@@ -100,7 +107,7 @@ export default function MaintenancePage() {
         <div className="absolute inset-0 bg-navy-950/40" />
       </div>
 
-      <section className="bg-white">
+      <section className="bg-paper">
         <Container className="py-16 md:py-20">
           <RevealOnScroll>
             <div className="mx-auto text-center md:mx-0 md:text-left">
@@ -112,20 +119,15 @@ export default function MaintenancePage() {
           </RevealOnScroll>
 
           <RevealOnScroll stagger className="mt-12">
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-5">
-              {INCLUDED.map((item, i) => (
-                <div
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {INCLUDED.map((item) => (
+                <FeatureCard
                   key={item.n}
-                  className={`text-center md:pr-4 md:text-left ${
-                    i < INCLUDED.length - 1 ? 'md:border-r md:border-line-light' : ''
-                  }`}
-                >
-                  <span className="font-sans text-2xl font-bold text-red">{item.n}</span>
-                  <p className="mt-2 text-xs font-bold uppercase tracking-[0.1em] text-navy-950">
-                    {item.label}
-                  </p>
-                  <p className="mt-2 text-sm text-slate">{item.body}</p>
-                </div>
+                  n={item.n}
+                  label={item.label}
+                  body={item.body}
+                  icon={item.icon}
+                />
               ))}
             </div>
           </RevealOnScroll>

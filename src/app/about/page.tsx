@@ -210,11 +210,15 @@ export default function AboutPage() {
           </RevealOnScroll>
 
           <RevealOnScroll className="mt-16 border-t border-white/10 pt-12 text-center md:text-left">
-            <span className={eyebrow}>Our Team</span>
-            <div className="relative mt-6 aspect-[16/9] w-full overflow-hidden rounded-xl sm:aspect-[21/9]">
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl sm:aspect-[21/9]">
               <Image src={IMAGES.careersWorkshopBench} alt="A Konza Elevators technical workshop bench" fill className="object-cover" />
+              <span className="absolute left-4 top-4 rounded-full bg-navy-950/70 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.12em] text-white backdrop-blur-sm">
+                Our Workshop
+              </span>
             </div>
-            <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
+
+            <span className={`${eyebrow} mt-10 block`}>Our Team</span>
+            <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
               <div>
                 <p className="font-sans text-lg font-bold text-white">David Gachari</p>
                 <p className="mt-1 text-sm text-slate-dark">

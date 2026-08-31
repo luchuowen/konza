@@ -29,11 +29,13 @@ export function WhatsAppInline({
   defaultMessage,
   className = '',
   variant = 'card',
+  showTips = true,
 }: {
   heading?: string;
   defaultMessage: string;
   className?: string;
   variant?: 'card' | 'inline';
+  showTips?: boolean;
 }) {
   const [message, setMessage] = useState(defaultMessage);
   const number = COMPANY_INFO.whatsappNumber.replace(/[^\d]/g, '');
@@ -75,17 +77,19 @@ export function WhatsAppInline({
         Send on WhatsApp
       </a>
 
-      <div className="mt-8 flex flex-1 flex-col justify-center border-t border-line-light pt-6">
-        <p className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">Why WhatsApp</p>
-        <ul className="mt-4 flex flex-col gap-3">
-          {WHY_WHATSAPP.map((item) => (
-            <li key={item} className="flex items-start gap-3 text-sm text-slate">
-              <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-red" />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {showTips && (
+        <div className="mt-8 flex flex-1 flex-col justify-center border-t border-line-light pt-6">
+          <p className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">Why WhatsApp</p>
+          <ul className="mt-4 flex flex-col gap-3">
+            {WHY_WHATSAPP.map((item) => (
+              <li key={item} className="flex items-start gap-3 text-sm text-slate">
+                <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-red" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
