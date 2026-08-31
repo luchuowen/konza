@@ -619,3 +619,33 @@ These are a separate future prompt the client will provide explicitly.
   independently screenshotted at 390px to confirm it stacks cleanly rather
   than squeezing a table. `npm run build`, `npx tsc --noEmit` and `npm run
   lint` all clean.
+- **2026-08-31 — Session 5 follow-up — correcting the previous entry: the
+  escalator video was never corrupt; the test environment can't decode H.264
+  at all.** Asked to re-export "Video — Escalator Ambient Loop.mp4" after the
+  above entry blamed a Chromium `DEMUXER_ERROR_NO_SUPPORTED_STREAMS` error on
+  the file. `ffprobe` had already shown the file to be a completely standard
+  H.264 High-profile + AAC MP4 (probe_score 100) — re-exporting it (remux
+  with `ffmpeg -c copy -movflags +faststart`, no re-encode needed) produced a
+  byte-different but codec-identical file, and the exact same error still
+  fired. That contradiction — a file `ffprobe` calls perfectly healthy still
+  failing in Chromium — was the signal to stop blaming the file and test the
+  player instead: reproduced the identical error on the already-shipped,
+  previously-"verified" `Video — Lift Shaft Cutaway Loop.mp4`, then confirmed
+  directly with `video.canPlayType('video/mp4; codecs="avc1..."')` returning
+  `''` (cannot play) for H.264 while VP9/AV1 both return `'probably'`. This
+  sandbox's Playwright-bundled Chromium is a stock open-source build with no
+  licensed H.264/AAC decoder — a real, known category of limitation (the same
+  gap affects e.g. Firefox on Linux without the OS's proprietary codec
+  packages), not a defect in either video file. Every prior session's
+  Playwright "verification" of the Lift Shaft video was therefore only ever
+  confirming the element rendered and the request succeeded (206 Partial
+  Content), never that a frame actually decoded — worth knowing for any
+  future session tempted to trust a green Playwright run as proof video
+  content is visually correct. Both video files are fine as originally
+  exported; kept the remuxed (faststart-added) escalator file since it's a
+  legitimate, harmless streaming improvement, not because it fixed anything.
+  Real visitors' browsers (Chrome, Safari, Firefox with OS codecs, virtually
+  all mobile browsers) decode H.264 natively, so the ambient video plays for
+  them; this project's fail-safe pattern (`AmbientSectionVideo.tsx`,
+  `LiftShaftVideo.tsx`) still matters for the real minority that can't,
+  exactly as designed — not because either file was ever broken.

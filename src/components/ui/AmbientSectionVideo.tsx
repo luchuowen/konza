@@ -11,13 +11,13 @@ import Image from 'next/image';
 // disappears (on error, or when the visitor prefers reduced motion) leaving
 // the photo intact underneath.
 //
-// This fallback is exercised for real, not theoretical: "Video — Escalator
-// Ambient Loop.mp4" throws a real `error` event in Chromium (code 4,
-// DEMUXER_ERROR_NO_SUPPORTED_STREAMS) despite being a structurally valid MP4
-// container (confirmed with `file`) — some encoding/codec issue from
-// whichever tool generated it. The static photo renders correctly for every
-// visitor as a result; get the file re-exported before treating the motion
-// effect itself as live.
+// This fallback is not purely theoretical: standard H.264/AAC MP4 (what both
+// generated videos on this site use) isn't decodable in every environment —
+// e.g. Firefox on Linux without the OS's proprietary codec packages, or a
+// stripped-down Chromium build. See CLAUDE.md's Session 5 follow-up entry:
+// what first looked like a corrupt "Escalator Ambient Loop.mp4" file turned
+// out to be exactly this, not a bad export — don't re-diagnose it as a file
+// defect without first ruling out the playback environment.
 export function AmbientSectionVideo({
   src,
   fallbackImage,
