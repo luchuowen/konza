@@ -39,12 +39,12 @@ export function Accordion({
                 onClick={() => setOpenId(isOpen ? null : item.id)}
                 className="flex min-h-[44px] w-full items-center justify-between gap-4 py-6 text-left"
               >
-                <span className="font-serif text-xl font-bold text-navy-950 md:text-2xl">
+                <span className="font-sans text-xl font-bold text-navy-950 md:text-2xl">
                   {item.title}
                 </span>
                 <span
                   aria-hidden="true"
-                  className={`shrink-0 font-serif text-2xl font-light leading-none text-red transition-transform duration-300 ${
+                  className={`shrink-0 font-sans text-2xl font-light leading-none text-red transition-transform duration-300 ${
                     isOpen ? 'rotate-45' : ''
                   }`}
                 >

@@ -66,7 +66,7 @@ export function Carousel({
           <span className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">
             {active.tag}
           </span>
-          <p className="mt-1 font-serif text-lg font-bold text-white">{active.title}</p>
+          <p className="mt-1 font-sans text-lg font-bold text-white">{active.title}</p>
         </div>
       </div>
 

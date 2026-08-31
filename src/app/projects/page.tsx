@@ -35,7 +35,7 @@ export default function ProjectsPage() {
         <Container className="py-16 md:py-24">
           <RevealOnScroll>
             <span className={eyebrow}>Portfolio</span>
-            <h1 className="mt-4 max-w-2xl font-serif text-4xl font-bold leading-[1.1] text-white md:text-5xl">
+            <h1 className="mt-4 max-w-2xl font-sans text-4xl font-bold leading-[1.1] text-white md:text-5xl">
               50 completed elevator and escalator installations across Nairobi and beyond.
             </h1>
             <p className="mt-6 max-w-xl text-base text-slate-dark md:text-lg">
@@ -47,7 +47,7 @@ export default function ProjectsPage() {
           <RevealOnScroll stagger className="mt-12 flex gap-10 md:mt-16">
             {HEADER_STATS.map((stat) => (
               <div key={stat.label}>
-                <p className="font-serif text-3xl font-bold text-white md:text-4xl">{stat.value}</p>
+                <p className="font-sans text-3xl font-bold text-white md:text-4xl">{stat.value}</p>
                 <p className="mt-1 text-sm text-slate-dark">{stat.label}</p>
               </div>
             ))}
@@ -60,7 +60,7 @@ export default function ProjectsPage() {
       <section className="bg-navy-950">
         <Container className="flex flex-col items-center py-20 text-center">
           <RevealOnScroll>
-            <h2 className="mx-auto max-w-xl font-serif text-3xl font-bold text-white md:text-4xl">
+            <h2 className="mx-auto max-w-xl font-sans text-3xl font-bold text-white md:text-4xl">
               Let&rsquo;s add your building to this list.
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-4">

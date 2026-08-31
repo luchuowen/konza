@@ -523,3 +523,37 @@ These are a separate future prompt the client will provide explicitly.
   `npx tsc --noEmit` all clean; zero console/page/network errors and zero
   horizontal overflow or sub-44px tap targets across all 10 routes at both
   breakpoints after the fixes.
+- **2026-08-31 — Site-wide font swap, by explicit client instruction
+  (reference PDF), superseding the "design system is FINAL" non-negotiable
+  for typography only.** The client supplied a reference screenshot (a
+  "tastemaker" landing page) whose signature look is bold, geometric
+  sans-serif headings sitewide, with a light, elegant italic serif reserved
+  for one decorative accent (its wordmark). `--font-sans` swapped from Inter
+  to **Geist** (`next/font/google`, matches the reference's grotesk weight
+  and letterforms closely, and is a natural fit given the reference itself
+  is a `*.vercel.app` deploy) and `--font-serif` from Playfair Display to
+  **Instrument Serif** (the closest Google Fonts match to the reference's
+  thin italic wordmark treatment) — both wired only in `src/app/layout.tsx`
+  and `src/styles/tokens.css`, so no page/component imports a font name
+  directly. **The larger, non-mechanical part of this change:** the prior
+  design system used serif-bold (`font-serif font-bold`) as the actual
+  heading font sitewide — h1/h2/h3s, stat numbers, card titles — not as a
+  rare accent, so a pure token-value swap alone would have re-skinned every
+  heading in Instrument Serif's single light weight instead of matching the
+  reference's bold sans headings. Reading the reference precisely — sans for
+  every heading, italic serif for exactly one decorative role — meant
+  reclassifying each of the ~45 `font-serif` call sites across every page
+  and shared component: all `font-bold`/`font-light` heading and stat-number
+  instances (including the accordion's serif "+"/"×" toggle glyph) were
+  changed to `font-sans`, while the single true italic use — the Home page's
+  Salome Chiira pull-quote (`src/app/page.tsx`, `italic` with `font-normal`,
+  the only such combination sitewide) — was deliberately left on
+  `font-serif` so Instrument Serif's italic renders there, the one place the
+  design already called for an italic serif treatment. No color, spacing, or
+  layout token touched. Verified with Playwright against a **production**
+  build (`next build` + `next start`, per this file's own dev-vs-prod
+  lesson) across all 8 built routes at 1440px/390px: computed
+  `getComputedStyle(...).fontFamily` confirmed `Geist` is active on every
+  route's `<h1>` and `<body>`, full-page screenshots read correctly at both
+  widths, zero console/page errors. `npm run build`, `npx tsc --noEmit` and
+  `npm run lint` all clean.

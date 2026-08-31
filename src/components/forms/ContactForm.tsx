@@ -74,7 +74,7 @@ export function ContactForm() {
         role="status"
       >
         <p className="text-[0.72rem] font-bold uppercase tracking-[0.12em] text-red">Message Sent</p>
-        <h3 className="mt-3 font-serif text-2xl font-bold text-navy-950">Thanks for reaching out.</h3>
+        <h3 className="mt-3 font-sans text-2xl font-bold text-navy-950">Thanks for reaching out.</h3>
         <p className="mt-4 text-sm leading-relaxed text-slate">
           We&rsquo;ve received your message and will get back to you by phone or WhatsApp. For anything
           urgent, call us directly using the numbers alongside this form.
