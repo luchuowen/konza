@@ -6,7 +6,7 @@ import { WhatsAppInline } from '@/components/ui/WhatsAppInline';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { COMPANY_INFO } from '@/lib/constants';
 import { IMAGES } from '@/lib/images';
-import { LocationIcon, MailIcon, MailboxIcon, MapPinIcon, PhoneIcon } from '@/components/ui/ContactIcons';
+import { MapPinIcon } from '@/components/ui/ContactIcons';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -69,36 +69,25 @@ export default function ContactPage() {
               <div className="flex h-full flex-col rounded-xl border border-line-light bg-white p-6 sm:p-8">
                 <span className={eyebrow}>Our Office</span>
                 <ul className="mt-5 flex flex-col gap-4 text-sm text-slate">
-                  <li className="flex items-start gap-3">
-                    <LocationIcon className="mt-0.5 h-5 w-5 shrink-0 text-red" />
-                    <span>
-                      {COMPANY_INFO.addressLines.map((line) => (
-                        <span key={line} className="block text-navy-950">
-                          {line}
-                        </span>
-                      ))}
-                    </span>
+                  <li>
+                    {COMPANY_INFO.addressLines.map((line) => (
+                      <span key={line} className="block text-navy-950">
+                        {line}
+                      </span>
+                    ))}
                   </li>
-                  <li className="flex items-start gap-3">
-                    <MailboxIcon className="mt-0.5 h-5 w-5 shrink-0 text-red" />
-                    <span>{COMPANY_INFO.poBox}</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <PhoneIcon className="mt-0.5 h-5 w-5 shrink-0 text-red" />
-                    <span className="flex flex-col">
-                      {COMPANY_INFO.phones.map((phone) => (
-                        <a
-                          key={phone}
-                          href={`tel:${phone.replace(/\s+/g, '')}`}
-                          className="inline-flex min-h-[44px] items-center hover:text-red"
-                        >
-                          {phone}
-                        </a>
-                      ))}
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <MailIcon className="mt-0.5 h-5 w-5 shrink-0 text-red" />
+                  <li>{COMPANY_INFO.poBox}</li>
+                  {COMPANY_INFO.phones.map((phone) => (
+                    <li key={phone}>
+                      <a
+                        href={`tel:${phone.replace(/\s+/g, '')}`}
+                        className="inline-flex min-h-[44px] items-center hover:text-red"
+                      >
+                        {phone}
+                      </a>
+                    </li>
+                  ))}
+                  <li>
                     <a
                       href={`mailto:${COMPANY_INFO.email}`}
                       className="inline-flex min-h-[44px] items-center hover:text-red"
