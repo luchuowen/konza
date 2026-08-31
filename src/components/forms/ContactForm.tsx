@@ -4,7 +4,6 @@ import { useActionState, useState, type FormEvent } from 'react';
 import { useFormStatus } from 'react-dom';
 import { Button } from '@/components/ui/Button';
 import { SelectField, TextAreaField, TextField } from '@/components/forms/fields';
-import { CheckIcon } from '@/components/ui/ContactIcons';
 import {
   CONTACT_REASONS,
   validateContactForm,
@@ -15,12 +14,6 @@ import { submitContactLead } from '@/app/actions/submit-lead';
 import { initialSubmitLeadState } from '@/lib/lead-form-state';
 
 const emptyValues: ContactFormValues = { name: '', phone: '', email: '', reason: '', message: '' };
-
-const WHAT_TO_EXPECT = [
-  'We read and personally respond to every message.',
-  'Include your phone number so we can call you back quickly.',
-  'For anything urgent, message us on WhatsApp instead.',
-];
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -145,18 +138,6 @@ export function ContactForm() {
 
       <div className="mt-8">
         <SubmitButton />
-      </div>
-
-      <div className="mt-8 flex flex-1 flex-col justify-center border-t border-line-light pt-6">
-        <p className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">What to Expect</p>
-        <ul className="mt-4 flex flex-col gap-3">
-          {WHAT_TO_EXPECT.map((item) => (
-            <li key={item} className="flex items-start gap-3 text-sm text-slate">
-              <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-red" />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
       </div>
     </form>
   );

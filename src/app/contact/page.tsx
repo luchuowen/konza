@@ -6,6 +6,7 @@ import { WhatsAppInline } from '@/components/ui/WhatsAppInline';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { COMPANY_INFO } from '@/lib/constants';
 import { IMAGES } from '@/lib/images';
+import { MapPinIcon } from '@/components/ui/ContactIcons';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -80,14 +81,6 @@ export default function ContactPage() {
                         {line}
                       </span>
                     ))}
-                    <a
-                      href={directionsHref}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-1 inline-flex min-h-[44px] items-center text-xs font-semibold text-red hover:text-maroon"
-                    >
-                      Get Directions →
-                    </a>
                   </li>
                   <li>{COMPANY_INFO.poBox}</li>
                   {COMPANY_INFO.phones.map((phone) => (
@@ -118,10 +111,33 @@ export default function ContactPage() {
                   heading="Message Us on WhatsApp"
                   defaultMessage="Hi Konza Elevators, I have a question."
                   variant="inline"
+                  showTips={false}
                 />
               </div>
             </RevealOnScroll>
           </div>
+
+          <RevealOnScroll className="mt-8">
+            <div className="overflow-hidden rounded-xl border border-line-light">
+              <div className="ph-map relative flex aspect-[21/9] items-center justify-center max-md:aspect-[4/3]">
+                <div className="flex flex-col items-center">
+                  <span className="mb-1.5 rounded-md bg-white px-3 py-1.5 text-xs font-bold text-navy-950 shadow-lg">
+                    Konza Elevators
+                  </span>
+                  <MapPinIcon className="h-9 w-9 text-red drop-shadow-md" />
+                </div>
+
+                <a
+                  href={directionsHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="absolute bottom-3 right-3 inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-white px-3 py-2 text-xs font-semibold text-navy-950 shadow-lg transition-colors hover:text-red"
+                >
+                  Get Directions →
+                </a>
+              </div>
+            </div>
+          </RevealOnScroll>
         </Container>
       </section>
     </>
