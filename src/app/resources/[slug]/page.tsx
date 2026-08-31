@@ -54,11 +54,7 @@ export default async function ArticlePage({
   return (
     <>
       <section
-        className="relative overflow-hidden"
-        style={{
-          backgroundImage:
-            'linear-gradient(180deg, rgba(10,22,40,.35) 0%, rgba(10,22,40,.92) 100%), linear-gradient(125deg, #1d3a5f 0%, #0d2036 45%, #081422 100%)',
-        }}
+        className="relative overflow-hidden inner-hero"
       >
         <Container className="py-16 md:py-20">
           <RevealOnScroll>

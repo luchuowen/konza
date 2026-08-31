@@ -26,6 +26,15 @@
   --font-serif: var(--font-playfair);
 }
 
+/* Dark inner-page hero background (no photo assigned to that slot yet) —
+   built from the locked navy tokens, not one-off hex values, so every inner
+   page's hero reads as the same design system as Home's real-photo hero. */
+.inner-hero{
+  background-image:
+    linear-gradient(180deg, rgba(10,22,40,.35) 0%, rgba(10,22,40,.92) 100%),
+    linear-gradient(125deg, var(--navy-800) 0%, var(--navy-900) 45%, var(--navy-950) 100%);
+}
+
 .ph-products{background:linear-gradient(135deg,#1f3a58,#0a1626);}
 .ph-projects{background:linear-gradient(135deg,#42302a,#181010);}
 .ph-trust{background:linear-gradient(135deg,#26405f,#0c1a2c);}

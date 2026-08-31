@@ -97,7 +97,7 @@ export async function renderOgImage(eyebrow: string, title: string) {
               fontWeight: 700,
               letterSpacing: 4,
               textTransform: 'uppercase',
-              color: '#e8433f',
+              color: '#E8453D',
             }}
           >
             {eyebrow}
@@ -121,7 +121,7 @@ export async function renderOgImage(eyebrow: string, title: string) {
               marginTop: 28,
               fontSize: 24,
               fontWeight: 600,
-              color: '#c7d0dc',
+              color: '#93A2B2', // --slate-dark
             }}
           >
             Konza Elevators &amp; Escalator Co. Ltd
