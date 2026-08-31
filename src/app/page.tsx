@@ -165,16 +165,16 @@ export default function Home() {
           className="absolute inset-0"
           style={{ backgroundImage: 'linear-gradient(180deg, rgba(10,22,40,.55) 0%, rgba(10,22,40,.94) 100%)' }}
         />
-        <Container className="relative pb-16 pt-16 md:pb-24 md:pt-24">
+        <Container className="relative pb-16 pt-16 text-center md:pb-24 md:pt-24">
           <RevealOnScroll>
-            <h1 className="max-w-2xl font-serif text-4xl font-bold leading-[1.1] text-white md:text-6xl">
+            <h1 className="mx-auto max-w-2xl font-serif text-4xl font-bold leading-[1.1] text-white md:text-6xl">
               Elevators &amp; Escalators for Every Building
             </h1>
-            <p className="mt-6 max-w-xl text-base text-slate-dark md:text-lg">
+            <p className="mx-auto mt-6 max-w-xl text-base text-slate-dark md:text-lg">
               We supply, install, maintain and repair elevators and escalators for homes,
               offices, hospitals, malls and industrial buildings.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Button href="/quote" variant="cta" className="min-w-[190px]">
                 Get a Quote
               </Button>
