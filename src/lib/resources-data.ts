@@ -20,8 +20,7 @@ export const ARTICLES: Article[] = [
     slug: 'how-to-choose-the-right-elevator-for-your-building',
     category: 'Buying Guide',
     title: 'How to Choose the Right Elevator for Your Building',
-    excerpt:
-      'A practical starting point for developers and homeowners: typical elevator costs in Kenya, how often systems need servicing, and how fast the market is growing.',
+    excerpt: 'Elevator costs in Kenya, servicing frequency, and market growth — the essentials.',
     publishedAt: '2026-07-15',
     intro:
       'Choosing an elevator or escalator is a long-term decision — the system you install will run for years, carry your building’s traffic, and need to be serviced reliably. Here’s what to weigh before you commit to a specification.',
@@ -57,8 +56,7 @@ export const ARTICLES: Article[] = [
     slug: 'top-construction-trends-to-watch-in-2026',
     category: 'Industry Trends',
     title: 'Top Construction Trends to Watch in 2026',
-    excerpt:
-      'From carbon-sequestering materials to AI-assisted scheduling, four trends shaping construction in 2026 — and what they mean for buildings going up in Nairobi.',
+    excerpt: 'Four trends shaping construction in 2026 — and what they mean for Nairobi builds.',
     publishedAt: '2026-08-05',
     intro:
       'Vertical transportation doesn’t exist in isolation — it goes into buildings shaped by the wider construction industry. Here are four trends worth watching this year, and why they matter for anyone planning a new build.',
