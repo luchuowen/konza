@@ -188,7 +188,7 @@ export default function Home() {
         />
         <Container className="relative pb-16 pt-16 text-center md:pb-24 md:pt-24">
           <RevealOnScroll>
-            <h1 className="mx-auto max-w-2xl font-serif text-4xl font-bold leading-[1.1] text-white md:text-6xl">
+            <h1 className="mx-auto max-w-2xl font-sans text-4xl font-bold leading-[1.1] text-white md:text-6xl">
               Elevators &amp; Escalators for Every Building
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-base text-slate-dark md:text-lg">
@@ -222,7 +222,7 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
               {PROOF_STATS.map((stat) => (
                 <div key={stat.label} className="text-center md:text-left">
-                  <p className="font-serif text-3xl font-bold text-white md:text-4xl">
+                  <p className="font-sans text-3xl font-bold text-white md:text-4xl">
                     {stat.value}
                   </p>
                   <p className="mt-1 text-sm text-slate-dark">{stat.label}</p>
@@ -249,7 +249,7 @@ export default function Home() {
                     i < COMPLIANCE_ITEMS.length - 1 ? 'md:border-r md:border-line-light' : ''
                   }`}
                 >
-                  <span className="font-serif text-2xl font-bold text-red">{item.n}</span>
+                  <span className="font-sans text-2xl font-bold text-red">{item.n}</span>
                   <p className="mt-2 text-xs font-bold uppercase tracking-[0.1em] text-navy-950">
                     {item.label}
                   </p>
@@ -265,7 +265,7 @@ export default function Home() {
         <Container className="flex flex-col items-center py-20 text-center">
           <RevealOnScroll>
             <span className={eyebrow}>How It Works</span>
-            <h2 className="mx-auto mt-4 max-w-2xl font-serif text-3xl font-bold text-white md:text-4xl">
+            <h2 className="mx-auto mt-4 max-w-2xl font-sans text-3xl font-bold text-white md:text-4xl">
               From installation to modernization and maintenance, we handle your elevator
               needs from start to finish.
             </h2>
@@ -313,7 +313,7 @@ export default function Home() {
                     <span className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">
                       {project.sector}
                     </span>
-                    <h3 className="mt-1 font-serif text-lg font-bold text-navy-950">
+                    <h3 className="mt-1 font-sans text-lg font-bold text-navy-950">
                       {project.name}
                     </h3>
                     <p className="mt-2 text-sm text-slate">{project.spec}</p>
@@ -329,7 +329,7 @@ export default function Home() {
         <Container className="py-20">
           <RevealOnScroll className="text-center">
             <span className={eyebrow}>What Clients Say</span>
-            <h2 className="mx-auto mt-3 max-w-lg font-serif text-3xl font-bold text-white md:text-4xl">
+            <h2 className="mx-auto mt-3 max-w-lg font-sans text-3xl font-bold text-white md:text-4xl">
               Trusted by developers, institutions and homeowners.
             </h2>
           </RevealOnScroll>
@@ -341,7 +341,7 @@ export default function Home() {
                   key={t.name}
                   className="flex h-full flex-col rounded-xl border border-navy-800 bg-navy-900 p-6 text-center transition-colors duration-300 hover:border-red/40 md:text-left"
                 >
-                  <span aria-hidden="true" className="font-serif text-3xl leading-none text-red">
+                  <span aria-hidden="true" className="font-sans text-3xl leading-none text-red">
                     &ldquo;
                   </span>
                   <blockquote className="mt-2 flex-1 font-serif text-sm italic leading-relaxed text-slate-dark">
@@ -362,7 +362,7 @@ export default function Home() {
         <Container className="py-20">
           <RevealOnScroll className="text-center">
             <span className={eyebrow}>Where We Work</span>
-            <h2 className="mx-auto mt-3 max-w-lg font-serif text-3xl font-bold text-navy-950 md:text-4xl">
+            <h2 className="mx-auto mt-3 max-w-lg font-sans text-3xl font-bold text-navy-950 md:text-4xl">
               Elevator and escalator solutions for different types of buildings.
             </h2>
           </RevealOnScroll>
@@ -386,8 +386,8 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-6">
-                    <span className="font-serif text-2xl font-bold text-red">{tile.n}</span>
-                    <h3 className="mt-3 font-serif text-lg font-bold text-navy-950">{tile.name}</h3>
+                    <span className="font-sans text-2xl font-bold text-red">{tile.n}</span>
+                    <h3 className="mt-3 font-sans text-lg font-bold text-navy-950">{tile.name}</h3>
                     <p className="mt-2 text-sm text-slate">{tile.body}</p>
                   </div>
                 </div>

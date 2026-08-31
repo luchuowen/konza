@@ -89,7 +89,7 @@ export function QuoteForm() {
     return (
       <div className="rounded-xl border border-line-light bg-white p-8 text-center sm:text-left" role="status">
         <p className="text-[0.72rem] font-bold uppercase tracking-[0.12em] text-red">Request Received</p>
-        <h3 className="mt-3 font-serif text-2xl font-bold text-navy-950">Thank you — we&rsquo;ve got your details.</h3>
+        <h3 className="mt-3 font-sans text-2xl font-bold text-navy-950">Thank you — we&rsquo;ve got your details.</h3>
         <p className="mt-4 text-sm leading-relaxed text-slate">
           Our team will review your project and contact you directly by phone or WhatsApp to discuss
           next steps and arrange a site visit where needed. If your enquiry is urgent, message us on

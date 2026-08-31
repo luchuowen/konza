@@ -37,7 +37,7 @@ export default function QuotePage() {
           <RevealOnScroll>
             <div className="mx-auto text-center md:mx-0 md:text-left">
               <span className={eyebrow}>Get a Quote</span>
-              <h1 className="mx-auto mt-4 max-w-2xl font-serif text-4xl font-bold leading-[1.1] text-white md:mx-0 md:text-5xl">
+              <h1 className="mx-auto mt-4 max-w-2xl font-sans text-4xl font-bold leading-[1.1] text-white md:mx-0 md:text-5xl">
                 Tell us about your project. We&rsquo;ll take care of the rest.
               </h1>
               <p className="mx-auto mt-6 max-w-xl text-base text-slate-dark md:mx-0 md:text-lg">
@@ -62,7 +62,7 @@ export default function QuotePage() {
             <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
               {PROOF_STATS.map((stat) => (
                 <div key={stat.label} className="text-center md:text-left">
-                  <p className="font-serif text-3xl font-bold text-white md:text-4xl">{stat.value}</p>
+                  <p className="font-sans text-3xl font-bold text-white md:text-4xl">{stat.value}</p>
                   <p className="mt-1 text-sm text-slate-dark">{stat.label}</p>
                 </div>
               ))}

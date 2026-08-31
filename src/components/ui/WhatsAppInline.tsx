@@ -50,7 +50,7 @@ export function WhatsAppInline({
           <WhatsAppIcon className="h-7 w-7 text-white" />
         </span>
         <div>
-          <p className="font-serif text-xl font-bold text-navy-950">{heading}</p>
+          <p className="font-sans text-xl font-bold text-navy-950">{heading}</p>
           <p className="text-sm text-slate">Message us directly — most Kenyan buyers do.</p>
         </div>
       </div>

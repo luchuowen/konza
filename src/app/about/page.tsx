@@ -100,7 +100,7 @@ export default function AboutPage() {
           <RevealOnScroll>
             <div className="mx-auto text-center md:mx-0 md:text-left">
               <span className={eyebrow}>Since 2013</span>
-              <h1 className="mx-auto mt-4 max-w-2xl font-serif text-4xl font-bold leading-[1.1] text-white md:mx-0 md:text-5xl">
+              <h1 className="mx-auto mt-4 max-w-2xl font-sans text-4xl font-bold leading-[1.1] text-white md:mx-0 md:text-5xl">
                 From a Small Team to a Trusted Elevator Partner
               </h1>
               <p className="mx-auto mt-6 hidden max-w-xl text-base text-slate-dark md:mx-0 md:block md:text-lg">
@@ -132,7 +132,7 @@ export default function AboutPage() {
                     i < MILESTONES.length - 1 ? 'md:border-r md:border-line-light' : ''
                   }`}
                 >
-                  <span className="font-serif text-2xl font-bold text-red">{item.n}</span>
+                  <span className="font-sans text-2xl font-bold text-red">{item.n}</span>
                   <p className="mt-2 text-xs font-bold uppercase tracking-[0.1em] text-navy-950">
                     {item.label}
                   </p>
@@ -154,7 +154,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
               <div>
                 <span className={eyebrow}>Vision &amp; Mission</span>
-                <blockquote className="mt-5 font-serif text-2xl font-bold leading-snug text-navy-950 md:text-3xl">
+                <blockquote className="mt-5 font-sans text-2xl font-bold leading-snug text-navy-950 md:text-3xl">
                   &ldquo;To be a top elevator and escalator engineering company in the region, for
                   service and technical expertise.&rdquo;
                 </blockquote>
@@ -171,7 +171,7 @@ export default function AboutPage() {
                 <ul className="mt-5 space-y-6">
                   {VALUES.map((value) => (
                     <li key={value.name}>
-                      <p className="font-serif text-lg font-bold text-navy-950">{value.name}</p>
+                      <p className="font-sans text-lg font-bold text-navy-950">{value.name}</p>
                       <p className="mt-1 text-sm text-slate">{value.body}</p>
                     </li>
                   ))}
@@ -187,7 +187,7 @@ export default function AboutPage() {
           <RevealOnScroll>
             <div className="mx-auto text-center md:mx-0 md:text-left">
               <span className={eyebrow}>Credentials &amp; Brand Partners</span>
-              <h2 className="mx-auto mt-3 max-w-lg font-serif text-3xl font-bold text-white md:mx-0 md:text-4xl">
+              <h2 className="mx-auto mt-3 max-w-lg font-sans text-3xl font-bold text-white md:mx-0 md:text-4xl">
                 The standards we follow and the elevator brands we supply and install.
               </h2>
             </div>
@@ -200,7 +200,7 @@ export default function AboutPage() {
                   key={item.name}
                   className="group rounded-xl border border-white/10 bg-white/[0.03] p-5 text-center transition-all duration-300 hover:-translate-y-1.5 hover:border-red hover:bg-white/[0.06] md:text-left"
                 >
-                  <p className="font-serif text-lg font-bold tracking-wide text-white transition-colors duration-300 group-hover:text-red">
+                  <p className="font-sans text-lg font-bold tracking-wide text-white transition-colors duration-300 group-hover:text-red">
                     {item.name}
                   </p>
                   <p className="mt-2 text-sm text-slate-dark">{item.body}</p>
@@ -216,21 +216,21 @@ export default function AboutPage() {
             </div>
             <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
               <div>
-                <p className="font-serif text-lg font-bold text-white">David Gachari</p>
+                <p className="font-sans text-lg font-bold text-white">David Gachari</p>
                 <p className="mt-1 text-sm text-slate-dark">
                   Technical Director — Electrical &amp; Electronic Engineering with 10 years of
                   experience.
                 </p>
               </div>
               <div>
-                <p className="font-serif text-lg font-bold text-white">Denis Kitili</p>
+                <p className="font-sans text-lg font-bold text-white">Denis Kitili</p>
                 <p className="mt-1 text-sm text-slate-dark">
                   Leadership Team member supporting the company&rsquo;s projects, operations and
                   continued growth.
                 </p>
               </div>
               <div>
-                <p className="font-serif text-lg font-bold text-white">10-Person Team</p>
+                <p className="font-sans text-lg font-bold text-white">10-Person Team</p>
                 <p className="mt-1 text-sm text-slate-dark">
                   A dedicated technical and administrative team supporting projects from start to
                   completion.
@@ -244,7 +244,7 @@ export default function AboutPage() {
       <section className="bg-navy-900">
         <Container className="flex flex-col items-center py-20 text-center">
           <RevealOnScroll>
-            <h2 className="mx-auto max-w-xl font-serif text-3xl font-bold text-white md:text-4xl">
+            <h2 className="mx-auto max-w-xl font-sans text-3xl font-bold text-white md:text-4xl">
               13 years of experience, ready to deliver your next elevator or escalator project.
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-4">

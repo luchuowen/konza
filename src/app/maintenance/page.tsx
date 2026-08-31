@@ -77,7 +77,7 @@ export default function MaintenancePage() {
           <RevealOnScroll>
             <div className="mx-auto text-center md:mx-0 md:text-left">
               <span className={eyebrow}>Maintenance Contracts</span>
-              <h1 className="mx-auto mt-4 max-w-2xl font-serif text-4xl font-bold leading-[1.1] text-white md:mx-0 md:text-5xl">
+              <h1 className="mx-auto mt-4 max-w-2xl font-sans text-4xl font-bold leading-[1.1] text-white md:mx-0 md:text-5xl">
                 One contract. Every elevator and escalator covered.
               </h1>
               <p className="mx-auto mt-6 max-w-xl text-base text-slate-dark md:mx-0 md:text-lg">
@@ -105,7 +105,7 @@ export default function MaintenancePage() {
           <RevealOnScroll>
             <div className="mx-auto text-center md:mx-0 md:text-left">
               <span className={eyebrow}>What&rsquo;s Included</span>
-              <h2 className="mx-auto mt-3 max-w-lg font-serif text-3xl font-bold text-navy-950 md:mx-0 md:text-4xl">
+              <h2 className="mx-auto mt-3 max-w-lg font-sans text-3xl font-bold text-navy-950 md:mx-0 md:text-4xl">
                 No tiers to decode — just what your contract covers.
               </h2>
             </div>
@@ -120,7 +120,7 @@ export default function MaintenancePage() {
                     i < INCLUDED.length - 1 ? 'md:border-r md:border-line-light' : ''
                   }`}
                 >
-                  <span className="font-serif text-2xl font-bold text-red">{item.n}</span>
+                  <span className="font-sans text-2xl font-bold text-red">{item.n}</span>
                   <p className="mt-2 text-xs font-bold uppercase tracking-[0.1em] text-navy-950">
                     {item.label}
                   </p>
@@ -158,7 +158,7 @@ export default function MaintenancePage() {
                     i < HOW_IT_WORKS.length - 1 ? 'md:border-r md:border-white/10' : ''
                   }`}
                 >
-                  <span className="font-serif text-2xl font-bold text-red">{step.n}</span>
+                  <span className="font-sans text-2xl font-bold text-red">{step.n}</span>
                   <p className="mt-2 text-xs font-bold uppercase tracking-[0.1em] text-white">
                     {step.label}
                   </p>
@@ -173,7 +173,7 @@ export default function MaintenancePage() {
       <section className="bg-navy-900">
         <Container className="flex flex-col items-center py-20 text-center">
           <RevealOnScroll>
-            <h2 className="mx-auto max-w-xl font-serif text-3xl font-bold text-white md:text-4xl">
+            <h2 className="mx-auto max-w-xl font-sans text-3xl font-bold text-white md:text-4xl">
               Get a maintenance contract built around how your building is actually used.
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-4">

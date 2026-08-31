@@ -82,7 +82,7 @@ export function ProjectsFilterGrid() {
                   <span className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">
                     {SECTOR_LABELS[project.sector]}
                   </span>
-                  <h3 className="mt-1 font-serif text-lg font-bold text-white">{project.name}</h3>
+                  <h3 className="mt-1 font-sans text-lg font-bold text-white">{project.name}</h3>
                   <p className="mt-2 text-sm text-slate-dark">{project.detail}</p>
                 </div>
               </article>
