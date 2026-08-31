@@ -41,7 +41,7 @@ export const FOOTER_LINKS: NavLink[] = NAV_LINKS.filter((link) => link.href !== 
 export const SOCIAL_LINKS = {
   facebook: "https://www.facebook.com/people/Konza-Elevators/61579318184195/" as string | null,
   instagram: "https://www.instagram.com/konza.elevators/" as string | null,
-  linkedin: null as string | null,
+  linkedin: "#" as string | null,
 };
 
 export const COPYRIGHT_NOTICE = "Copyright © 2026 Konza Elevators";
