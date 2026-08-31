@@ -19,9 +19,12 @@ import { getFirestore, type Firestore } from "firebase-admin/firestore";
 //    Hosting, where the backend's own built-in service account is available
 //    with no key to manage. App Hosting (a Cloud Run service under the
 //    hood) always sets K_SERVICE, so its presence is a reliable signal that
-//    ADC will resolve; GOOGLE_CLOUD_PROJECT/GCLOUD_PROJECT (also
-//    platform-injected) supplies the project ID `cert()` would otherwise
-//    have carried explicitly.
+//    ADC will resolve. Cloud Run does NOT set GOOGLE_CLOUD_PROJECT/
+//    GCLOUD_PROJECT itself (those are an App Engine/Cloud Functions
+//    convention, not injected here) — deliberately not required below.
+//    applicationDefault() resolves the project ID on its own by querying
+//    the GCP metadata server, which is reachable from any Cloud Run
+//    instance, so no explicit projectId is needed or passed.
 //
 // If neither path has what it needs, isFirebaseAdminConfigured stays false
 // and every write gracefully degrades (see src/app/actions/submit-lead.ts) —
@@ -37,9 +40,7 @@ const hasExplicitCredentials = Boolean(
 // Hosting backend, which runs on Cloud Run) — never set locally or on other
 // hosts, so it's a safe proxy for "ADC via the platform service account is
 // available here."
-const runningOnAppHosting = Boolean(process.env.K_SERVICE);
-const adcProjectId = process.env.GOOGLE_CLOUD_PROJECT || process.env.GCLOUD_PROJECT;
-const hasAdcCredentials = runningOnAppHosting && Boolean(adcProjectId);
+const hasAdcCredentials = Boolean(process.env.K_SERVICE);
 
 export const isFirebaseAdminConfigured = hasExplicitCredentials || hasAdcCredentials;
 
@@ -66,7 +67,6 @@ function getAdminApp(): App {
             }
           : {
               credential: applicationDefault(),
-              projectId: adcProjectId,
             }
       );
   }
