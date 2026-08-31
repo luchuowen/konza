@@ -31,7 +31,7 @@ export default function ResourcesPage() {
           <RevealOnScroll>
             <div className="mx-auto text-center md:mx-0 md:text-left">
               <span className={eyebrow}>Resources</span>
-              <h1 className="mx-auto mt-4 max-w-2xl font-serif text-4xl font-bold leading-[1.1] text-white md:mx-0 md:text-5xl">
+              <h1 className="mx-auto mt-4 max-w-2xl font-sans text-4xl font-bold leading-[1.1] text-white md:mx-0 md:text-5xl">
                 Guides for choosing, maintaining and building with elevators and escalators.
               </h1>
               <p className="mx-auto mt-6 max-w-xl text-base text-slate-dark md:mx-0 md:text-lg">
@@ -59,7 +59,7 @@ export default function ResourcesPage() {
                     <span className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">
                       {article.category}
                     </span>
-                    <h2 className="mt-1 font-serif text-lg font-bold text-white">
+                    <h2 className="mt-1 font-sans text-lg font-bold text-white">
                       {article.title}
                     </h2>
                     <p className="mt-2 text-sm text-slate-dark">{article.excerpt}</p>
@@ -71,7 +71,7 @@ export default function ResourcesPage() {
                 <span className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-slate">
                   Coming Soon
                 </span>
-                <p className="mt-2 font-serif text-lg font-bold text-navy-950">
+                <p className="mt-2 font-sans text-lg font-bold text-navy-950">
                   More Guides on the Way
                 </p>
                 <p className="mt-2 text-sm text-slate">
@@ -87,7 +87,7 @@ export default function ResourcesPage() {
       <section className="bg-navy-950">
         <Container className="flex flex-col items-center py-20 text-center">
           <RevealOnScroll>
-            <h2 className="mx-auto max-w-xl font-serif text-3xl font-bold text-white md:text-4xl">
+            <h2 className="mx-auto max-w-xl font-sans text-3xl font-bold text-white md:text-4xl">
               Have a question these guides don&rsquo;t answer?
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-4">

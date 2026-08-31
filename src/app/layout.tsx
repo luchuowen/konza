@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Geist, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -7,18 +7,18 @@ import { WhatsAppWidget } from "@/components/layout/WhatsAppWidget";
 import { MobileNavProvider } from "@/lib/mobile-nav-context";
 import { LocalBusinessJsonLd } from "@/components/seo/LocalBusinessJsonLd";
 
-const inter = Inter({
+const geist = Geist({
   subsets: ["latin"],
   weight: "variable",
-  variable: "--font-inter",
+  variable: "--font-geist",
   display: "swap",
 });
 
-const playfairDisplay = Playfair_Display({
+const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: "400",
   style: ["normal", "italic"],
-  variable: "--font-playfair",
+  variable: "--font-instrument-serif",
   display: "swap",
 });
 
@@ -50,7 +50,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`h-full antialiased ${inter.variable} ${playfairDisplay.variable}`}
+      className={`h-full antialiased ${geist.variable} ${instrumentSerif.variable}`}
     >
       <body className="min-h-full flex flex-col font-sans">
         <LocalBusinessJsonLd />

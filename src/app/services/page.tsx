@@ -99,7 +99,7 @@ export default function ServicesPage() {
           <RevealOnScroll>
             <div className="mx-auto text-center md:mx-0 md:text-left">
               <span className={eyebrow}>Services</span>
-              <h1 className="mx-auto mt-4 max-w-2xl font-serif text-4xl font-bold leading-[1.1] text-white md:mx-0 md:text-5xl">
+              <h1 className="mx-auto mt-4 max-w-2xl font-sans text-4xl font-bold leading-[1.1] text-white md:mx-0 md:text-5xl">
                 Installation, construction, equipment hire, maintenance, repair and modernization.
               </h1>
               <p className="mx-auto mt-6 max-w-xl text-base text-slate-dark md:mx-0 md:text-lg">
@@ -124,7 +124,7 @@ export default function ServicesPage() {
           <RevealOnScroll>
             <div className="mx-auto text-center md:mx-0 md:text-left">
               <span className={eyebrow}>How an Engagement Works</span>
-              <h2 className="mx-auto mt-3 max-w-lg font-serif text-3xl font-bold text-white md:mx-0 md:text-4xl">
+              <h2 className="mx-auto mt-3 max-w-lg font-sans text-3xl font-bold text-white md:mx-0 md:text-4xl">
                 From free condition report to scheduled work.
               </h2>
             </div>
@@ -139,7 +139,7 @@ export default function ServicesPage() {
                     i < ENGAGEMENT_STEPS.length - 1 ? 'md:border-r md:border-white/10' : ''
                   }`}
                 >
-                  <span className="font-serif text-2xl font-bold text-red">{step.n}</span>
+                  <span className="font-sans text-2xl font-bold text-red">{step.n}</span>
                   <p className="mt-2 text-xs font-bold uppercase tracking-[0.1em] text-white">
                     {step.label}
                   </p>
@@ -156,7 +156,7 @@ export default function ServicesPage() {
           <RevealOnScroll>
             <div className="mx-auto max-w-2xl text-center">
               <span className={eyebrow}>Maintenance Contracts</span>
-              <h2 className="mt-3 font-serif text-2xl font-bold text-navy-950 md:text-3xl">
+              <h2 className="mt-3 font-sans text-2xl font-bold text-navy-950 md:text-3xl">
                 Keep Your Elevators Running Safely
               </h2>
               <p className="mt-4 text-base text-slate">
@@ -178,7 +178,7 @@ export default function ServicesPage() {
       <section className="bg-navy-950">
         <Container className="flex flex-col items-center py-20 text-center">
           <RevealOnScroll>
-            <h2 className="mx-auto max-w-xl font-serif text-3xl font-bold text-white md:text-4xl">
+            <h2 className="mx-auto max-w-xl font-sans text-3xl font-bold text-white md:text-4xl">
               Let&rsquo;s plan your elevator solution.
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-4">

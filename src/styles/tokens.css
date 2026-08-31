@@ -22,8 +22,8 @@
   --color-slate: var(--slate);
   --color-slate-dark: var(--slate-dark);
 
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-geist);
+  --font-serif: var(--font-instrument-serif);
 }
 
 /* Dark inner-page hero background (no photo assigned to that slot yet) —

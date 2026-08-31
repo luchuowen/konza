@@ -66,7 +66,7 @@ export default async function ArticlePage({
             </Link>
             <div className="mt-4">
               <span className={eyebrow}>{article.category}</span>
-              <h1 className="mt-4 max-w-2xl font-serif text-3xl font-bold leading-[1.15] text-white md:text-5xl">
+              <h1 className="mt-4 max-w-2xl font-sans text-3xl font-bold leading-[1.15] text-white md:text-5xl">
                 {article.title}
               </h1>
               <p className="mt-4 text-sm text-slate-dark">Published {formatDate(article.publishedAt)}</p>
@@ -83,7 +83,7 @@ export default async function ArticlePage({
 
               {article.sections.map((section) => (
                 <div key={section.heading} className="mt-10">
-                  <h2 className="font-serif text-xl font-bold text-navy-950 md:text-2xl">
+                  <h2 className="font-sans text-xl font-bold text-navy-950 md:text-2xl">
                     {section.heading}
                   </h2>
                   {section.paragraphs.map((paragraph, i) => (
@@ -101,7 +101,7 @@ export default async function ArticlePage({
       <section className="bg-navy-950">
         <Container className="flex flex-col items-center py-20 text-center">
           <RevealOnScroll>
-            <h2 className="mx-auto max-w-xl font-serif text-3xl font-bold text-white md:text-4xl">
+            <h2 className="mx-auto max-w-xl font-sans text-3xl font-bold text-white md:text-4xl">
               Ready to talk about your next elevator or escalator project?
             </h2>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
