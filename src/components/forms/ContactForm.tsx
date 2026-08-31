@@ -3,13 +3,18 @@
 import { useActionState, useState, type FormEvent } from 'react';
 import { useFormStatus } from 'react-dom';
 import { Button } from '@/components/ui/Button';
-import { TextAreaField, TextField } from '@/components/forms/fields';
+import { SelectField, TextAreaField, TextField } from '@/components/forms/fields';
 import { CheckIcon } from '@/components/ui/ContactIcons';
-import { validateContactForm, type ContactFormValues, type FieldErrors } from '@/lib/validate-lead';
+import {
+  CONTACT_REASONS,
+  validateContactForm,
+  type ContactFormValues,
+  type FieldErrors,
+} from '@/lib/validate-lead';
 import { submitContactLead } from '@/app/actions/submit-lead';
 import { initialSubmitLeadState } from '@/lib/lead-form-state';
 
-const emptyValues: ContactFormValues = { name: '', phone: '', email: '', message: '' };
+const emptyValues: ContactFormValues = { name: '', phone: '', email: '', reason: '', message: '' };
 
 const WHAT_TO_EXPECT = [
   'We read and personally respond to every message.',
@@ -61,7 +66,7 @@ export function ContactForm() {
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     const validation = validateContactForm(values);
     setClientErrors(validation);
-    setTouched({ name: true, phone: true, email: true, message: true });
+    setTouched({ name: true, phone: true, email: true, reason: true, message: true });
     if (Object.keys(validation).length > 0) {
       e.preventDefault();
     }
@@ -113,16 +118,21 @@ export function ContactForm() {
           {...field('phone')}
           onChange={(e) => handleChange('phone', e.target.value)}
         />
-        <div className="sm:col-span-2">
-          <TextField
-            label="Email (optional)"
-            type="email"
-            inputMode="email"
-            autoComplete="email"
-            {...field('email')}
-            onChange={(e) => handleChange('email', e.target.value)}
-          />
-        </div>
+        <TextField
+          label="Email"
+          type="email"
+          inputMode="email"
+          autoComplete="email"
+          {...field('email')}
+          onChange={(e) => handleChange('email', e.target.value)}
+        />
+        <SelectField
+          label="Reason for Contact"
+          required
+          options={CONTACT_REASONS}
+          {...field('reason')}
+          onChange={(e) => handleChange('reason', e.target.value)}
+        />
         <div className="sm:col-span-2">
           <TextAreaField
             label="Message"
