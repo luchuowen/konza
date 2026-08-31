@@ -363,3 +363,97 @@ These are a separate future prompt the client will provide explicitly.
   Maintenance and Contact: zero console/page errors and zero failed image
   requests (checked via response-status monitoring, not just visual
   inspection). `npm run build`, `tsc --noEmit` and `eslint` all clean.
+- **2026-08-30 — Session 8, SEO/Structured Data/Accessibility/Mobile audit —
+  found and fixed a production-only bug that broke every real photo
+  sitewide, invisible in every prior session's `next dev` verification.**
+  While instrumenting the mobile-console-error check, `/_next/image`
+  requests for every real photo (all named with an em dash per
+  `KONZA_MEDIA_PROMPTS.md`, e.g. `Hero — Vertical City Nairobi.jpg`) returned
+  400 under `next start` (production) while working fine under `next dev` —
+  exactly the "looks right in dev, broken on render" failure class this
+  file's Verification standard exists to catch, except this one only shows
+  up in a production build, which no prior session's Playwright pass ever
+  ran against. Root-caused by patching Next's own `image-optimizer.js` with
+  a temporary debug log (reverted after diagnosis): the optimizer's internal
+  self-fetch for local images was returning Next's own HTML error page
+  instead of the file's bytes, and `detectContentType()` correctly rejected
+  it. Isolated the trigger to non-ASCII filenames by testing an ASCII
+  control file (`public/brand/konza-logo-hires.jpg`, which optimized fine)
+  against the em-dash-named files (which all failed identically) — a
+  confirmed Next.js 15.5.24 bug, not a config or asset problem. Renaming the
+  real client-delivered asset files was ruled out (breaks the
+  exact-filename-match non-negotiable), so `next.config.ts` now sets
+  `images.unoptimized: true` to bypass the broken optimizer entirely,
+  restoring every real photo site-wide (verified: zero failed image
+  requests across Home/About/Projects/Maintenance/Contact in a production
+  build specifically, not dev). **Trade-off, flagged for Session 9 per this
+  session's brief:** this also disables automatic resizing/WebP conversion/
+  responsive `srcset` for every image, and Lighthouse (mobile, home page,
+  post-fix) confirms the cost is real — Performance 63, LCP 21.5s, page
+  weight 7.3MB (several full-resolution 600–900KB JPEGs). Session 9 should
+  resolve this properly rather than leaving `unoptimized: true` permanent:
+  either `patch-package` the Next.js fix, or get client sign-off to rename
+  the real asset files to ASCII-safe names (updating `images.ts` and
+  `projects-data.ts` to match) so automatic optimization can be re-enabled.
+  **SEO:** every route now has a unique 150–160 char meta description and a
+  canonical `alternates` entry; added `app/sitemap.ts` (only the routes that
+  actually exist as pages — `NAV_LINKS` in `constants.ts` also lists
+  `/products` and `/industries`, which aren't built yet, so they're excluded)
+  and `app/robots.ts`; added per-route `opengraph-image.tsx` using
+  `ImageResponse`. **Real bug caught by rendering, not assumed from the
+  brief:** the brief's plan to composite each page's title over the shared
+  `OG — Social Share Card.jpg` background broke on the first render — that
+  asset already has "Konza Elevators / Vertical Transportation for
+  Nairobi's Skyline" baked into it as real pixels (it was composed as
+  Home's own card, not a blank background), so every other route's title
+  rendered as illegible double-exposed text on top of it. Fixed by reusing
+  the asset untouched for Home (where its baked text already matches
+  exactly) and, for every other route, drawing only the photo's text-free
+  top ~460px (scaled via pure CSS positioning in the `ImageResponse` JSX, no
+  new file) with that route's own title composited on a gradient overlay.
+  **JSON-LD:** sitewide `LocalBusiness` in the root layout (address, geo,
+  phones, hours — all already-confirmed facts, nothing `[CONFIRM]`ed filled
+  in); `Product` entries on Home for the 4 carousel product lines (brand
+  claim limited to Passenger Lifts, the only line the spec's Fuji catalog
+  data actually covers); one `Review` for the Salome Chiira testimonial —
+  the only one actually rendered on the page it's attached to, deliberately
+  not all 3 real testimonials from the spec, since Google's review-markup
+  guidance requires the markup to match what's visibly on that page, and no
+  numeric rating was fabricated since none was ever stated. Validated by
+  fetching the built pages and `json.loads`-ing every `<script
+  type="application/ld+json">` block, not just asserting it's fine.
+  **Accessibility:** installed `@axe-core/playwright`, audited all 10
+  routes. First pass found the same near-1.0 contrast ratio on hero
+  headings across every route — investigated rather than dismissed, and
+  confirmed by screenshot (all legible, real bug ruled out) plus root cause:
+  `.pre{opacity:0}` from the scroll-reveal fail-safe pattern was still
+  mid-transition when axe's snapshot ran; re-scanning after the 600ms
+  transition settles removed all of them, leaving one real, fixable class of
+  violation (`bg-[#25D366]` WhatsApp buttons at 1.98:1 contrast, not part of
+  the locked palette — darkened to `#075E54`, WhatsApp's own dark-teal brand
+  color, 7.67:1) and one real, **not** fixed: white-on-`--red` CTA buttons
+  and `--red`-on-white labels sitewide sit at 3.57–3.92:1, short of the 4.5:1
+  AA minimum — left alone because `--red` is this file's locked palette
+  token, and changing it site-wide is a design decision for Konza/NAVAC, not
+  one this session makes unilaterally. 32 real serious violations remain,
+  100% traceable to that one token; zero elsewhere. **Mobile (390px):** zero
+  horizontal overflow on any route. Fixed real sub-44px tap targets (footer
+  credit link, contact-page phone/email links, "Get Directions", the quote
+  page's WhatsApp anchor, carousel dots via an invisible hit-slop pattern
+  that doesn't change their visual 8px size, the header logo link) via
+  `min-h-[44px]`/padding, never by touching the locked visual design.
+  Caught and fixed a second real bug while doing this: the mobile nav
+  drawer opened but had no focus trap at all — tabbing 15 times from an
+  open drawer landed focus on a card in the page behind it (verified with a
+  script comparing `checkVisibility()` against raw `getBoundingClientRect()`
+  after first ruling out a false-positive class from closed `<details>`
+  footer panels, which report non-zero layout geometry via
+  `content-visibility: hidden` despite being untappable). Fixed with a real
+  trap (`Header.tsx`): focus moves into the drawer on open, Tab/Shift+Tab
+  cycles within it, Escape closes and returns focus to the toggle button,
+  `role="dialog"`/`aria-modal="true"` added. Re-verified all of the above
+  with fresh Playwright scripts after every fix, not just re-reading the
+  diff. `npm run build`, `tsc --noEmit` and `eslint` all clean throughout.
+  Two small, reusable audit scripts kept in `scripts/` (`audit-axe.mjs`,
+  `audit-mobile.mjs`) for future sessions; every one-off diagnostic script
+  used to chase the image bug and the false positives was deleted.

@@ -46,7 +46,7 @@ export function WhatsAppInline({
       } ${className}`}
     >
       <div className="flex items-center gap-3">
-        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#25D366]">
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#075E54]">
           <WhatsAppIcon className="h-7 w-7 text-white" />
         </span>
         <div>
@@ -69,7 +69,7 @@ export function WhatsAppInline({
         href={sendHref}
         target="_blank"
         rel="noreferrer"
-        className="mt-3 flex min-h-[44px] w-full items-center justify-center gap-2 rounded-full bg-[#25D366] text-sm font-semibold text-white transition-transform hover:scale-[1.02]"
+        className="mt-3 flex min-h-[44px] w-full items-center justify-center gap-2 rounded-full bg-[#075E54] text-sm font-semibold text-white transition-transform hover:scale-[1.02]"
       >
         <WhatsAppIcon className="h-4 w-4" />
         Send on WhatsApp

@@ -8,11 +8,14 @@ import { ARTICLES } from '@/lib/resources-data';
 export const metadata: Metadata = {
   title: 'Resources & Guides',
   description:
-    'Buying guides and industry insight from Konza Elevators & Escalator Co. Ltd — elevator costs in Kenya, servicing guidance, and construction trends.',
+    'Buying guides and industry insight from Konza Elevators & Escalator Co. Ltd — elevator costs in Kenya, servicing guidance, and construction trends for 2026.',
+  alternates: {
+    canonical: '/resources',
+  },
   openGraph: {
     title: 'Resources & Guides | Konza Elevators & Escalator Co. Ltd',
     description:
-      'Buying guides and industry insight from Konza Elevators & Escalator Co. Ltd — elevator costs in Kenya, servicing guidance, and construction trends.',
+      'Buying guides and industry insight from Konza Elevators & Escalator Co. Ltd — elevator costs in Kenya, servicing guidance, and construction trends for 2026.',
   },
 };
 

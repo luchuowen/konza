@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,6 +13,8 @@ import { useMobileNav } from '@/lib/mobile-nav-context';
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const { open: drawerOpen, setOpen: setDrawerOpen } = useMobileNav();
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     try {
@@ -27,19 +29,48 @@ export function Header() {
 
   useEffect(() => {
     if (!drawerOpen) return;
+    const menuButton = menuButtonRef.current;
     try {
       const previousOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
+
+      const getFocusable = () =>
+        Array.from(
+          drawerRef.current?.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+          ) ?? []
+        );
+
+      // Move focus into the drawer so a keyboard user starts inside it,
+      // then trap Tab/Shift+Tab so focus can't escape to the page behind it.
+      getFocusable()[0]?.focus();
+
       const onKeyDown = (e: KeyboardEvent) => {
-        if (e.key === 'Escape') setDrawerOpen(false);
+        if (e.key === 'Escape') {
+          setDrawerOpen(false);
+          return;
+        }
+        if (e.key !== 'Tab') return;
+        const focusable = getFocusable();
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       };
       document.addEventListener('keydown', onKeyDown);
       return () => {
         document.body.style.overflow = previousOverflow;
         document.removeEventListener('keydown', onKeyDown);
+        menuButton?.focus();
       };
     } catch (err) {
-      console.error('drawer lock/escape listener failed:', err);
+      console.error('drawer lock/escape/focus-trap listener failed:', err);
     }
   }, [drawerOpen, setDrawerOpen]);
 
@@ -55,7 +86,7 @@ export function Header() {
         <Link
           href="/"
           aria-label="Konza Elevators home"
-          className="flex shrink-0 items-center justify-self-center min-[900px]:justify-self-auto"
+          className="flex min-h-[44px] shrink-0 items-center justify-self-center min-[900px]:justify-self-auto"
         >
           <span className="inline-flex items-center overflow-hidden rounded-md bg-paper px-2 py-1">
             <Image
@@ -88,6 +119,7 @@ export function Header() {
         </div>
 
         <button
+          ref={menuButtonRef}
           type="button"
           className="inline-flex h-11 w-11 items-center justify-center text-white min-[900px]:hidden"
           aria-label={drawerOpen ? 'Close menu' : 'Open menu'}
@@ -99,7 +131,13 @@ export function Header() {
       </Container>
 
       {drawerOpen && createPortal(
-        <div className="fixed inset-0 z-[60] flex flex-col bg-navy-950 min-[900px]:hidden">
+        <div
+          ref={drawerRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site navigation"
+          className="fixed inset-0 z-[60] flex flex-col bg-navy-950 min-[900px]:hidden"
+        >
           <div className="flex items-center justify-between border-b-[3px] border-red px-5 py-3">
             <Link href="/" onClick={closeDrawer} aria-label="Konza Elevators home" className="flex items-center">
               <span className="inline-flex items-center overflow-hidden rounded-md bg-paper px-2 py-1">

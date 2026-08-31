@@ -8,11 +8,14 @@ import { IMAGES } from '@/lib/images';
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    "13 years in business, 50 completed installations, and Kenya's authorized Fuji Elevator distributor — the story, values and team behind Konza Elevators & Escalator Co. Ltd.",
+    "13 years in business, 50 completed installations, and Kenya's authorized Fuji Elevator distributor — the story, values and team behind Konza Elevators.",
+  alternates: {
+    canonical: '/about',
+  },
   openGraph: {
     title: 'About Us | Konza Elevators & Escalator Co. Ltd',
     description:
-      "13 years in business, 50 completed installations, and Kenya's authorized Fuji Elevator distributor — the story, values and team behind Konza Elevators & Escalator Co. Ltd.",
+      "13 years in business, 50 completed installations, and Kenya's authorized Fuji Elevator distributor — the story, values and team behind Konza Elevators.",
   },
 };
 

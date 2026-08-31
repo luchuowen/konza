@@ -7,11 +7,14 @@ import { Accordion, type AccordionItemData } from '@/components/ui/Accordion';
 export const metadata: Metadata = {
   title: 'Services',
   description:
-    'Installation, modernization, maintenance, repair, construction & contracting, and equipment hire — the full range of elevator and escalator services from Konza Elevators & Escalator Co. Ltd.',
+    'Installation, modernization, maintenance, repair, construction & contracting, and equipment hire — the full range of services from Konza Elevators & Escalator.',
+  alternates: {
+    canonical: '/services',
+  },
   openGraph: {
     title: 'Services | Konza Elevators & Escalator Co. Ltd',
     description:
-      'Installation, modernization, maintenance, repair, construction & contracting, and equipment hire — the full range of elevator and escalator services from Konza Elevators & Escalator Co. Ltd.',
+      'Installation, modernization, maintenance, repair, construction & contracting, and equipment hire — the full range of services from Konza Elevators & Escalator.',
   },
 };
 

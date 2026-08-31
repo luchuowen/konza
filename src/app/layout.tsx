@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppWidget } from "@/components/layout/WhatsAppWidget";
 import { MobileNavProvider } from "@/lib/mobile-nav-context";
+import { LocalBusinessJsonLd } from "@/components/seo/LocalBusinessJsonLd";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -29,6 +30,9 @@ export const metadata: Metadata = {
   },
   description:
     "Nairobi's authorized Fuji Elevator distributor since 2013 — 13 years, 50 completed installations, vertical transportation for the city's next skyline.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     images: [
       {
@@ -49,6 +53,7 @@ export default function RootLayout({
       className={`h-full antialiased ${inter.variable} ${playfairDisplay.variable}`}
     >
       <body className="min-h-full flex flex-col font-sans">
+        <LocalBusinessJsonLd />
         <MobileNavProvider>
           <Header />
           <main className="flex-1">{children}</main>

@@ -22,6 +22,9 @@ export async function generateMetadata({
   return {
     title: article.title,
     description: article.excerpt,
+    alternates: {
+      canonical: `/resources/${slug}`,
+    },
     openGraph: {
       title: `${article.title} | Konza Elevators & Escalator Co. Ltd`,
       description: article.excerpt,
