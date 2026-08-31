@@ -39,7 +39,7 @@ function ContactList({ compact = false }: { compact?: boolean }) {
         <li key={phone}>
           <a
             href={`tel:${phone.replace(/\s+/g, '')}`}
-            className="inline-flex min-h-[44px] items-center hover:text-white"
+            className="relative inline-flex items-center hover:text-white after:absolute after:inset-x-0 after:top-1/2 after:h-11 after:-translate-y-1/2 after:content-['']"
           >
             {phone}
           </a>
@@ -48,7 +48,7 @@ function ContactList({ compact = false }: { compact?: boolean }) {
       <li>
         <a
           href={`mailto:${COMPANY_INFO.email}`}
-          className="inline-flex min-h-[44px] items-center hover:text-white"
+          className="relative inline-flex items-center hover:text-white after:absolute after:inset-x-0 after:top-1/2 after:h-11 after:-translate-y-1/2 after:content-['']"
         >
           {COMPANY_INFO.email}
         </a>
