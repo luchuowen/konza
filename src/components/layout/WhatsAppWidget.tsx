@@ -102,7 +102,7 @@ export function WhatsAppWidget() {
         {!open && (
           <span className="absolute inset-0 rounded-full bg-[#075E54] opacity-75 animate-ping motion-reduce:hidden" />
         )}
-        <WhatsAppIcon className="relative h-7 w-7" />
+        <WhatsAppIcon className="relative h-6 w-6" />
       </button>
     </div>
   );

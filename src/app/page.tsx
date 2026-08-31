@@ -324,9 +324,9 @@ export default function Home() {
 
       <section className="bg-paper">
         <Container className="py-20">
-          <RevealOnScroll>
+          <RevealOnScroll className="text-center">
             <span className={eyebrow}>Where We Work</span>
-            <h2 className="mt-3 max-w-lg font-serif text-3xl font-bold text-navy-950 md:text-4xl">
+            <h2 className="mx-auto mt-3 max-w-lg font-serif text-3xl font-bold text-navy-950 md:text-4xl">
               Elevator and escalator solutions for different types of buildings.
             </h2>
           </RevealOnScroll>
