@@ -38,16 +38,22 @@ export default function ContactPage() {
         />
         <div
           className="absolute inset-0"
-          style={{ backgroundImage: 'linear-gradient(180deg, rgba(10,22,40,.55) 0%, rgba(10,22,40,.94) 100%)' }}
+          style={{ backgroundImage: 'linear-gradient(180deg, rgba(10,22,40,.72) 0%, rgba(10,22,40,.94) 100%)' }}
         />
         <Container className="relative py-16 md:py-24">
           <RevealOnScroll>
             <div className="mx-auto text-center md:mx-0 md:text-left">
               <span className={eyebrow}>Contact Us</span>
-              <h1 className="mx-auto mt-4 max-w-2xl font-sans text-4xl font-bold leading-[1.1] text-white md:mx-0 md:text-5xl">
+              <h1
+                className="mx-auto mt-4 max-w-2xl font-sans text-3xl font-medium leading-[1.15] text-white md:mx-0 md:text-4xl"
+                style={{ textShadow: '0 2px 20px rgba(10,22,40,.85)' }}
+              >
                 We&rsquo;re here to help.
               </h1>
-              <p className="mx-auto mt-6 max-w-xl text-base text-slate-dark md:mx-0 md:text-lg">
+              <p
+                className="mx-auto mt-6 max-w-xl text-base text-slate-dark md:mx-0 md:text-lg"
+                style={{ textShadow: '0 1px 12px rgba(10,22,40,.85)' }}
+              >
                 Have questions about an ongoing project, supplier partnerships, or service
                 support? Reach out to our Nairobi team by phone, email, WhatsApp, or visit
                 our office along Mombasa Road.

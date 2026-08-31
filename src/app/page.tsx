@@ -184,14 +184,20 @@ export default function Home() {
         <HeroBackground images={[IMAGES.heroVerticalCity, IMAGES.heroTechnician, IMAGES.heroHospitalLobby]} />
         <div
           className="absolute inset-0"
-          style={{ backgroundImage: 'linear-gradient(180deg, rgba(10,22,40,.55) 0%, rgba(10,22,40,.94) 100%)' }}
+          style={{ backgroundImage: 'linear-gradient(180deg, rgba(10,22,40,.72) 0%, rgba(10,22,40,.94) 100%)' }}
         />
         <Container className="relative pb-16 pt-16 text-center md:pb-24 md:pt-24">
           <RevealOnScroll>
-            <h1 className="mx-auto max-w-2xl font-sans text-4xl font-bold leading-[1.1] text-white md:text-6xl">
+            <h1
+              className="mx-auto max-w-2xl font-sans text-3xl font-medium leading-[1.15] text-white md:text-5xl"
+              style={{ textShadow: '0 2px 20px rgba(10,22,40,.85)' }}
+            >
               Elevators &amp; Escalators for Every Building
             </h1>
-            <p className="mx-auto mt-6 max-w-xl text-base text-slate-dark md:text-lg">
+            <p
+              className="mx-auto mt-6 max-w-xl text-base text-slate-dark md:text-lg"
+              style={{ textShadow: '0 1px 12px rgba(10,22,40,.85)' }}
+            >
               We supply, install, maintain and repair elevators and escalators for homes,
               offices, hospitals, malls and industrial buildings.
             </p>
