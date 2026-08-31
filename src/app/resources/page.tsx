@@ -67,17 +67,16 @@ export default function ResourcesPage() {
                 </Link>
               ))}
 
-              <div className="relative flex aspect-[4/3] flex-col items-center justify-center rounded-xl border border-dashed border-line-light bg-white/60 p-6 text-center">
-                <span className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-slate">
-                  Coming Soon
-                </span>
-                <p className="mt-2 font-sans text-lg font-bold text-navy-950">
-                  More Guides on the Way
-                </p>
-                <p className="mt-2 text-sm text-slate">
-                  We&rsquo;re adding new buying guides and industry insight regularly — check
-                  back soon.
-                </p>
+              <div className="relative flex aspect-[4/3] flex-col overflow-hidden rounded-xl">
+                <div className="ph-projects absolute inset-0" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/95 via-navy-950/40 to-navy-950/5" />
+                <div className="absolute inset-x-0 bottom-0 p-5 text-center">
+                  <span className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">
+                    Coming Soon
+                  </span>
+                  <p className="mt-1 font-sans text-lg font-bold text-white">More Guides on the Way</p>
+                  <p className="mt-2 text-sm text-slate-dark">New guides added regularly.</p>
+                </div>
               </div>
             </div>
           </RevealOnScroll>

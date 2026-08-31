@@ -86,6 +86,7 @@ export async function submitContactLead(
     name: String(formData.get('name') ?? ''),
     phone: String(formData.get('phone') ?? ''),
     email: String(formData.get('email') ?? ''),
+    reason: String(formData.get('reason') ?? ''),
     message: String(formData.get('message') ?? ''),
   };
 
@@ -94,16 +95,18 @@ export async function submitContactLead(
     return { status: 'invalid', errors: errors as Record<string, string> };
   }
 
-  // Contact page deliberately skips Quote's project-detail segmentation (§6:
-  // "simpler contact form") — these three Lead fields are required by the
-  // shared schema but not asked of a general-inquiry visitor, so they're set
-  // to honest internal placeholders rather than fabricated answers.
+  // Contact page deliberately skips Quote's building-type/floor-count/timeline
+  // segmentation (§6: "simpler contact form") — those two Lead fields are
+  // required by the shared schema but not asked of a general-inquiry visitor,
+  // so they're set to an honest internal placeholder. `projectType` is real,
+  // though: it comes straight from the visitor's own "Reason for Contact"
+  // selection rather than being hardcoded.
   const lead: Lead = {
     name: values.name.trim(),
     phone: values.phone.trim(),
     email: values.email.trim() || undefined,
     buildingType: 'Not specified',
-    projectType: 'General Inquiry',
+    projectType: values.reason,
     timeline: 'Not specified',
     message: values.message.trim() || undefined,
     source: 'form',

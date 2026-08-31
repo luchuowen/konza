@@ -11,7 +11,6 @@ import {
   PRIMARY_CTA,
 } from '@/lib/constants';
 import { SocialLinksRow } from '@/components/layout/SocialLinks';
-import { LocationIcon, MailboxIcon, PhoneIcon, MailIcon } from '@/components/ui/ContactIcons';
 
 function ChevronIcon({ className = '' }: { className?: string }) {
   return (
@@ -23,42 +22,30 @@ function ChevronIcon({ className = '' }: { className?: string }) {
 
 function ContactList({ compact = false }: { compact?: boolean }) {
   const textSize = compact ? 'text-xs' : 'text-sm';
-  const iconSize = compact ? 'h-3.5 w-3.5' : 'h-4 w-4';
   const gap = compact ? 'gap-3' : 'gap-4';
   return (
     <ul
       className={`flex flex-col ${gap} ${textSize} items-center text-center text-slate-dark min-[900px]:items-start min-[900px]:text-left`}
     >
-      <li className="flex items-start gap-3">
-        <LocationIcon className={`mt-0.5 ${iconSize} shrink-0 text-red`} />
-        <span>
-          {COMPANY_INFO.addressLines.map((line) => (
-            <span key={line} className="block">
-              {line}
-            </span>
-          ))}
-        </span>
+      <li>
+        {COMPANY_INFO.addressLines.map((line) => (
+          <span key={line} className="block">
+            {line}
+          </span>
+        ))}
       </li>
-      <li className="flex items-start gap-3">
-        <MailboxIcon className={`mt-0.5 ${iconSize} shrink-0 text-red`} />
-        <span>{COMPANY_INFO.poBox}</span>
-      </li>
-      <li className="flex items-start gap-3">
-        <PhoneIcon className={`mt-0.5 ${iconSize} shrink-0 text-red`} />
-        <span className="flex flex-col">
-          {COMPANY_INFO.phones.map((phone) => (
-            <a
-              key={phone}
-              href={`tel:${phone.replace(/\s+/g, '')}`}
-              className="inline-flex min-h-[44px] items-center hover:text-white"
-            >
-              {phone}
-            </a>
-          ))}
-        </span>
-      </li>
-      <li className="flex items-start gap-3">
-        <MailIcon className={`mt-0.5 ${iconSize} shrink-0 text-red`} />
+      <li>{COMPANY_INFO.poBox}</li>
+      {COMPANY_INFO.phones.map((phone) => (
+        <li key={phone}>
+          <a
+            href={`tel:${phone.replace(/\s+/g, '')}`}
+            className="inline-flex min-h-[44px] items-center hover:text-white"
+          >
+            {phone}
+          </a>
+        </li>
+      ))}
+      <li>
         <a
           href={`mailto:${COMPANY_INFO.email}`}
           className="inline-flex min-h-[44px] items-center hover:text-white"
