@@ -21,7 +21,13 @@ export const IMAGES = {
   industryCommercialOffice: `${BASE}Industry — Commercial and Office.jpg`,
   industryHospitalInstitutional: `${BASE}Industry — Hospital and Institutional.jpg`,
   industryRetailEscalators: `${BASE}Industry — Retail and Escalators.jpg`,
+  productFreightElevators: `${BASE}Product — Freight Elevators.jpg`,
+  productDumbwaiters: `${BASE}Product — Dumbwaiters.jpg`,
+  productCarLifts: `${BASE}Product — Car Lifts.jpg`,
+  productGoodsHoist: `${BASE}Product — Goods Hoist.jpg`,
+  productVillaPlatformElevators: `${BASE}Product — Villa Platform Elevators.jpg`,
   videoLiftShaftCutaway: `${BASE}Video — Lift Shaft Cutaway Loop.mp4`,
+  videoEscalatorAmbient: `${BASE}Video — Escalator Ambient Loop.mp4`,
 } as const;
 
 // projects-data.ts stores bare filenames (e.g. "Project — Village Market.jpg")

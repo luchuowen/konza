@@ -382,11 +382,9 @@ export default function Home() {
           <RevealOnScroll stagger className="mt-10">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
               {INDUSTRY_TILES.map((tile) => (
-                // Not a <Link>: /industries (docs/KONZA_SPEC.md §5, item 6) has no
-                // build session yet, so there's nowhere real to send this tile to
-                // — see docs/PRE-LAUNCH-AUDIT.md. Re-wrap in Link once it exists.
-                <div
+                <Link
                   key={tile.n}
+                  href="/industries"
                   className="group overflow-hidden rounded-xl border border-line-light bg-white text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-xl md:text-left"
                 >
                   <div className="relative aspect-[16/10] w-full overflow-hidden">
@@ -399,10 +397,12 @@ export default function Home() {
                   </div>
                   <div className="p-6">
                     <span className="font-sans text-2xl font-bold text-red">{tile.n}</span>
-                    <h3 className="mt-3 font-sans text-lg font-bold text-navy-950">{tile.name}</h3>
+                    <h3 className="mt-3 font-sans text-lg font-bold text-navy-950 group-hover:text-red">
+                      {tile.name}
+                    </h3>
                     <p className="mt-2 text-sm text-slate">{tile.body}</p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </RevealOnScroll>

@@ -557,3 +557,95 @@ These are a separate future prompt the client will provide explicitly.
   route's `<h1>` and `<body>`, full-page screenshots read correctly at both
   widths, zero console/page errors. `npm run build`, `npx tsc --noEmit` and
   `npm run lint` all clean.
+- **2026-08-31 — Session 5, Products & Industries — the two long-missing IA
+  pages, built specifically to give the 6 real-but-unused assets a home.**
+  `/products` (`src/app/products/page.tsx`): all 9 real products from
+  KONZA_SPEC.md §2, each with a real photo — added the 5 that had no page to
+  render on (`Product — Car Lifts/Dumbwaiters/Freight Elevators/Goods
+  Hoist/Villa Platform Elevators.jpg`) to `src/lib/images.ts` alongside the 4
+  already used on Home. The Fuji FJK450–1150 passenger-lift series is
+  presented as a definition list of real range-level facts (model names,
+  450kg–1,150kg+ capacity, 1.0–3.0 m/s speed) — deliberately not broken out
+  per-model, since §2 only gives a series-wide range, not a per-model
+  breakdown; inventing one would violate this file's non-negotiable against
+  fabricated specs. A Home Lifts vs. Villa Platform Elevators comparison
+  section was built (both real residential product lines, genuinely
+  differentiated by real facts — indoor vs. exterior, steel vs. bronze
+  finish) rather than forcing a comparison onto the six other products,
+  which don't have differentiating detail in source material.
+  `/industries` (`src/app/industries/page.tsx`, titled "Industries" in
+  nav/metadata per direct instruction, not "Industries We Serve"): expands
+  Home's 4 tiles into full sections, each importing and filtering
+  `PROJECTS` from `src/lib/projects-data.ts` (Session 3) rather than
+  retyping any project name/detail — confirmed by grep that `projects-data`
+  is imported, not duplicated. The 4 industry tiles don't map 1:1 onto that
+  file's 5 sectors (Hospital & Institutional merges `healthcare` +
+  `institutional`; Commercial & Office and Retail & Escalators both draw
+  from the single `commercial` sector) — split by matching each project's
+  real name against what it actually is (Junction Trade Centre → office
+  tower; Village Market/Ruai Mega Mall → retail malls), documented inline,
+  never by re-tagging or duplicating the source data. Also fixed two now-stale
+  artifacts of the pages' prior absence: `NAV_LINKS`/`sitemap.ts` (both had
+  comments explaining the intentional omission — now removed along with the
+  omission itself) and Home's 4 industry tiles, which a Session 9 comment had
+  explicitly left as non-`<Link>` `<div>`s "re-wrap in Link once it exists" —
+  now real links to `/industries`.
+  **Real bug caught by the fail-safe pattern, not by reading the code:**
+  wired `Video — Escalator Ambient Loop.mp4` as an ambient background on the
+  Retail & Escalators section (`src/components/ui/AmbientSectionVideo.tsx`,
+  new — mirrors `HeroBackground`'s reduced-motion check and
+  `LiftShaftVideo`'s image-fallback-on-error pattern). The video throws a
+  real `error` event in Chromium — code 4,
+  `DEMUXER_ERROR_NO_SUPPORTED_STREAMS` — despite being a structurally valid
+  MP4 container per `file`; some encoding defect from whichever tool
+  generated it, invisible from the file existing and opening in a container
+  inspector. Never investigated before now because no page had ever tried to
+  play it. The fail-safe catches it correctly and every visitor sees the
+  real static photo instead of a blank section — flagged here rather than
+  silently left for a future session to rediscover; the file should be
+  re-exported before the motion effect itself is considered live. On a
+  ghost/secondary CTA: found mid-build that this codebase's `Button
+  variant="ghost"` (white-on-transparent) has never been used on a light
+  section anywhere else in the site — using it on this page's `--paper`
+  sections would have produced a white-bordered, near-invisible button, so
+  secondary CTAs on light sections use a plain text link ("See All Projects
+  →", the same pattern Home already uses for "View all 50 →") instead of
+  forcing the dark-only ghost variant to do something it was never styled
+  for. **Verified** with Playwright against a **production** build (`next
+  build` + `next start`) at 1440px/390px on both pages: full scroll-through
+  screenshots, zero console/page/network errors, zero horizontal overflow
+  (`scrollWidth === clientWidth`, checked explicitly since technical
+  spec content is the most common overflow source), and the Fuji spec list
+  independently screenshotted at 390px to confirm it stacks cleanly rather
+  than squeezing a table. `npm run build`, `npx tsc --noEmit` and `npm run
+  lint` all clean.
+- **2026-08-31 — Session 5 follow-up — correcting the previous entry: the
+  escalator video was never corrupt; the test environment can't decode H.264
+  at all.** Asked to re-export "Video — Escalator Ambient Loop.mp4" after the
+  above entry blamed a Chromium `DEMUXER_ERROR_NO_SUPPORTED_STREAMS` error on
+  the file. `ffprobe` had already shown the file to be a completely standard
+  H.264 High-profile + AAC MP4 (probe_score 100) — re-exporting it (remux
+  with `ffmpeg -c copy -movflags +faststart`, no re-encode needed) produced a
+  byte-different but codec-identical file, and the exact same error still
+  fired. That contradiction — a file `ffprobe` calls perfectly healthy still
+  failing in Chromium — was the signal to stop blaming the file and test the
+  player instead: reproduced the identical error on the already-shipped,
+  previously-"verified" `Video — Lift Shaft Cutaway Loop.mp4`, then confirmed
+  directly with `video.canPlayType('video/mp4; codecs="avc1..."')` returning
+  `''` (cannot play) for H.264 while VP9/AV1 both return `'probably'`. This
+  sandbox's Playwright-bundled Chromium is a stock open-source build with no
+  licensed H.264/AAC decoder — a real, known category of limitation (the same
+  gap affects e.g. Firefox on Linux without the OS's proprietary codec
+  packages), not a defect in either video file. Every prior session's
+  Playwright "verification" of the Lift Shaft video was therefore only ever
+  confirming the element rendered and the request succeeded (206 Partial
+  Content), never that a frame actually decoded — worth knowing for any
+  future session tempted to trust a green Playwright run as proof video
+  content is visually correct. Both video files are fine as originally
+  exported; kept the remuxed (faststart-added) escalator file since it's a
+  legitimate, harmless streaming improvement, not because it fixed anything.
+  Real visitors' browsers (Chrome, Safari, Firefox with OS codecs, virtually
+  all mobile browsers) decode H.264 natively, so the ambient video plays for
+  them; this project's fail-safe pattern (`AmbientSectionVideo.tsx`,
+  `LiftShaftVideo.tsx`) still matters for the real minority that can't,
+  exactly as designed — not because either file was ever broken.

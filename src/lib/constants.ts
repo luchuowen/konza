@@ -23,15 +23,12 @@ export type NavLink = {
   href: string;
 };
 
-// Products and Industries are part of the approved 10-page IA (docs/KONZA_SPEC.md
-// §5) but no build session has produced those routes yet — see
-// docs/PRE-LAUNCH-AUDIT.md. Omitted here (and thus from nav/footer/sitemap,
-// which all derive from this list) so no page sitewide links to a 404;
-// re-add once /products and /industries exist.
 export const NAV_LINKS: NavLink[] = [
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
+  { label: "Products", href: "/products" },
   { label: "Projects", href: "/projects" },
+  { label: "Industries", href: "/industries" },
   { label: "Maintenance", href: "/maintenance" },
   { label: "Resources", href: "/resources" },
   { label: "Contact Us", href: "/contact" },
