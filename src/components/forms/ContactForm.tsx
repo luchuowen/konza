@@ -68,9 +68,10 @@ export function ContactForm() {
   if (state.status === 'success') {
     return (
       <div
-        className="flex h-full flex-col justify-center rounded-xl border border-line-light bg-white p-8 text-center sm:text-left"
+        className="relative flex flex-col justify-center overflow-hidden rounded-2xl border border-line-light bg-white p-8 text-center shadow-[0_1px_3px_rgba(10,22,40,0.06),0_24px_48px_-28px_rgba(10,22,40,0.18)] sm:text-left"
         role="status"
       >
+        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-red via-maroon to-red" />
         <p className="text-[0.72rem] font-bold uppercase tracking-[0.12em] text-red">Message Sent</p>
         <h3 className="mt-3 font-sans text-2xl font-bold text-navy-950">Thanks for reaching out.</h3>
         <p className="mt-4 text-sm leading-relaxed text-slate">
@@ -86,8 +87,17 @@ export function ContactForm() {
       action={formAction}
       onSubmit={handleSubmit}
       noValidate
-      className="flex h-full flex-col rounded-xl border border-line-light bg-white p-6 sm:p-8"
+      className="relative flex flex-col overflow-hidden rounded-2xl border border-line-light bg-white p-6 shadow-[0_1px_3px_rgba(10,22,40,0.06),0_24px_48px_-28px_rgba(10,22,40,0.18)] sm:p-8"
     >
+      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-red via-maroon to-red" />
+
+      <div className="mb-7">
+        <span className="text-[0.72rem] font-bold uppercase tracking-[0.12em] text-red">Send a Message</span>
+        <h2 className="mt-2 font-sans text-xl font-bold text-navy-950 sm:text-2xl">
+          We read and personally respond to every message.
+        </h2>
+      </div>
+
       {state.status === 'error' && (
         <p role="alert" className="mb-6 rounded-md bg-red/10 p-3 text-sm font-medium text-red">
           {state.message}

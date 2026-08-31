@@ -9,9 +9,10 @@ import { useMobileNav } from '@/lib/mobile-nav-context';
 const DEFAULT_MESSAGE =
   "Hi Konza Elevators, I'd like to enquire about a project.";
 
-// Quote and Contact each carry their own always-visible WhatsAppInline
-// panel, so the floating widget would just duplicate it on those two pages.
-const PAGES_WITH_INLINE_WHATSAPP = ['/quote', '/contact'];
+// Quote carries its own always-visible WhatsAppInline panel, so the floating
+// widget would just duplicate it there. Contact dropped its inline panel, so
+// this floating widget is Contact's only WhatsApp path now — keep it showing.
+const PAGES_WITH_INLINE_WHATSAPP = ['/quote'];
 
 export function WhatsAppWidget() {
   const pathname = usePathname();

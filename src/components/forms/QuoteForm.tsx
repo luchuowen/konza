@@ -87,7 +87,11 @@ export function QuoteForm() {
 
   if (state.status === 'success') {
     return (
-      <div className="rounded-xl border border-line-light bg-white p-8 text-center sm:text-left" role="status">
+      <div
+        className="relative overflow-hidden rounded-2xl border border-line-light bg-white p-8 text-center shadow-[0_1px_3px_rgba(10,22,40,0.06),0_24px_48px_-28px_rgba(10,22,40,0.18)] sm:text-left"
+        role="status"
+      >
+        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-red via-maroon to-red" />
         <p className="text-[0.72rem] font-bold uppercase tracking-[0.12em] text-red">Request Received</p>
         <h3 className="mt-3 font-sans text-2xl font-bold text-navy-950">Thank you — we&rsquo;ve got your details.</h3>
         <p className="mt-4 text-sm leading-relaxed text-slate">
@@ -100,7 +104,13 @@ export function QuoteForm() {
   }
 
   return (
-    <form action={formAction} onSubmit={handleSubmit} noValidate className="rounded-xl border border-line-light bg-white p-6 sm:p-8">
+    <form
+      action={formAction}
+      onSubmit={handleSubmit}
+      noValidate
+      className="relative overflow-hidden rounded-2xl border border-line-light bg-white p-6 shadow-[0_1px_3px_rgba(10,22,40,0.06),0_24px_48px_-28px_rgba(10,22,40,0.18)] sm:p-8"
+    >
+      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-red via-maroon to-red" />
       {state.status === 'error' && (
         <p role="alert" className="mb-6 rounded-md bg-red/10 p-3 text-sm font-medium text-red">
           {state.message}

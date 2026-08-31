@@ -1,5 +1,30 @@
 type IconProps = { className?: string };
 
+const strokeProps = {
+  fill: 'none' as const,
+  stroke: 'currentColor',
+  strokeWidth: 1.8,
+  strokeLinecap: 'round' as const,
+  strokeLinejoin: 'round' as const,
+};
+
+export function PhoneIcon({ className = '' }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} {...strokeProps}>
+      <path d="M6.6 10.3c1.2 2.4 3.1 4.3 5.5 5.5l1.9-1.9c.25-.25.6-.33.93-.22 1.03.35 2.14.53 3.27.53.5 0 .9.4.9.9V19c0 .5-.4.9-.9.9C10.1 19.9 4.1 13.9 4.1 5.8c0-.5.4-.9.9-.9h3.9c.5 0 .9.4.9.9 0 1.13.18 2.24.53 3.27.11.33.03.68-.22.93L6.6 10.3Z" />
+    </svg>
+  );
+}
+
+export function MailIcon({ className = '' }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} {...strokeProps}>
+      <rect x="3.5" y="5.5" width="17" height="13" rx="2" />
+      <path d="m4.5 7 7.5 6 7.5-6" />
+    </svg>
+  );
+}
+
 export function MapPinIcon({ className = '' }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={className}>
