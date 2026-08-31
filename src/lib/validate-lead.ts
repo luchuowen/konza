@@ -17,6 +17,7 @@ export type ContactFormValues = {
   name: string;
   phone: string;
   email: string;
+  reason: string;
   message: string;
 };
 
@@ -43,6 +44,17 @@ export const TIMELINES = [
   "1–3 Months",
   "3–6 Months",
   "Just Researching",
+] as const;
+
+export const CONTACT_REASONS = [
+  "General Enquiry",
+  "Installation",
+  "Modernization",
+  "Maintenance & Repair",
+  "Repair",
+  "Construction & Contracting",
+  "Equipment & Plant Hire",
+  "Other",
 ] as const;
 
 function validateName(name: string): string | undefined {
@@ -93,6 +105,7 @@ export function validateContactForm(values: ContactFormValues): FieldErrors<Cont
   if (phone) errors.phone = phone;
   const email = validateEmail(values.email);
   if (email) errors.email = email;
+  if (!values.reason) errors.reason = "Please select a reason for contacting us.";
   const message = validateMessage(values.message, true);
   if (message) errors.message = message;
   return errors;

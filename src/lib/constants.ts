@@ -39,8 +39,8 @@ export const PRIMARY_CTA: NavLink = { label: "Get a Quote", href: "/quote" };
 export const FOOTER_LINKS: NavLink[] = NAV_LINKS;
 
 export const SOCIAL_LINKS = {
-  facebook: null as string | null,
-  instagram: null as string | null,
+  facebook: "https://www.facebook.com/people/Konza-Elevators/61579318184195/" as string | null,
+  instagram: "https://www.instagram.com/konza.elevators/" as string | null,
   linkedin: null as string | null,
 };
 

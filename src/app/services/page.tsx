@@ -1,8 +1,17 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
-import { Accordion, type AccordionItemData } from '@/components/ui/Accordion';
+
+type ServiceItem = {
+  id: string;
+  title: string;
+  tag: string;
+  body: string;
+  ctaLabel: string;
+  ctaHref: string;
+};
 
 export const metadata: Metadata = {
   title: 'Services',
@@ -20,7 +29,7 @@ export const metadata: Metadata = {
 
 const eyebrow = 'inline-block text-[0.72rem] font-bold uppercase tracking-[0.12em] text-red';
 
-const SERVICES: AccordionItemData[] = [
+const SERVICES: ServiceItem[] = [
   {
     id: 'installation',
     title: 'Installation',
@@ -113,8 +122,31 @@ export default function ServicesPage() {
 
       <section className="bg-white">
         <Container className="py-16 md:py-20">
-          <RevealOnScroll>
-            <Accordion items={SERVICES} defaultOpenId="installation" />
+          <RevealOnScroll stagger>
+            <div className="grid grid-cols-1 gap-x-12 gap-y-12 md:grid-cols-2">
+              {SERVICES.map((item, i) => (
+                <div key={item.id} className="border-t border-line-light pt-6">
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-sans text-2xl font-bold text-red">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">
+                      {item.tag}
+                    </span>
+                  </div>
+                  <h3 className="mt-3 font-sans text-xl font-bold text-navy-950 md:text-2xl">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 max-w-md text-sm text-slate md:text-base">{item.body}</p>
+                  <Link
+                    href={item.ctaHref}
+                    className="mt-4 inline-flex min-h-[44px] items-center gap-1 text-sm font-semibold text-red hover:text-maroon"
+                  >
+                    {item.ctaLabel} →
+                  </Link>
+                </div>
+              ))}
+            </div>
           </RevealOnScroll>
         </Container>
       </section>
