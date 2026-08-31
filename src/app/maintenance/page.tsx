@@ -146,9 +146,6 @@ export default function MaintenancePage() {
           <RevealOnScroll>
             <div className="mx-auto text-center md:mx-0 md:text-left">
               <span className={eyebrow}>How It Works</span>
-              <h2 className="mx-auto mt-3 max-w-lg font-serif text-3xl font-bold text-white md:mx-0 md:text-4xl">
-                FROM FREE CONDITION REPORT TO ONGOING COVER
-              </h2>
             </div>
           </RevealOnScroll>
 
