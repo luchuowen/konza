@@ -300,29 +300,35 @@ export default function Home() {
           </RevealOnScroll>
 
           <RevealOnScroll stagger className="mt-10">
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-              {FEATURED_PROJECTS.map((project) => (
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+              {FEATURED_PROJECTS.map((project, i) => (
                 <article
                   key={project.name}
-                  className="overflow-hidden rounded-xl border border-line-light bg-white transition-transform hover:-translate-y-1"
+                  className="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_1px_3px_rgba(10,22,40,0.1)] ring-1 ring-line-light transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_48px_-16px_rgba(10,22,40,0.3)]"
                 >
-                  <div className="relative aspect-[4/3] w-full">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
                     <Image
                       src={project.image}
                       alt={project.name}
                       fill
                       sizes="(min-width: 768px) 33vw, 100vw"
-                      className="object-cover"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                     />
-                  </div>
-                  <div className="p-5 text-center md:text-left">
-                    <span className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">
+                    <div
+                      className="pointer-events-none absolute inset-0"
+                      style={{ backgroundImage: 'linear-gradient(180deg, rgba(10,22,40,.05) 0%, rgba(10,22,40,.55) 100%)' }}
+                    />
+                    <span className="absolute left-4 top-4 rounded-full bg-navy-950/70 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.12em] text-white backdrop-blur-sm">
                       {project.sector}
                     </span>
-                    <h3 className="mt-1 font-sans text-lg font-bold text-navy-950">
-                      {project.name}
-                    </h3>
-                    <p className="mt-2 text-sm text-slate">{project.spec}</p>
+                    <span className="absolute bottom-4 right-4 font-sans text-xs font-bold text-white/70">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+                  <div className="flex flex-1 flex-col p-6 text-center">
+                    <h3 className="font-sans text-lg font-bold text-navy-950">{project.name}</h3>
+                    <span className="mx-auto mt-3 block h-[2px] w-8 bg-red transition-all duration-300 group-hover:w-14" />
+                    <p className="mt-3 text-sm text-slate">{project.spec}</p>
                   </div>
                 </article>
               ))}
