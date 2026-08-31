@@ -152,6 +152,27 @@ const INDUSTRY_TILES = [
   },
 ];
 
+const TESTIMONIALS = [
+  {
+    quote:
+      'Konza elevators and Escalators have staff who impressed us with their exceptional expertise, professionalism, and attention to detail. From the start, they showcased their extensive knowledge and meticulous planning, ensuring a smooth installation process.',
+    name: 'Salome Chiira',
+    role: 'CEO & Founder, Radiant Group of Hospitals',
+  },
+  {
+    quote:
+      "Konza staff's expertise in installation was evident in their precise planning and flawless execution, resulting in a top-of-the-line elevators that perfectly catered to our requirements. With their unwavering commitment to quality and safety. We highly recommend them!",
+    name: 'Sanjay Shah',
+    role: 'Director, Greenhills Investment Ltd (Village Market)',
+  },
+  {
+    quote:
+      'The elevators and escalators they installed were not only smooth and reliable but also showcased a remarkable level of craftsmanship. We highly recommend Konza elevators for their outstanding workmanship and dedication to excellence.',
+    name: 'Pastor Jimmy Macharia',
+    role: 'Founder, Harvest Family Church Ministries',
+  },
+] as const;
+
 const eyebrow =
   'inline-block text-[0.72rem] font-bold uppercase tracking-[0.12em] text-red';
 
@@ -306,18 +327,33 @@ export default function Home() {
 
       <section className="bg-navy-950">
         <Container className="py-20">
-          <RevealOnScroll>
-            <blockquote className="mx-auto max-w-3xl text-center">
-              <p className="font-serif text-2xl font-normal italic leading-relaxed text-white md:text-3xl">
-                &ldquo;Konza elevators and Escalators have staff who impressed us with their
-                exceptional expertise, professionalism, and attention to detail. From the start,
-                they showcased their extensive knowledge and meticulous planning, ensuring a
-                smooth installation process.&rdquo;
-              </p>
-              <footer className="mt-6 text-sm font-semibold uppercase tracking-[0.08em] text-slate-dark">
-                Salome Chiira — CEO &amp; Founder, Radiant Group of Hospitals
-              </footer>
-            </blockquote>
+          <RevealOnScroll className="text-center">
+            <span className={eyebrow}>What Clients Say</span>
+            <h2 className="mx-auto mt-3 max-w-lg font-serif text-3xl font-bold text-white md:text-4xl">
+              Trusted by developers, institutions and homeowners.
+            </h2>
+          </RevealOnScroll>
+
+          <RevealOnScroll stagger className="mt-12">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              {TESTIMONIALS.map((t) => (
+                <figure
+                  key={t.name}
+                  className="flex h-full flex-col rounded-xl border border-navy-800 bg-navy-900 p-6 text-center transition-colors duration-300 hover:border-red/40 md:text-left"
+                >
+                  <span aria-hidden="true" className="font-serif text-3xl leading-none text-red">
+                    &ldquo;
+                  </span>
+                  <blockquote className="mt-2 flex-1 font-serif text-sm italic leading-relaxed text-slate-dark">
+                    {t.quote}
+                  </blockquote>
+                  <figcaption className="mt-6 border-t border-navy-800 pt-4">
+                    <p className="text-xs font-bold uppercase tracking-[0.06em] text-white">{t.name}</p>
+                    <p className="mt-1 text-xs text-slate-dark">{t.role}</p>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
           </RevealOnScroll>
         </Container>
       </section>
