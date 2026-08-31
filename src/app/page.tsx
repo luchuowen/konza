@@ -339,10 +339,15 @@ export default function Home() {
                 // — see docs/PRE-LAUNCH-AUDIT.md. Re-wrap in Link once it exists.
                 <div
                   key={tile.n}
-                  className="overflow-hidden rounded-xl border border-line-light bg-white text-center md:text-left"
+                  className="group overflow-hidden rounded-xl border border-line-light bg-white text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-xl md:text-left"
                 >
-                  <div className="relative aspect-[16/10] w-full">
-                    <Image src={tile.image} alt={tile.name} fill className="object-cover" />
+                  <div className="relative aspect-[16/10] w-full overflow-hidden">
+                    <Image
+                      src={tile.image}
+                      alt={tile.name}
+                      fill
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                    />
                   </div>
                   <div className="p-6">
                     <span className="font-serif text-2xl font-bold text-red">{tile.n}</span>
