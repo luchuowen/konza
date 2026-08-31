@@ -7,6 +7,8 @@ import { Carousel, type CarouselSlide } from '@/components/ui/Carousel';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { HeroBackground } from '@/components/ui/HeroBackground';
 import { LiftShaftVideo } from '@/components/ui/LiftShaftVideo';
+import { FeatureCard } from '@/components/ui/FeatureCard';
+import { ShieldCheckIcon, BadgeCheckIcon, TruckIcon, WrenchIcon } from '@/components/ui/FeatureIcons';
 import { IMAGES, projectImageSrc } from '@/lib/images';
 import { HomeJsonLd } from '@/components/seo/HomeJsonLd';
 
@@ -67,21 +69,25 @@ const COMPLIANCE_ITEMS = [
   {
     n: '01',
     label: 'Kenyan Standards',
+    icon: <ShieldCheckIcon className="h-full w-full" />,
     body: 'We design and install elevators in line with KS ISO 8100 and current KEBS requirements.',
   },
   {
     n: '02',
     label: 'Authorized Fuji Distributor',
+    icon: <BadgeCheckIcon className="h-full w-full" />,
     body: 'We are an authorized Fuji Elevator distributor in Kenya, officially supplied and supported by Fuji.',
   },
   {
     n: '03',
     label: 'Delivery & Installation',
+    icon: <TruckIcon className="h-full w-full" />,
     body: 'We coordinate delivery, site preparation and elevator installation throughout every stage of the project.',
   },
   {
     n: '04',
     label: 'Repair & Maintenance',
+    icon: <WrenchIcon className="h-full w-full" />,
     body: 'We inspect, repair and maintain elevators, starting with a free condition report and quotation.',
   },
 ];
@@ -244,23 +250,18 @@ export default function Home() {
         <div className="absolute inset-0 bg-navy-950/40" />
       </div>
 
-      <section className="bg-white">
-        <Container className="py-14">
+      <section className="bg-paper">
+        <Container className="py-16 md:py-20">
           <RevealOnScroll stagger>
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-              {COMPLIANCE_ITEMS.map((item, i) => (
-                <div
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
+              {COMPLIANCE_ITEMS.map((item) => (
+                <FeatureCard
                   key={item.n}
-                  className={`text-center md:pr-4 md:text-left ${
-                    i < COMPLIANCE_ITEMS.length - 1 ? 'md:border-r md:border-line-light' : ''
-                  }`}
-                >
-                  <span className="font-sans text-2xl font-bold text-red">{item.n}</span>
-                  <p className="mt-2 text-xs font-bold uppercase tracking-[0.1em] text-navy-950">
-                    {item.label}
-                  </p>
-                  <p className="mt-2 text-sm text-slate">{item.body}</p>
-                </div>
+                  n={item.n}
+                  label={item.label}
+                  body={item.body}
+                  icon={item.icon}
+                />
               ))}
             </div>
           </RevealOnScroll>
