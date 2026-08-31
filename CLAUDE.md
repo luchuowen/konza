@@ -56,10 +56,27 @@ Small, working commits per component/page. Message format:
 Never commit with a failing build or lint error.
 
 ## Deferred (do NOT do these here)
-- Live Firestore project provisioning.
-- Firebase App Hosting deploy.
-- Domain mapping to konza.navac.co.ke or konzaelevators.co.ke.
+- Domain mapping to konzaelevators.co.ke (the real production domain — see
+  the 2026-08-31 deploy-session entry below for the current state of
+  konza.navac.co.ke, the temporary preview mapping, which IS done).
 These are a separate future prompt the client will provide explicitly.
+
+## Deploy target (live as of the entry below)
+- Project: `konza-elevators` (Firebase project ID), Blaze plan.
+- Firestore: Native mode, `europe-west1` (Belgium) — chosen per explicit
+  client instruction; no African GCP region was generally available at
+  provisioning time other than `africa-south1` (Johannesburg), which was
+  visible in the region picker but not selected.
+- Hosting: Firebase App Hosting, tracking `main`.
+- `src/lib/firebase-admin.ts` authenticates via Application Default
+  Credentials on App Hosting (no service-account key) — see that file's own
+  comments. `firestore.rules` denies all direct client reads/writes; every
+  write goes through the Admin SDK server-side.
+- `src/middleware.ts` sets `X-Robots-Tag: noindex, nofollow` on every
+  request whose Host header isn't `konzaelevators.co.ke` (or `www.` of it) —
+  this is what keeps `konza.navac.co.ke` and the Firebase-provided URL out
+  of search indexes while `SITE_URL`/`metadataBase` still correctly point at
+  the real production domain that isn't live here yet.
 
 ---
 

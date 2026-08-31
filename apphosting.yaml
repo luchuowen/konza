@@ -1,7 +1,5 @@
-# Firebase App Hosting config — SCAFFOLDING ONLY.
-# Not connected to a live Firebase project; deploy is explicitly deferred
-# per docs/BLUEPRINT.md and CLAUDE.md "Deferred". Do not run
-# `firebase deploy --only apphosting` from inside a numbered build session.
+# Firebase App Hosting config for the konza-elevators project (preview
+# deploy — see docs/BLUEPRINT.md "What happens after Session 9").
 
 runConfig:
   runtime: nodejs20
@@ -11,7 +9,19 @@ runConfig:
   cpu: 1
   memoryMiB: 512
 
-# Environment variables are injected via Secret Manager / the Firebase console
-# once a real project exists — see .env.example for the full key list. None
-# are declared here to avoid committing placeholder values that look real.
+# No FIREBASE_ADMIN_* secrets are declared here on purpose: src/lib/firebase-admin.ts
+# uses Application Default Credentials on App Hosting (detected via the
+# platform-injected K_SERVICE/GOOGLE_CLOUD_PROJECT env vars, which App
+# Hosting sets automatically), authenticating as this backend's own built-in
+# service account — no service-account key to manage or leak. That account
+# needs the Firestore write role granted in the GCP console (Cloud Datastore
+# User / roles/datastore.user), done once outside this file.
+#
+# NEXT_PUBLIC_FIREBASE_* client-SDK vars are also intentionally absent:
+# src/lib/firestore.ts (client-side Firestore) is unused dead code per
+# CLAUDE.md — nothing reads it — so there's nothing to configure for it.
+#
+# SALES_NOTIFICATION_EMAIL is left unset per the deploy instructions — no
+# email provider is chosen yet (src/lib/notify-lead-email.ts is a TODO stub
+# that never blocks a lead write when unset).
 env: []

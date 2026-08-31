@@ -1,0 +1,17 @@
+rules_version = '2';
+
+// All reads and writes from client SDKs are denied by default. Every write
+// this app performs (lead submissions from src/app/actions/submit-lead.ts)
+// goes through the server-only Firebase Admin SDK, which authenticates as a
+// service account and bypasses these rules entirely — so locking the
+// client-facing surface down completely here does not block real traffic.
+// No page in this app ever reads Firestore from the client (src/lib/firestore.ts
+// is unused dead code, per CLAUDE.md), so there is no legitimate client access
+// pattern to carve an exception for.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
