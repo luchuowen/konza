@@ -2,8 +2,10 @@ import type { MetadataRoute } from 'next';
 import { SITE_URL } from '@/lib/constants';
 import { ARTICLES } from '@/lib/resources-data';
 
-// Only routes that actually exist as pages in this build — NAV_LINKS in
-// constants.ts includes /products and /industries, which aren't built yet.
+// Only routes that actually exist as pages in this build. /products and
+// /industries are part of the approved IA (docs/KONZA_SPEC.md §5) but have
+// no build session yet — see docs/PRE-LAUNCH-AUDIT.md — so they're excluded
+// here too (NAV_LINKS in constants.ts also omits them, for the same reason).
 const STATIC_ROUTES = [
   { path: '', changeFrequency: 'weekly' as const, priority: 1 },
   { path: '/about', changeFrequency: 'monthly' as const, priority: 0.8 },

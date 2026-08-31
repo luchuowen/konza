@@ -457,3 +457,52 @@ These are a separate future prompt the client will provide explicitly.
   Two small, reusable audit scripts kept in `scripts/` (`audit-axe.mjs`,
   `audit-mobile.mjs`) for future sessions; every one-off diagnostic script
   used to chase the image bug and the false positives was deleted.
+- **2026-08-31 — Session 9, Pre-Launch Audit — found and fixed a real
+  sitewide broken-link bug invisible from reading any single page's code.**
+  PR #8 (Session 8) had already merged into `main`; branch reset to
+  `origin/main` per the house rule, no unmerged work lost. Rendered all 10
+  built routes with Playwright against a **production** build (`next build`
+  + `next start`, matching the lesson from Session 8's dev-vs-prod image
+  bug) at 1440px/390px, full scroll-through, console/network monitoring.
+  Found: the header nav, footer nav, and all 4 Home industry tiles linked to
+  `/products` and `/industries` — 2 of the 10 approved IA pages
+  (`KONZA_SPEC.md` §5) that no session had ever actually built — so every
+  single page load fired a real 404 (both a live dead link and an
+  RSC-prefetch console error), sitewide, since whichever session first added
+  those nav entries. `sitemap.ts` already excluded both routes (Session 8
+  knew they didn't exist) but nothing had propagated that to `NAV_LINKS`,
+  which both `Header`/`Footer` and the sitemap's own stale comment still
+  assumed included them. Fixed by removing both from `NAV_LINKS`
+  (`src/lib/constants.ts`) and un-linking the Home industry tiles (plain
+  `<div>`s now, not dead `<Link>`s) rather than inventing two pages under
+  audit-session time pressure — 5 real product photos and 1 ambient video
+  already sit in `public/images/` ready for whenever `/products` and
+  `/industries` do get built, flagged as this audit's single biggest open
+  item, bigger than any image-placeholder gap. Also grepped every hex color
+  outside `tokens.css` sitewide: found and fixed a duplicated, un-tokenized
+  dark-gradient triplet (`#1d3a5f`/`#0d2036`/`#081422`) copy-pasted across 7
+  inner-page hero sections (centralized into a new `.inner-hero` class built
+  from the real locked navy tokens) and a one-character `--red` color drift
+  plus an invented near-`--slate-dark` value in the generated OG images
+  (`src/lib/og-image.tsx`) — both corrected to the exact locked hex.
+  Re-ran Session 8's `audit-axe.mjs`/`audit-mobile.mjs` against all 10
+  routes: zero new violations, same single pre-existing `--red`-contrast
+  class as before (still not fixed, still a Konza/NAVAC design call per
+  Session 8's reasoning, not this session's to make). Flagged, did not
+  revert: Home's rendered hero copy no longer matches `KONZA_SPEC.md` §6's
+  literal locked text — git blame shows an earlier session changed it "per
+  client direction" but never logged that decision here the way the
+  business-hours resolution below it was, so this audit could not
+  independently confirm it and left it as-is with a note asking Konza/NAVAC
+  to confirm. Also flagged, not changed: `COMPANY_INFO.email` reads
+  `info@konzaelevators.co.ke` (changed from `david@konzaelevators.co.ke` in
+  an earlier session's commit, bundled with a "client-provided" tagline
+  rewrite but without its own decision-log entry) — plausibly resolved
+  correctly, but recommended for an explicit client confirmation before
+  launch since, unlike hours, there's no dated record of it being
+  client-directed. Full findings, the complete real-vs-placeholder image
+  inventory, and all remaining `[CONFIRM]` items are in the deliverable,
+  `docs/PRE-LAUNCH-AUDIT.md`. `npm run build`, `npm run lint` and
+  `npx tsc --noEmit` all clean; zero console/page/network errors and zero
+  horizontal overflow or sub-44px tap targets across all 10 routes at both
+  breakpoints after the fixes.
