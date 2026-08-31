@@ -59,8 +59,8 @@ const SERVICES: ServiceItem[] = [
     icon: <RefreshIcon className="h-full w-full" />,
   },
   {
-    id: 'maintenance-repair',
-    title: 'Maintenance & Repair',
+    id: 'maintenance',
+    title: 'Maintenance',
     tag: 'All Building Types',
     body: 'Scheduled inspection and servicing to keep elevators and escalators running safely and reliably, with a maintenance-frequency schedule tailored to how heavily each system is used.',
     ctaLabel: 'Request a Maintenance Quote',
