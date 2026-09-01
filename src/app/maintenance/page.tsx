@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
-import { FeatureCard } from '@/components/ui/FeatureCard';
 import { ClipboardCheckIcon, CalendarIcon, ClockIcon, ShieldCheckIcon, UsersIcon } from '@/components/ui/FeatureIcons';
 import { IMAGES } from '@/lib/images';
 
@@ -25,31 +24,26 @@ const eyebrow = 'inline-block text-[0.72rem] font-bold uppercase tracking-[0.12e
 
 const INCLUDED = [
   {
-    n: '01',
     label: 'Free Condition Report',
     icon: <ClipboardCheckIcon className="h-full w-full" />,
     body: 'Every contract starts with a free condition report and estimate, so you know the real state of your system before anything is agreed.',
   },
   {
-    n: '02',
     label: 'Scheduled Servicing',
     icon: <CalendarIcon className="h-full w-full" />,
     body: 'Inspection and servicing on a schedule tailored to how heavily your elevators and escalators are actually used.',
   },
   {
-    n: '03',
     label: 'Response-Time SLA',
     icon: <ClockIcon className="h-full w-full" />,
     body: 'A response-time service level, set out clearly in your contract, so you know what to expect when you call.',
   },
   {
-    n: '04',
     label: 'Compliance Support',
     icon: <ShieldCheckIcon className="h-full w-full" />,
     body: 'Designed and serviced to KS ISO 8100 practice, staying current with KEBS and NCA requirements.',
   },
   {
-    n: '05',
     label: 'Our Technical Team',
     icon: <UsersIcon className="h-full w-full" />,
     body: 'Backed by our 10-person technical and administrative team, the same one behind 50 completed installations.',
@@ -119,15 +113,22 @@ export default function MaintenancePage() {
           </RevealOnScroll>
 
           <RevealOnScroll stagger className="mt-12">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {INCLUDED.map((item) => (
-                <FeatureCard
-                  key={item.n}
-                  n={item.n}
-                  label={item.label}
-                  body={item.body}
-                  icon={item.icon}
-                />
+            <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-line-light bg-white">
+              {INCLUDED.map((item, i) => (
+                <div
+                  key={item.label}
+                  className={`flex flex-col gap-4 p-6 sm:flex-row sm:items-start sm:gap-8 md:p-8 ${
+                    i > 0 ? 'border-t border-line-light' : ''
+                  }`}
+                >
+                  <div className="flex items-center gap-4 sm:w-64 sm:shrink-0">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-red/10 text-red">
+                      <span className="h-5 w-5">{item.icon}</span>
+                    </span>
+                    <h3 className="font-sans text-base font-bold text-navy-950">{item.label}</h3>
+                  </div>
+                  <p className="text-sm text-slate sm:flex-1 sm:pt-2.5">{item.body}</p>
+                </div>
               ))}
             </div>
           </RevealOnScroll>
