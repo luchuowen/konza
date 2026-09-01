@@ -58,8 +58,8 @@ export async function renderOgImage(eyebrow: string, title: string) {
       <div
         style={{
           display: 'flex',
-          width: '100%',
-          height: '100%',
+          width: ogImageSize.width,
+          height: ogImageSize.height,
           position: 'relative',
           overflow: 'hidden',
         }}
@@ -75,7 +75,10 @@ export async function renderOgImage(eyebrow: string, title: string) {
         <div
           style={{
             position: 'absolute',
-            inset: 0,
+            top: 0,
+            left: 0,
+            width: ogImageSize.width,
+            height: ogImageSize.height,
             background:
               'linear-gradient(180deg, rgba(8,17,29,0.15) 0%, rgba(8,17,29,0.92) 100%)',
           }}
@@ -83,7 +86,10 @@ export async function renderOgImage(eyebrow: string, title: string) {
         <div
           style={{
             position: 'absolute',
-            inset: 0,
+            top: 0,
+            left: 0,
+            width: ogImageSize.width,
+            height: ogImageSize.height,
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'flex-end',

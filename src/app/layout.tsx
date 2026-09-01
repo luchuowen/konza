@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { MobileNavProvider } from "@/lib/mobile-nav-context";
 import { LocalBusinessJsonLd } from "@/components/seo/LocalBusinessJsonLd";
 import { DevCredit } from "@/components/seo/DevCredit";
+import { SITE_URL } from "@/lib/constants";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -23,7 +24,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://konzaelevators.co.ke"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Konza Elevators & Escalator Co. Ltd | Vertical Transportation, Nairobi",
     template: "%s | Konza Elevators & Escalator Co. Ltd",
