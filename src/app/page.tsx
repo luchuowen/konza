@@ -51,8 +51,23 @@ const PROJECT_SLIDES: CarouselSlide[] = [
 ];
 
 const TRUST_SLIDES: CarouselSlide[] = [
-  { tag: 'Trusted By', title: 'Radiant Group of Hospitals' },
-  { tag: 'Trusted By', title: 'Greenhills Investment Ltd' },
+  {
+    tag: 'Trusted By',
+    title: 'Radiant Group of Hospitals',
+    image: projectImageSrc('Project — Radiant Hospital.jpg'),
+  },
+  {
+    // Sanjay Shah, the quoted Greenhills Investment Ltd testimonial, is
+    // Director of Greenhills — the developer behind Village Market
+    // (docs/KONZA_SPEC.md §2's testimonial attribution) — same real
+    // installation, not a substitute photo.
+    tag: 'Trusted By',
+    title: 'Greenhills Investment Ltd',
+    image: projectImageSrc('Project — Village Market.jpg'),
+  },
+  // Harvest Family Church Ministries has no matching photo anywhere in
+  // public/images/ — left on the .ph-trust placeholder rather than
+  // attaching an unrelated real building's photo to their name.
   { tag: 'Trusted By', title: 'Harvest Family Church Ministries' },
 ];
 
