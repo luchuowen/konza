@@ -99,7 +99,7 @@ export function WhatsAppInline({
               </p>
               <a
                 href={`tel:${COMPANY_INFO.phones[0].replace(/\s/g, '')}`}
-                className="mt-1 flex min-h-[24px] items-center font-sans text-base font-bold text-navy-950 transition-colors hover:text-red"
+                className="flex min-h-[44px] items-center font-sans text-base font-bold text-navy-950 transition-colors hover:text-red"
               >
                 {COMPANY_INFO.phones[0]}
               </a>

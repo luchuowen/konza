@@ -110,7 +110,7 @@ export default function ContactPage() {
                     <a
                       key={phone}
                       href={`tel:${phone.replace(/\s+/g, '')}`}
-                      className="block min-h-[28px] text-navy-950 hover:text-red"
+                      className="flex min-h-[44px] items-center text-navy-950 hover:text-red"
                     >
                       {phone}
                     </a>
@@ -120,7 +120,7 @@ export default function ContactPage() {
                 <InfoCard icon={<MailIcon className="h-full w-full" />} label="Email Us">
                   <a
                     href={`mailto:${COMPANY_INFO.email}`}
-                    className="block min-h-[28px] text-navy-950 hover:text-red"
+                    className="flex min-h-[44px] items-center text-navy-950 hover:text-red"
                   >
                     {COMPANY_INFO.email}
                   </a>

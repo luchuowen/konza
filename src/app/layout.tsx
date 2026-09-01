@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileNavProvider } from "@/lib/mobile-nav-context";
 import { LocalBusinessJsonLd } from "@/components/seo/LocalBusinessJsonLd";
+import { DevCredit } from "@/components/seo/DevCredit";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -52,6 +53,7 @@ export default function RootLayout({
       className={`h-full antialiased ${geist.variable} ${instrumentSerif.variable}`}
     >
       <body className="min-h-full flex flex-col font-sans">
+        <DevCredit />
         <LocalBusinessJsonLd />
         <MobileNavProvider>
           <Header />

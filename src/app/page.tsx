@@ -31,22 +31,25 @@ const PRODUCT_SLIDES: CarouselSlide[] = [
   { tag: 'Product', title: 'Moving Walkways', image: IMAGES.productMovingWalkways },
 ];
 
+// Project and Trusted-By slides deliberately draw from disjoint real photos
+// (no filename shared between the two arrays below) — the two carousels run
+// synchronized, so any shared image would show twice on screen at once.
 const PROJECT_SLIDES: CarouselSlide[] = [
   {
     tag: 'Project',
-    title: 'Junction Trade Centre, Nairobi CBD',
+    title: 'Junction Trade Centre',
     image: projectImageSrc('Project — Junction Trade Centre.jpg'),
   },
   {
     tag: 'Project',
-    title: 'Radiant Group of Hospitals',
-    image: projectImageSrc('Project — Radiant Hospital.jpg'),
-  },
-  { tag: 'Project', title: 'Village Market', image: projectImageSrc('Project — Village Market.jpg') },
-  {
-    tag: 'Project',
     title: 'MPESA Foundation Academy',
     image: projectImageSrc('Project — MPESA Foundation Academy.jpg'),
+  },
+  { tag: 'Project', title: 'Ruai Mega Mall', image: projectImageSrc('Project — Ruai Mega Mall.jpg') },
+  {
+    tag: 'Project',
+    title: 'Kajiado Law Courts',
+    image: projectImageSrc('Project — Kajiado Law Courts.jpg'),
   },
 ];
 
@@ -65,10 +68,17 @@ const TRUST_SLIDES: CarouselSlide[] = [
     title: 'Greenhills Investment Ltd',
     image: projectImageSrc('Project — Village Market.jpg'),
   },
-  // Harvest Family Church Ministries has no matching photo anywhere in
-  // public/images/ — left on the .ph-trust placeholder rather than
-  // attaching an unrelated real building's photo to their name.
-  { tag: 'Trusted By', title: 'Harvest Family Church Ministries' },
+  {
+    // Replaces Harvest Family Church Ministries (a real testimonial source,
+    // but with no matching photo anywhere in public/images/ — showing it
+    // meant falling back to the .ph-trust placeholder every third beat).
+    // Jesse Kay Hospital is a real completed Konza project (KONZA_SPEC.md
+    // §2, also in projects-data.ts) with its own real photo, distinct from
+    // every photo used elsewhere in this section.
+    tag: 'Trusted By',
+    title: 'Jesse Kay Hospital',
+    image: projectImageSrc('Project — Jesse Kay Hospital.jpg'),
+  },
 ];
 
 const PROOF_STATS = [
@@ -236,9 +246,11 @@ export default function Home() {
           <RevealOnScroll stagger className="mt-16 md:mt-20">
             <span className={`${eyebrow} mb-6 block`}>What Konza Delivers</span>
             <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-              <Carousel slides={PRODUCT_SLIDES} intervalMs={2600} placeholderClass="ph-products" />
-              <Carousel slides={PROJECT_SLIDES} intervalMs={3100} placeholderClass="ph-projects" />
-              <Carousel slides={TRUST_SLIDES} intervalMs={3600} placeholderClass="ph-trust" />
+              {/* All three run the same intervalMs so they advance in lockstep — a single
+                  synchronized beat is far easier to follow than three uncoordinated timers. */}
+              <Carousel slides={PRODUCT_SLIDES} intervalMs={4000} placeholderClass="ph-products" />
+              <Carousel slides={PROJECT_SLIDES} intervalMs={4000} placeholderClass="ph-projects" />
+              <Carousel slides={TRUST_SLIDES} intervalMs={4000} placeholderClass="ph-trust" />
             </div>
           </RevealOnScroll>
         </Container>
@@ -373,7 +385,7 @@ export default function Home() {
               {TESTIMONIALS.map((t) => (
                 <figure
                   key={t.name}
-                  className="flex h-full flex-col rounded-xl border border-navy-800 bg-navy-900 p-6 text-center transition-colors duration-300 hover:border-red/40 md:text-left"
+                  className="flex h-full flex-col rounded-xl border border-navy-800 bg-navy-900 p-6 text-center transition-colors duration-300 hover:border-red/40"
                 >
                   <span aria-hidden="true" className="font-sans text-3xl leading-none text-red">
                     &ldquo;

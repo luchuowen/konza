@@ -48,7 +48,6 @@ export function Carousel({
   }, [reducedMotion, paused, slides.length, intervalMs]);
 
   if (slides.length === 0) return null;
-  const active = slides[index];
   const showDots = slides.length > 1 && !reducedMotion;
   const allowManualNav = slides.length > 1;
 
@@ -58,24 +57,38 @@ export function Carousel({
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div className={`relative aspect-[4/3] w-full ${active.image ? '' : placeholderClass}`}>
-        {active.image && (
-          <Image src={active.image} alt={active.title} fill className="object-cover" />
-        )}
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-950/95 via-navy-950/75 to-transparent px-4 pb-4 pt-10">
-          <span
-            className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red"
-            style={{ textShadow: '0 1px 6px rgba(10,22,40,.9)' }}
+      {/* All slides are stacked and crossfaded via opacity (same pattern as
+          HeroBackground) instead of swapped in/out — the first slide is
+          always opaque by default so it's visible with no JS, and every
+          image is preloaded up front so a transition never reveals a blank
+          or half-loaded frame. */}
+      <div className="relative aspect-[4/3] w-full">
+        {slides.map((s, i) => (
+          <div
+            key={s.title + i}
+            aria-hidden={i !== index}
+            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${s.image ? '' : placeholderClass}`}
+            style={{ opacity: i === index ? 1 : 0 }}
           >
-            {active.tag}
-          </span>
-          <p
-            className="mt-1 font-sans text-lg font-medium text-white"
-            style={{ textShadow: '0 1px 6px rgba(10,22,40,.9)' }}
-          >
-            {active.title}
-          </p>
-        </div>
+            {s.image && (
+              <Image src={s.image} alt={s.title} fill priority={i === 0} className="object-cover" />
+            )}
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-950/95 via-navy-950/75 to-transparent px-4 pb-4 pt-10">
+              <span
+                className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red"
+                style={{ textShadow: '0 1px 6px rgba(10,22,40,.9)' }}
+              >
+                {s.tag}
+              </span>
+              <p
+                className="mt-1 font-sans text-lg font-medium text-white"
+                style={{ textShadow: '0 1px 6px rgba(10,22,40,.9)' }}
+              >
+                {s.title}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
 
       {(showDots || allowManualNav) && (

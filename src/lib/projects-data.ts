@@ -54,7 +54,7 @@ export const PROJECTS: Project[] = [
     image: 'Project — Village Market.jpg',
   },
   {
-    name: 'Junction Trade Centre, Nairobi CBD',
+    name: 'Junction Trade Centre',
     sector: 'commercial',
     detail: '2× 10-stop panoramic elevators, Fuji.',
     image: 'Project — Junction Trade Centre.jpg',
