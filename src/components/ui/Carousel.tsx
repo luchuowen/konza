@@ -70,7 +70,7 @@ export function Carousel({
             {active.tag}
           </span>
           <p
-            className="mt-1 font-sans text-lg font-bold text-white"
+            className="mt-1 font-sans text-lg font-medium text-white"
             style={{ textShadow: '0 1px 6px rgba(10,22,40,.9)' }}
           >
             {active.title}

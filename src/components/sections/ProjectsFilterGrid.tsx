@@ -100,12 +100,14 @@ export function ProjectsFilterGrid() {
                     )}
                   </div>
                   <div className="p-6">
-                    <span className="font-sans text-2xl font-bold text-red">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <p className="mt-2 text-[0.68rem] font-bold uppercase tracking-[0.1em] text-red">
-                      {SECTOR_LABELS[project.sector]}
-                    </p>
+                    <div className="flex items-baseline justify-center gap-2 md:justify-start">
+                      <span className="font-sans text-2xl font-bold text-red">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span className="text-[0.65rem] font-bold uppercase tracking-[0.1em] text-red/70">
+                        {SECTOR_LABELS[project.sector]}
+                      </span>
+                    </div>
                     <h3 className="mt-2 font-sans text-lg font-bold text-navy-950 group-hover:text-red">
                       {project.name}
                     </h3>

@@ -649,3 +649,44 @@ These are a separate future prompt the client will provide explicitly.
   them; this project's fail-safe pattern (`AmbientSectionVideo.tsx`,
   `LiftShaftVideo.tsx`) still matters for the real minority that can't,
   exactly as designed — not because either file was ever broken.
+- **2026-09-01 — Favicon derived from the real logo by crop, not regenerated
+  — resolves the Session 0 gap.** `favicon.ico`/`icon.png`/`apple-icon.png`
+  had been missing since Session 0 flagged them as not-yet-supplied by the
+  client. Rather than wait indefinitely or AI-generate a substitute (which
+  the logo non-negotiable forbids), derived a square icon directly from the
+  one real logo asset already in the repo (`public/brand/konza-logo-hires.jpg`):
+  pixel-scanned the file to find the exact bounding box of its icon mark
+  (excluding the "KONZA ELEVATORS" wordmark), cropped it, and centered it on
+  a square canvas filled with that same file's own sampled background
+  colour — a resize/recrop of the existing asset, not a redraw, per the
+  non-negotiable's own carve-out. Placed as `src/app/favicon.ico` (16/32/48
+  multi-res), `icon.png` (192×192) and `apple-icon.png` (180×180) — Next.js
+  15's App Router auto-detects these three filenames with no code/metadata
+  needed; confirmed via the built page's `<head>` after a production build.
+  If the client later supplies a real dedicated icon file, swap these three
+  in place; nothing else references them.
+- **2026-09-01 — Session polish batch: card compactness, contrast, spacing,
+  copy.** Removed `font-bold` from `Carousel.tsx`'s slide title in favour of
+  `font-medium`, matching the hero H1's existing weight for text set
+  directly over a photo. Compacted the "Our Work" (Home) and `/projects`
+  cards: the numeral and sector label now share one row (`flex items-
+  baseline`) instead of two stacked lines, cutting the card's info-panel
+  height without dropping any information — both still intentionally match
+  the "Where We Work" industry-tile recipe. Fixed `WhatsAppInline.tsx`'s
+  "Prefer to Call?" block, which previously used `flex-1 justify-end` to
+  anchor itself to the bottom of a tall sidebar card, leaving a large dead
+  gap above it whenever the "Why WhatsApp" bullet list didn't fill the
+  available height (visible on `/quote`, where the card stretches to match
+  the form column) — replaced with a self-contained bordered panel that
+  sits immediately after the bullets, so it reads as designed content, not
+  an empty gap. Shrunk `/resources`' H1 from 4 lines to 3 at desktop width
+  (`text-4xl font-bold` → `text-3xl font-medium`), the same treatment
+  already applied to Services' hero H1 for the same reason. Reworded Home's
+  page-level `<title>` from the abstract "Vertical Transportation for
+  Nairobi's Skyline" to "Elevators & Escalators for Every Building in
+  Nairobi" (verbatim from the page's own H1) so the browser-tab hover
+  tooltip states what the business does at a glance, not just a slogan.
+  Verified every change with Playwright against a production build (`next
+  build` + `next start`) across all 10 routes: zero console/page/network
+  errors, zero horizontal overflow. `npm run build`, `npx tsc --noEmit` and
+  `npm run lint` all clean.
