@@ -40,7 +40,7 @@ export function WhatsAppButton({ className = '' }: { className?: string }) {
         aria-expanded={open}
         aria-label="Chat with Konza Elevators on WhatsApp"
         onClick={() => setOpen(true)}
-        className={`flex h-11 w-11 items-center justify-center rounded-full border border-red/50 bg-red/10 text-red transition-colors hover:border-red hover:bg-red hover:text-white ${className}`}
+        className={`flex h-11 w-11 items-center justify-center rounded-full border border-navy-800 bg-navy-900 text-slate-dark transition-colors hover:border-red hover:bg-red hover:text-white ${className}`}
       >
         <WhatsAppIcon className="h-5 w-5" />
       </button>

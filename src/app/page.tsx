@@ -373,7 +373,7 @@ export default function Home() {
               {TESTIMONIALS.map((t) => (
                 <figure
                   key={t.name}
-                  className="flex h-full flex-col rounded-xl border border-navy-800 bg-navy-900 p-6 text-center transition-colors duration-300 hover:border-red/40 md:text-left"
+                  className="flex h-full flex-col rounded-xl border border-navy-800 bg-navy-900 p-6 text-center transition-colors duration-300 hover:border-red/40"
                 >
                   <span aria-hidden="true" className="font-sans text-3xl leading-none text-red">
                     &ldquo;
