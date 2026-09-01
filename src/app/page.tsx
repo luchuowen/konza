@@ -9,12 +9,6 @@ import { HeroBackground } from '@/components/ui/HeroBackground';
 import { LiftShaftVideo } from '@/components/ui/LiftShaftVideo';
 import { IMAGES, projectImageSrc } from '@/lib/images';
 import { HomeJsonLd } from '@/components/seo/HomeJsonLd';
-import {
-  HealthcareIcon,
-  CommercialIcon,
-  InstitutionalIcon,
-  ResidentialIcon,
-} from '@/components/ui/ProjectSectorIcons';
 
 export const metadata: Metadata = {
   title: "Vertical Transportation for Nairobi's Skyline",
@@ -92,14 +86,7 @@ const COMPLIANCE_ITEMS = [
   },
 ];
 
-const FEATURED_PROJECT_SECTOR_ICONS = {
-  Commercial: CommercialIcon,
-  Institutional: InstitutionalIcon,
-  Healthcare: HealthcareIcon,
-  Residential: ResidentialIcon,
-} as const;
-
-type FeaturedProjectSector = keyof typeof FEATURED_PROJECT_SECTOR_ICONS;
+type FeaturedProjectSector = 'Commercial' | 'Institutional' | 'Healthcare' | 'Residential';
 
 const FEATURED_PROJECTS: {
   sector: FeaturedProjectSector;
@@ -320,59 +307,36 @@ export default function Home() {
           </RevealOnScroll>
 
           <RevealOnScroll stagger className="mt-10">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {FEATURED_PROJECTS.map((project, i) => {
-                const SectorIcon = FEATURED_PROJECT_SECTOR_ICONS[project.sector];
-                return (
-                  <article
-                    key={project.name}
-                    className="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_1px_3px_rgba(10,22,40,0.1)] ring-1 ring-line-light transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_48px_-16px_rgba(10,22,40,0.3)]"
-                  >
-                    <div className="relative aspect-[4/3] w-full overflow-hidden">
-                      <Image
-                        src={project.image}
-                        alt={project.name}
-                        fill
-                        sizes="(min-width: 768px) 33vw, 100vw"
-                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                      />
-                      <div
-                        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                        style={{ backgroundImage: 'linear-gradient(180deg, rgba(10,22,40,0) 60%, rgba(10,22,40,.35) 100%)' }}
-                      />
-                    </div>
-                    <div className="relative flex flex-1 flex-col p-6 md:p-7">
-                      <span
-                        aria-hidden="true"
-                        className="pointer-events-none absolute -right-1 -top-4 select-none font-sans text-7xl font-bold leading-none text-navy-950/[0.045] md:-top-5 md:text-8xl"
-                      >
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-
-                      <div className="relative flex items-center gap-2.5">
-                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red/10 text-red transition-colors duration-300 group-hover:bg-red group-hover:text-white">
-                          <SectorIcon className="h-4 w-4" />
-                        </span>
-                        <span className="text-[0.68rem] font-bold uppercase tracking-[0.12em] text-red">
-                          {project.sector}
-                        </span>
-                      </div>
-
-                      <h3 className="relative mt-4 font-sans text-lg font-bold text-navy-950 md:text-xl">
-                        {project.name}
-                      </h3>
-                      <p className="relative mt-2 text-sm text-slate">{project.spec}</p>
-
-                      <div className="relative mt-auto flex items-center gap-4 pt-6">
-                        <span className="h-px flex-1 bg-line-light transition-colors duration-300 group-hover:bg-red/30" />
-                        <span className="font-sans text-[0.68rem] font-bold uppercase tracking-[0.1em] text-slate">
-                          Completed
-                        </span>
-                      </div>
-                    </div>
-                  </article>
-                );
-              })}
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              {FEATURED_PROJECTS.map((project, i) => (
+                <Link
+                  key={project.name}
+                  href="/projects"
+                  className="group overflow-hidden rounded-xl border border-line-light bg-white text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-xl md:text-left"
+                >
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      fill
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <span className="font-sans text-2xl font-bold text-red">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <p className="mt-2 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-red">
+                      {project.sector}
+                    </p>
+                    <h3 className="mt-1 font-sans text-lg font-bold text-navy-950 group-hover:text-red">
+                      {project.name}
+                    </h3>
+                    <p className="mt-2 text-sm text-slate">{project.spec}</p>
+                  </div>
+                </Link>
+              ))}
             </div>
           </RevealOnScroll>
         </Container>

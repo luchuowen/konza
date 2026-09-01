@@ -104,9 +104,9 @@ export default function MaintenancePage() {
       <section className="bg-paper">
         <Container className="py-16 md:py-20">
           <RevealOnScroll>
-            <div className="mx-auto text-center md:mx-0 md:text-left">
+            <div className="mx-auto text-center">
               <span className={eyebrow}>What&rsquo;s Included</span>
-              <h2 className="mx-auto mt-3 max-w-lg font-sans text-3xl font-bold text-navy-950 md:mx-0 md:text-4xl">
+              <h2 className="mx-auto mt-3 max-w-lg font-sans text-3xl font-bold text-navy-950 md:text-4xl">
                 No tiers to decode — just what your contract covers.
               </h2>
             </div>
