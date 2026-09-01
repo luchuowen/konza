@@ -48,9 +48,24 @@
 }
 
 .pre{opacity:0; transform:translateY(16px);}
-.reveal, .reveal-stagger{transition:opacity .6s ease, transform .6s ease;}
-.reveal-stagger.pre > *{opacity:0;}
-.reveal-stagger > *{transition:opacity .5s ease, transform .5s ease;}
+.reveal{transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);}
+
+/* Stagger containers: the parent itself is never visually hidden or shifted.
+   Every RevealOnScroll-stagger call site in this codebase wraps its actual
+   repeated cards one level down (a single "grid ..." — or similarly plain —
+   div is the direct child; the .map()'d cards are its children, i.e. the
+   stagger container's grandchildren), so the cascade targets that level.
+   A childless direct child (e.g. a decorative hairline divider some sections
+   place beside the grid) has no grandchildren and is simply unaffected. */
+.reveal-stagger.pre{opacity:1; transform:none;}
+.reveal-stagger.pre > * > *{opacity:0; transform:translateY(16px);}
+.reveal-stagger > * > *{transition:opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1);}
+.reveal-stagger > * > *:nth-child(2){transition-delay:.08s;}
+.reveal-stagger > * > *:nth-child(3){transition-delay:.16s;}
+.reveal-stagger > * > *:nth-child(4){transition-delay:.24s;}
+.reveal-stagger > * > *:nth-child(5){transition-delay:.32s;}
+.reveal-stagger > * > *:nth-child(6){transition-delay:.4s;}
+.reveal-stagger > * > *:nth-child(n+7){transition-delay:.4s;}
 
 @keyframes lift-car-pulse{
   0%, 100%{transform:translateY(0);}
@@ -59,4 +74,5 @@
 .lift-car{animation:lift-car-pulse 3.6s ease-in-out infinite;}
 @media (prefers-reduced-motion: reduce){
   .lift-car{animation:none;}
+  .reveal, .reveal-stagger > * > *{transition:none;}
 }

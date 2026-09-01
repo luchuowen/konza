@@ -1,12 +1,14 @@
 import { chromium } from 'playwright';
 import AxeBuilder from '@axe-core/playwright';
 
-const BASE = 'http://localhost:3100';
+const BASE = process.env.AUDIT_BASE_URL || 'http://localhost:3100';
 const ROUTES = [
   '/',
   '/about',
   '/services',
+  '/products',
   '/projects',
+  '/industries',
   '/maintenance',
   '/resources',
   '/resources/how-to-choose-the-right-elevator-for-your-building',

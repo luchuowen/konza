@@ -690,3 +690,54 @@ These are a separate future prompt the client will provide explicitly.
   build` + `next start`) across all 10 routes: zero console/page/network
   errors, zero horizontal overflow. `npm run build`, `npx tsc --noEmit` and
   `npm run lint` all clean.
+- **2026-09-01 — Pre-launch pass: audit, hidden dev credit, real staggered
+  scroll animation.** Ran a full pre-launch audit against a **production**
+  build across all 12 routes (the 10 pages plus both `/resources/[slug]`
+  articles): `npm run build`/`tsc`/`eslint` clean; `scripts/audit-axe.mjs`
+  and `scripts/audit-mobile.mjs` updated to include `/products` and
+  `/industries` (added since those scripts were last touched) and re-run —
+  zero critical a11y violations anywhere, the only serious-impact class
+  being the same `--red`-contrast issue every prior audit has already
+  flagged and deliberately left (locked palette token, a Konza/NAVAC design
+  call, not this session's to make); a full internal-link crawl (every
+  `href` on every page) found zero broken targets; zero console/page errors
+  or failed network requests across a full scroll-through of every route.
+  Found and fixed two real, non-locked-palette issues the mobile audit
+  surfaced: sub-44px tap targets on `/quote`'s "Prefer to Call?" phone link
+  (introduced in the same session's own WhatsAppInline rebuild — shipped at
+  `min-h-[24px]`) and on `/contact`'s phone/email links (pre-existing at
+  `min-h-[28px]`) — both brought to the project's standard `min-h-[44px]`.
+  **Hidden developer credit:** added `src/components/seo/DevCredit.tsx`,
+  rendered once in the root layout — emits a literal HTML comment
+  (`<!-- Developed by Owen Luchu (luchuowen@gmail.com) -->`) via a
+  deliberately minimal `dangerouslySetInnerHTML` (static string, no
+  interpolated/user data, so no injection risk) inside an empty `<div>`;
+  confirmed in the built page's raw HTML and confirmed invisible in every
+  rendered screenshot — view-source only, never part of the UI.
+  **Scroll-reveal audit found the coverage itself was already complete**
+  (every `<section>` on every page already wraps its content in
+  `RevealOnScroll`, confirmed by grep across all 12 route files) but a real
+  bug in the shared animation: `.reveal-stagger` promised a cascading
+  reveal but its CSS never actually staggered anything — every card in a
+  `RevealOnScroll stagger` grid faded in in lockstep, because the nth-child
+  timing rules a "stagger" name implies were simply never written, and the
+  transition lived on the immediate child of the stagger wrapper (the single
+  `<div className="grid ...">` produced by every call site) rather than on
+  the repeated `.map()`'d cards one level deeper. Fixed in
+  `src/styles/tokens.css`: incremental `transition-delay` (0/.08/.16/.24/
+  .32/.4s, capped at the 7th+ item) now targets `.reveal-stagger > * > *`
+  — the actual repeated-card level — confirmed by sampling computed
+  `opacity` on Home's "Our Work" cards at 80ms intervals mid-reveal and
+  seeing a real cascade (card 4 crossing 0.5 opacity ~80ms before card 5,
+  which crosses ~80ms before card 6, etc.), not the previous simultaneous
+  fade. Also upgraded the easing on both `.reveal` and `.reveal-stagger`
+  from the plain CSS `ease` keyword to `cubic-bezier(.22,1,.36,1)` (a
+  smoother "premium" ease-out feel used site-wide already for card hover
+  transforms) and added a `prefers-reduced-motion` rule disabling these
+  transitions entirely for users who've asked for less motion — a gap the
+  fail-safe pattern's `.pre`/observe timing already covered for content
+  visibility, but the transition itself was never previously gated on that
+  preference. No color, spacing, or typography token touched; no page's
+  JSX changed for this part, only the shared CSS. Re-ran both audit scripts
+  and the full link/console/broken-request crawl after every fix in this
+  pass — all still clean.
