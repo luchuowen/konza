@@ -18,8 +18,6 @@ type ServiceItem = {
   title: string;
   tag: string;
   body: string;
-  ctaLabel: string;
-  ctaHref: string;
   icon: ReactNode;
 };
 
@@ -45,8 +43,6 @@ const SERVICES: ServiceItem[] = [
     title: 'Installation',
     tag: 'New Builds & Developments',
     body: 'We supply and install elevators and escalators for new buildings — passenger lifts, freight lifts, home lifts, escalators, moving walkways and more, managing every stage from delivery to final commissioning.',
-    ctaLabel: 'Request an Installation Quote',
-    ctaHref: '/quote',
     icon: <ElevatorIcon className="h-full w-full" />,
   },
   {
@@ -54,8 +50,6 @@ const SERVICES: ServiceItem[] = [
     title: 'Modernization',
     tag: 'Commercial & Institutional Buildings',
     body: 'We upgrade existing elevator and escalator systems — improving reliability and bringing older installations up to current standards, with minimal disruption to an occupied building.',
-    ctaLabel: 'Request a Modernization Quote',
-    ctaHref: '/quote',
     icon: <RefreshIcon className="h-full w-full" />,
   },
   {
@@ -63,8 +57,6 @@ const SERVICES: ServiceItem[] = [
     title: 'Maintenance',
     tag: 'All Building Types',
     body: 'Scheduled inspection and servicing to keep elevators and escalators running safely and reliably, with a maintenance-frequency schedule tailored to how heavily each system is used.',
-    ctaLabel: 'Request a Maintenance Quote',
-    ctaHref: '/quote',
     icon: <WrenchIcon className="h-full w-full" />,
   },
   {
@@ -72,8 +64,6 @@ const SERVICES: ServiceItem[] = [
     title: 'Repair',
     tag: 'All Building Types',
     body: 'Cost-effective repairs focused on minimizing downtime. Every repair engagement starts with a free condition report and estimate, so you know exactly what needs fixing before we begin.',
-    ctaLabel: 'Request a Free Condition Report',
-    ctaHref: '/quote',
     icon: <ClipboardCheckIcon className="h-full w-full" />,
   },
   {
@@ -81,8 +71,6 @@ const SERVICES: ServiceItem[] = [
     title: 'Construction & Contracting',
     tag: 'Developers & Contractors',
     body: 'General, civil, mechanical and electrical construction services delivered alongside our vertical-transportation work, for projects that need both under one contractor.',
-    ctaLabel: 'Discuss a Contracting Project',
-    ctaHref: '/quote',
     icon: <BuildingIcon className="h-full w-full" />,
   },
   {
@@ -90,8 +78,6 @@ const SERVICES: ServiceItem[] = [
     title: 'Equipment & Plant Hire',
     tag: 'Contractors & Developers',
     body: 'When our vehicles and plant equipment aren’t in use on our own contracts, we make them available for hire — a practical option for contractors who need equipment on short notice.',
-    ctaLabel: 'Enquire About Equipment Hire',
-    ctaHref: '/contact',
     icon: <TruckIcon className="h-full w-full" />,
   },
 ];
@@ -124,7 +110,7 @@ export default function ServicesPage() {
           <RevealOnScroll>
             <div className="mx-auto text-center md:mx-0 md:text-left">
               <span className={eyebrow}>Services</span>
-              <h1 className="mx-auto mt-4 max-w-2xl font-sans text-4xl font-bold leading-[1.1] text-white md:mx-0 md:text-5xl">
+              <h1 className="mx-auto mt-4 max-w-2xl font-sans text-3xl font-medium leading-[1.15] text-white md:mx-0 md:text-4xl">
                 Installation, construction, equipment hire, maintenance, repair and modernization.
               </h1>
               <p className="mx-auto mt-6 max-w-xl text-base text-slate-dark md:mx-0 md:text-lg">
@@ -148,8 +134,6 @@ export default function ServicesPage() {
                   label={item.title}
                   body={item.body}
                   icon={item.icon}
-                  href={item.ctaHref}
-                  ctaLabel={item.ctaLabel}
                 />
               ))}
             </div>
@@ -160,9 +144,9 @@ export default function ServicesPage() {
       <section className="bg-navy-950">
         <Container className="py-20">
           <RevealOnScroll>
-            <div className="mx-auto text-center md:mx-0 md:text-left">
+            <div className="mx-auto max-w-lg text-center">
               <span className={eyebrow}>How an Engagement Works</span>
-              <h2 className="mx-auto mt-3 max-w-lg font-sans text-3xl font-bold text-white md:mx-0 md:text-4xl">
+              <h2 className="mt-3 font-sans text-3xl font-bold text-white md:text-4xl">
                 From free condition report to scheduled work.
               </h2>
             </div>
@@ -173,18 +157,16 @@ export default function ServicesPage() {
               aria-hidden="true"
               className="pointer-events-none absolute left-0 right-0 top-6 hidden h-px bg-gradient-to-r from-red/40 via-white/15 to-transparent md:block"
             />
-            <div className="grid grid-cols-1 gap-10 text-center md:grid-cols-3 md:text-left">
+            <div className="grid grid-cols-1 gap-10 text-center md:grid-cols-3">
               {ENGAGEMENT_STEPS.map((step) => (
-                <div key={step.n} className="relative">
-                  <div className="relative z-10 mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-red/50 bg-navy-950 font-sans text-base font-bold text-red md:mx-0">
+                <div key={step.n} className="relative mx-auto flex max-w-xs flex-col items-center">
+                  <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border border-red/50 bg-navy-950 font-sans text-base font-bold text-red">
                     {step.n}
                   </div>
                   <p className="mt-4 text-xs font-bold uppercase tracking-[0.1em] text-white">
                     {step.label}
                   </p>
-                  <p className="mx-auto mt-2 max-w-xs text-sm text-slate-dark md:mx-0">
-                    {step.body}
-                  </p>
+                  <p className="mt-2 text-sm text-slate-dark">{step.body}</p>
                 </div>
               ))}
             </div>

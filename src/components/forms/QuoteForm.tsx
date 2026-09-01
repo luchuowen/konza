@@ -169,7 +169,7 @@ export function QuoteForm() {
         />
         <div className="sm:col-span-2">
           <TextField
-            label="Email (optional)"
+            label="Email"
             type="email"
             inputMode="email"
             autoComplete="email"
@@ -179,7 +179,7 @@ export function QuoteForm() {
         </div>
         <div className="sm:col-span-2">
           <TextAreaField
-            label="Message (optional)"
+            label="Message"
             {...field('message')}
             onChange={(e) => handleChange('message', e.target.value)}
           />

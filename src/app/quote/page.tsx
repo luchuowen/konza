@@ -61,7 +61,7 @@ export default function QuotePage() {
           <RevealOnScroll stagger>
             <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
               {PROOF_STATS.map((stat) => (
-                <div key={stat.label} className="text-center md:text-left">
+                <div key={stat.label} className="text-center">
                   <p className="font-sans text-3xl font-bold text-white md:text-4xl">{stat.value}</p>
                   <p className="mt-1 text-sm text-slate-dark">{stat.label}</p>
                 </div>

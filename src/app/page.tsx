@@ -7,8 +7,6 @@ import { Carousel, type CarouselSlide } from '@/components/ui/Carousel';
 import { RevealOnScroll } from '@/components/ui/RevealOnScroll';
 import { HeroBackground } from '@/components/ui/HeroBackground';
 import { LiftShaftVideo } from '@/components/ui/LiftShaftVideo';
-import { FeatureCard } from '@/components/ui/FeatureCard';
-import { ShieldCheckIcon, BadgeCheckIcon, TruckIcon, WrenchIcon } from '@/components/ui/FeatureIcons';
 import { IMAGES, projectImageSrc } from '@/lib/images';
 import { HomeJsonLd } from '@/components/seo/HomeJsonLd';
 
@@ -69,30 +67,33 @@ const COMPLIANCE_ITEMS = [
   {
     n: '01',
     label: 'Kenyan Standards',
-    icon: <ShieldCheckIcon className="h-full w-full" />,
     body: 'We design and install elevators in line with KS ISO 8100 and current KEBS requirements.',
   },
   {
     n: '02',
     label: 'Authorized Fuji Distributor',
-    icon: <BadgeCheckIcon className="h-full w-full" />,
     body: 'We are an authorized Fuji Elevator distributor in Kenya, officially supplied and supported by Fuji.',
   },
   {
     n: '03',
     label: 'Delivery & Installation',
-    icon: <TruckIcon className="h-full w-full" />,
     body: 'We coordinate delivery, site preparation and elevator installation throughout every stage of the project.',
   },
   {
     n: '04',
     label: 'Repair & Maintenance',
-    icon: <WrenchIcon className="h-full w-full" />,
     body: 'We inspect, repair and maintain elevators, starting with a free condition report and quotation.',
   },
 ];
 
-const FEATURED_PROJECTS = [
+type FeaturedProjectSector = 'Commercial' | 'Institutional' | 'Healthcare' | 'Residential';
+
+const FEATURED_PROJECTS: {
+  sector: FeaturedProjectSector;
+  name: string;
+  spec: string;
+  image: string;
+}[] = [
   {
     sector: 'Commercial',
     name: 'Junction Trade Centre',
@@ -250,18 +251,23 @@ export default function Home() {
         <div className="absolute inset-0 bg-navy-950/40" />
       </div>
 
-      <section className="bg-paper">
-        <Container className="py-16 md:py-20">
+      <section className="bg-white">
+        <Container className="py-14">
           <RevealOnScroll stagger>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
-              {COMPLIANCE_ITEMS.map((item) => (
-                <FeatureCard
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+              {COMPLIANCE_ITEMS.map((item, i) => (
+                <div
                   key={item.n}
-                  n={item.n}
-                  label={item.label}
-                  body={item.body}
-                  icon={item.icon}
-                />
+                  className={`text-center md:pr-4 md:text-left ${
+                    i < COMPLIANCE_ITEMS.length - 1 ? 'md:border-r md:border-line-light' : ''
+                  }`}
+                >
+                  <span className="font-sans text-2xl font-bold text-red">{item.n}</span>
+                  <p className="mt-2 text-xs font-bold uppercase tracking-[0.1em] text-navy-950">
+                    {item.label}
+                  </p>
+                  <p className="mt-2 text-sm text-slate">{item.body}</p>
+                </div>
               ))}
             </div>
           </RevealOnScroll>
@@ -295,17 +301,18 @@ export default function Home() {
                 href="/projects"
                 className="min-h-[44px] shrink-0 text-sm font-semibold text-red hover:text-maroon"
               >
-                View all 50 →
+                View all projects →
               </Link>
             </div>
           </RevealOnScroll>
 
           <RevealOnScroll stagger className="mt-10">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
               {FEATURED_PROJECTS.map((project, i) => (
-                <article
+                <Link
                   key={project.name}
-                  className="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_1px_3px_rgba(10,22,40,0.1)] ring-1 ring-line-light transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_48px_-16px_rgba(10,22,40,0.3)]"
+                  href="/projects"
+                  className="group overflow-hidden rounded-xl border border-line-light bg-white text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-xl md:text-left"
                 >
                   <div className="relative aspect-[4/3] w-full overflow-hidden">
                     <Image
@@ -313,25 +320,22 @@ export default function Home() {
                       alt={project.name}
                       fill
                       sizes="(min-width: 768px) 33vw, 100vw"
-                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                     />
-                    <div
-                      className="pointer-events-none absolute inset-0"
-                      style={{ backgroundImage: 'linear-gradient(180deg, rgba(10,22,40,.05) 0%, rgba(10,22,40,.55) 100%)' }}
-                    />
-                    <span className="absolute left-4 top-4 rounded-full bg-navy-950/70 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.12em] text-white backdrop-blur-sm">
-                      {project.sector}
-                    </span>
-                    <span className="absolute bottom-4 right-4 font-sans text-xs font-bold text-white/70">
+                  </div>
+                  <div className="p-6">
+                    <span className="font-sans text-2xl font-bold text-red">
                       {String(i + 1).padStart(2, '0')}
                     </span>
+                    <p className="mt-2 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-red">
+                      {project.sector}
+                    </p>
+                    <h3 className="mt-1 font-sans text-lg font-bold text-navy-950 group-hover:text-red">
+                      {project.name}
+                    </h3>
+                    <p className="mt-2 text-sm text-slate">{project.spec}</p>
                   </div>
-                  <div className="flex flex-1 flex-col p-6 text-center">
-                    <h3 className="font-sans text-lg font-bold text-navy-950">{project.name}</h3>
-                    <span className="mx-auto mt-3 block h-[2px] w-8 bg-red transition-all duration-300 group-hover:w-14" />
-                    <p className="mt-3 text-sm text-slate">{project.spec}</p>
-                  </div>
-                </article>
+                </Link>
               ))}
             </div>
           </RevealOnScroll>
@@ -342,7 +346,7 @@ export default function Home() {
         <Container className="py-20">
           <RevealOnScroll className="text-center">
             <span className={eyebrow}>What Clients Say</span>
-            <h2 className="mx-auto mt-3 max-w-lg font-sans text-3xl font-bold text-white md:text-4xl">
+            <h2 className="mx-auto mt-2 max-w-md font-sans text-xl font-semibold text-white md:text-2xl">
               Trusted by developers, institutions and homeowners.
             </h2>
           </RevealOnScroll>
@@ -357,7 +361,7 @@ export default function Home() {
                   <span aria-hidden="true" className="font-sans text-3xl leading-none text-red">
                     &ldquo;
                   </span>
-                  <blockquote className="mt-2 flex-1 font-serif text-sm italic leading-relaxed text-slate-dark">
+                  <blockquote className="mt-2 flex-1 font-serif text-base italic leading-relaxed text-slate-dark">
                     {t.quote}
                   </blockquote>
                   <figcaption className="mt-6 border-t border-navy-800 pt-4">

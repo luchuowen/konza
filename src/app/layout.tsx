@@ -3,7 +3,6 @@ import { Geist, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { WhatsAppWidget } from "@/components/layout/WhatsAppWidget";
 import { MobileNavProvider } from "@/lib/mobile-nav-context";
 import { LocalBusinessJsonLd } from "@/components/seo/LocalBusinessJsonLd";
 
@@ -58,7 +57,6 @@ export default function RootLayout({
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
-          <WhatsAppWidget />
         </MobileNavProvider>
       </body>
     </html>

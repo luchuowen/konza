@@ -1,5 +1,6 @@
-import { COMPANY_INFO, SOCIAL_LINKS } from '@/lib/constants';
-import { FacebookIcon, InstagramIcon, LinkedInIcon, WhatsAppIcon } from '@/components/ui/SocialIcons';
+import { SOCIAL_LINKS } from '@/lib/constants';
+import { FacebookIcon, InstagramIcon, LinkedInIcon } from '@/components/ui/SocialIcons';
+import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 
 const iconLinkClasses =
   'flex h-11 w-11 items-center justify-center rounded-full border border-navy-800 bg-navy-900 text-slate-dark transition-colors hover:border-red hover:text-red';
@@ -28,8 +29,6 @@ function SocialIcon({
 }
 
 export function SocialLinksRow({ className = '' }: { className?: string }) {
-  const whatsappHref = `https://wa.me/${COMPANY_INFO.whatsappNumber.replace(/[^\d]/g, '')}`;
-
   return (
     <div className={`flex flex-wrap gap-3 ${className}`}>
       <SocialIcon href={SOCIAL_LINKS.facebook} label="Facebook">
@@ -41,9 +40,7 @@ export function SocialLinksRow({ className = '' }: { className?: string }) {
       <SocialIcon href={SOCIAL_LINKS.linkedin} label="LinkedIn">
         <LinkedInIcon className="h-5 w-5" />
       </SocialIcon>
-      <SocialIcon href={whatsappHref} label="WhatsApp">
-        <WhatsAppIcon className="h-5 w-5" />
-      </SocialIcon>
+      <WhatsAppButton />
     </div>
   );
 }
