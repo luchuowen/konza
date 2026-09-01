@@ -9,6 +9,12 @@ import { HeroBackground } from '@/components/ui/HeroBackground';
 import { LiftShaftVideo } from '@/components/ui/LiftShaftVideo';
 import { IMAGES, projectImageSrc } from '@/lib/images';
 import { HomeJsonLd } from '@/components/seo/HomeJsonLd';
+import {
+  HealthcareIcon,
+  CommercialIcon,
+  InstitutionalIcon,
+  ResidentialIcon,
+} from '@/components/ui/ProjectSectorIcons';
 
 export const metadata: Metadata = {
   title: "Vertical Transportation for Nairobi's Skyline",
@@ -86,7 +92,21 @@ const COMPLIANCE_ITEMS = [
   },
 ];
 
-const FEATURED_PROJECTS = [
+const FEATURED_PROJECT_SECTOR_ICONS = {
+  Commercial: CommercialIcon,
+  Institutional: InstitutionalIcon,
+  Healthcare: HealthcareIcon,
+  Residential: ResidentialIcon,
+} as const;
+
+type FeaturedProjectSector = keyof typeof FEATURED_PROJECT_SECTOR_ICONS;
+
+const FEATURED_PROJECTS: {
+  sector: FeaturedProjectSector;
+  name: string;
+  spec: string;
+  image: string;
+}[] = [
   {
     sector: 'Commercial',
     name: 'Junction Trade Centre',
@@ -294,44 +314,65 @@ export default function Home() {
                 href="/projects"
                 className="min-h-[44px] shrink-0 text-sm font-semibold text-red hover:text-maroon"
               >
-                View all 50 →
+                View all projects →
               </Link>
             </div>
           </RevealOnScroll>
 
           <RevealOnScroll stagger className="mt-10">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {FEATURED_PROJECTS.map((project, i) => (
-                <article
-                  key={project.name}
-                  className="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_1px_3px_rgba(10,22,40,0.1)] ring-1 ring-line-light transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_48px_-16px_rgba(10,22,40,0.3)]"
-                >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden">
-                    <Image
-                      src={project.image}
-                      alt={project.name}
-                      fill
-                      sizes="(min-width: 768px) 33vw, 100vw"
-                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                    />
-                    <div
-                      className="pointer-events-none absolute inset-0"
-                      style={{ backgroundImage: 'linear-gradient(180deg, rgba(10,22,40,.05) 0%, rgba(10,22,40,.55) 100%)' }}
-                    />
-                    <span className="absolute left-4 top-4 rounded-full bg-navy-950/70 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.12em] text-white backdrop-blur-sm">
-                      {project.sector}
-                    </span>
-                    <span className="absolute bottom-4 right-4 font-sans text-xs font-bold text-white/70">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                  </div>
-                  <div className="flex flex-1 flex-col p-6 text-center">
-                    <h3 className="font-sans text-lg font-bold text-navy-950">{project.name}</h3>
-                    <span className="mx-auto mt-3 block h-[2px] w-8 bg-red transition-all duration-300 group-hover:w-14" />
-                    <p className="mt-3 text-sm text-slate">{project.spec}</p>
-                  </div>
-                </article>
-              ))}
+              {FEATURED_PROJECTS.map((project, i) => {
+                const SectorIcon = FEATURED_PROJECT_SECTOR_ICONS[project.sector];
+                return (
+                  <article
+                    key={project.name}
+                    className="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-[0_1px_3px_rgba(10,22,40,0.1)] ring-1 ring-line-light transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_48px_-16px_rgba(10,22,40,0.3)]"
+                  >
+                    <div className="relative aspect-[4/3] w-full overflow-hidden">
+                      <Image
+                        src={project.image}
+                        alt={project.name}
+                        fill
+                        sizes="(min-width: 768px) 33vw, 100vw"
+                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                      />
+                      <div
+                        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                        style={{ backgroundImage: 'linear-gradient(180deg, rgba(10,22,40,0) 60%, rgba(10,22,40,.35) 100%)' }}
+                      />
+                    </div>
+                    <div className="relative flex flex-1 flex-col p-6 md:p-7">
+                      <span
+                        aria-hidden="true"
+                        className="pointer-events-none absolute -right-1 -top-4 select-none font-sans text-7xl font-bold leading-none text-navy-950/[0.045] md:-top-5 md:text-8xl"
+                      >
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+
+                      <div className="relative flex items-center gap-2.5">
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red/10 text-red transition-colors duration-300 group-hover:bg-red group-hover:text-white">
+                          <SectorIcon className="h-4 w-4" />
+                        </span>
+                        <span className="text-[0.68rem] font-bold uppercase tracking-[0.12em] text-red">
+                          {project.sector}
+                        </span>
+                      </div>
+
+                      <h3 className="relative mt-4 font-sans text-lg font-bold text-navy-950 md:text-xl">
+                        {project.name}
+                      </h3>
+                      <p className="relative mt-2 text-sm text-slate">{project.spec}</p>
+
+                      <div className="relative mt-auto flex items-center gap-4 pt-6">
+                        <span className="h-px flex-1 bg-line-light transition-colors duration-300 group-hover:bg-red/30" />
+                        <span className="font-sans text-[0.68rem] font-bold uppercase tracking-[0.1em] text-slate">
+                          Completed
+                        </span>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </RevealOnScroll>
         </Container>
@@ -341,7 +382,7 @@ export default function Home() {
         <Container className="py-20">
           <RevealOnScroll className="text-center">
             <span className={eyebrow}>What Clients Say</span>
-            <h2 className="mx-auto mt-3 max-w-lg font-sans text-3xl font-bold text-white md:text-4xl">
+            <h2 className="mx-auto mt-2 max-w-md font-sans text-xl font-semibold text-white md:text-2xl">
               Trusted by developers, institutions and homeowners.
             </h2>
           </RevealOnScroll>
@@ -356,7 +397,7 @@ export default function Home() {
                   <span aria-hidden="true" className="font-sans text-3xl leading-none text-red">
                     &ldquo;
                   </span>
-                  <blockquote className="mt-2 flex-1 font-serif text-sm italic leading-relaxed text-slate-dark">
+                  <blockquote className="mt-2 flex-1 font-serif text-base italic leading-relaxed text-slate-dark">
                     {t.quote}
                   </blockquote>
                   <figcaption className="mt-6 border-t border-navy-800 pt-4">
