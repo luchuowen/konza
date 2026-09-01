@@ -24,4 +24,20 @@ runConfig:
 # SALES_NOTIFICATION_EMAIL is left unset per the deploy instructions — no
 # email provider is chosen yet (src/lib/notify-lead-email.ts is a TODO stub
 # that never blocks a lead write when unset).
-env: []
+#
+# NEXT_PUBLIC_SITE_URL points src/lib/constants.ts's SITE_URL (and therefore
+# metadataBase, og:image, canonical/sitemap URLs) at whichever domain is
+# actually live. It must be set at BUILD time too, not just RUNTIME: the
+# opengraph-image routes are statically prerendered, so a request-time-only
+# value would still bake in the wrong URL. Set to the current preview domain
+# — social crawlers (WhatsApp, etc.) fetch og:image as an absolute URL and
+# won't fall back gracefully to a domain that isn't live yet, unlike
+# middleware.ts's PRODUCTION_HOST check, which is intentionally unrelated to
+# this and stays pointed at the eventual real domain. Update this value (not
+# the code) once konzaelevators.co.ke actually cuts over.
+env:
+  - variable: NEXT_PUBLIC_SITE_URL
+    value: "https://konza.navac.co.ke"
+    availability:
+      - BUILD
+      - RUNTIME

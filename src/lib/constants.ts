@@ -1,6 +1,14 @@
 export const SITE_NAME = "Konza Elevators & Escalator Co. Ltd";
 
-export const SITE_URL = "https://konzaelevators.co.ke";
+// Environment-driven per docs/BLUEPRINT.md ("use relative/environment-driven
+// URLs so the eventual cutover to the client's own domain is a config
+// change, not a rebuild") — NEXT_PUBLIC_SITE_URL is set in apphosting.yaml to
+// whichever domain is actually live (konza.navac.co.ke today). Social
+// crawlers (WhatsApp, etc.) fetch absolute og:image URLs directly and don't
+// forgive a domain that doesn't resolve yet, so this must point at the real
+// live host, not the eventual one. Flip the env var to
+// https://konzaelevators.co.ke there — no code change — once DNS cuts over.
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://konzaelevators.co.ke";
 
 export const BRAND_TAGLINE =
   "Konza Elevators is a Kenyan company providing elevator and escalator supply, installation, maintenance, repair and modernization services. Established in 2013, we are an authorized Fuji Elevator distributor with 50 completed projects.";
