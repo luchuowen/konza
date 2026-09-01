@@ -110,7 +110,7 @@ export default function ServicesPage() {
           <RevealOnScroll>
             <div className="mx-auto text-center md:mx-0 md:text-left">
               <span className={eyebrow}>Services</span>
-              <h1 className="mx-auto mt-4 max-w-2xl font-sans text-4xl font-bold leading-[1.1] text-white md:mx-0 md:text-5xl">
+              <h1 className="mx-auto mt-4 max-w-2xl font-sans text-3xl font-medium leading-[1.15] text-white md:mx-0 md:text-4xl">
                 Installation, construction, equipment hire, maintenance, repair and modernization.
               </h1>
               <p className="mx-auto mt-6 max-w-xl text-base text-slate-dark md:mx-0 md:text-lg">
