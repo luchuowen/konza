@@ -11,7 +11,7 @@ const WHY_WHATSAPP = [
   'Keep the conversation going after you submit the form.',
 ];
 
-// Inline, always-visible counterpart to the floating WhatsAppWidget — per
+// Inline, always-visible WhatsApp panel for the Quote page sidebar — per
 // docs/KONZA_SPEC.md §7's "in-page panel first" rule, this still only opens
 // wa.me from its own explicit Send button, never on load or on a container
 // click. Laid out as a flex column with a flex-1 "Why WhatsApp" filler so it
