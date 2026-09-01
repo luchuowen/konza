@@ -89,20 +89,22 @@ export function WhatsAppInline({
             ))}
           </ul>
 
-          <div className="mt-8 flex flex-1 flex-col justify-end border-t border-line-light pt-6">
-            <p className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">
-              Prefer to Call?
-            </p>
-            <a
-              href={`tel:${COMPANY_INFO.phones[0].replace(/\s/g, '')}`}
-              className="mt-3 flex min-h-[44px] items-center gap-3 text-navy-950 transition-colors hover:text-red"
-            >
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-red/10 text-red">
-                <PhoneIcon className="h-4 w-4" />
-              </span>
-              <span className="font-sans text-base font-bold">{COMPANY_INFO.phones[0]}</span>
-            </a>
-            <p className="mt-2 text-sm text-slate">{COMPANY_INFO.hours}</p>
+          <div className="mt-8 flex items-center gap-4 rounded-xl border border-line-light bg-paper p-5">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-red/10 text-red">
+              <PhoneIcon className="h-5 w-5" />
+            </span>
+            <div>
+              <p className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">
+                Prefer to Call?
+              </p>
+              <a
+                href={`tel:${COMPANY_INFO.phones[0].replace(/\s/g, '')}`}
+                className="mt-1 flex min-h-[24px] items-center font-sans text-base font-bold text-navy-950 transition-colors hover:text-red"
+              >
+                {COMPANY_INFO.phones[0]}
+              </a>
+              <p className="mt-1 text-sm text-slate">{COMPANY_INFO.hours}</p>
+            </div>
           </div>
         </div>
       )}

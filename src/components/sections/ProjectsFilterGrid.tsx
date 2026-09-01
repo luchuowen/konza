@@ -82,16 +82,16 @@ export function ProjectsFilterGrid() {
               return (
                 <article
                   key={project.name}
-                  className="group relative flex flex-col overflow-hidden rounded-2xl border border-navy-800 bg-navy-950 transition-all duration-300 hover:-translate-y-1.5 hover:border-red/50 hover:shadow-[0_24px_48px_-16px_rgba(10,22,40,0.4)]"
+                  className="group overflow-hidden rounded-xl border border-line-light bg-white text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-xl md:text-left"
                 >
-                  <div className="relative m-3 aspect-[4/3] overflow-hidden rounded-lg md:m-4 md:mb-3">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
                     {project.image ? (
                       <Image
                         src={projectImageSrc(project.image)}
                         alt={project.name}
                         fill
                         sizes="(min-width: 768px) 33vw, 100vw"
-                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                       />
                     ) : (
                       <div className="ph-projects absolute inset-0 flex items-center justify-center">
@@ -99,29 +99,19 @@ export function ProjectsFilterGrid() {
                       </div>
                     )}
                   </div>
-
-                  <div className="relative flex flex-1 flex-col px-5 pb-6 pt-1 md:px-6">
-                    <span
-                      aria-hidden="true"
-                      className="pointer-events-none absolute -right-1 -top-3 select-none font-sans text-6xl font-bold leading-none text-white/[0.05] md:-top-4 md:text-7xl"
-                    >
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-
-                    <div className="relative flex items-center gap-3">
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red/15 text-red">
-                        <SectorIcon className="h-[1.1rem] w-[1.1rem]" />
+                  <div className="p-6">
+                    <div className="flex items-baseline justify-center gap-2 md:justify-start">
+                      <span className="font-sans text-2xl font-bold text-red">
+                        {String(i + 1).padStart(2, '0')}
                       </span>
-                      <span className="text-[0.68rem] font-bold uppercase tracking-[0.1em] text-red">
+                      <span className="text-[0.65rem] font-bold uppercase tracking-[0.1em] text-red/70">
                         {SECTOR_LABELS[project.sector]}
                       </span>
                     </div>
-
-                    <h3 className="relative mt-3 font-sans text-lg font-bold text-white">
+                    <h3 className="mt-2 font-sans text-lg font-bold text-navy-950 group-hover:text-red">
                       {project.name}
                     </h3>
-                    <span className="relative mt-2 block h-[2px] w-8 bg-red/60 transition-all duration-300 group-hover:w-14 group-hover:bg-red" />
-                    <p className="relative mt-3 flex-1 text-sm text-slate-dark">{project.detail}</p>
+                    <p className="mt-2 text-sm text-slate">{project.detail}</p>
                   </div>
                 </article>
               );

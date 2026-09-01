@@ -31,7 +31,7 @@ export default function ResourcesPage() {
           <RevealOnScroll>
             <div className="mx-auto text-center md:mx-0 md:text-left">
               <span className={eyebrow}>Resources</span>
-              <h1 className="mx-auto mt-4 max-w-2xl font-sans text-4xl font-bold leading-[1.1] text-white md:mx-0 md:text-5xl">
+              <h1 className="mx-auto mt-4 max-w-2xl font-sans text-3xl font-medium leading-[1.15] text-white md:mx-0 md:text-4xl">
                 Guides for choosing, maintaining and building with elevators and escalators.
               </h1>
               <p className="mx-auto mt-6 max-w-xl text-base text-slate-dark md:mx-0 md:text-lg">
@@ -56,10 +56,16 @@ export default function ResourcesPage() {
                   <div className="ph-projects absolute inset-0" />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-950/95 via-navy-950/40 to-navy-950/5 transition-colors group-hover:from-navy-950" />
                   <div className="absolute inset-x-0 bottom-0 translate-y-2 p-5 text-center transition-transform duration-300 group-hover:translate-y-0">
-                    <span className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">
+                    <span
+                      className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red"
+                      style={{ textShadow: '0 1px 6px rgba(10,22,40,.9)' }}
+                    >
                       {article.category}
                     </span>
-                    <h2 className="mt-1 font-sans text-lg font-bold text-white">
+                    <h2
+                      className="mt-1 font-sans text-lg font-bold text-white"
+                      style={{ textShadow: '0 1px 6px rgba(10,22,40,.9)' }}
+                    >
                       {article.title}
                     </h2>
                     <p className="mt-2 text-sm text-slate-dark">{article.excerpt}</p>

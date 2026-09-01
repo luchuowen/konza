@@ -62,11 +62,19 @@ export function Carousel({
         {active.image && (
           <Image src={active.image} alt={active.title} fill className="object-cover" />
         )}
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-950/90 to-transparent p-4">
-          <span className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red">
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-950/95 via-navy-950/75 to-transparent px-4 pb-4 pt-10">
+          <span
+            className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-red"
+            style={{ textShadow: '0 1px 6px rgba(10,22,40,.9)' }}
+          >
             {active.tag}
           </span>
-          <p className="mt-1 font-sans text-lg font-bold text-white">{active.title}</p>
+          <p
+            className="mt-1 font-sans text-lg font-medium text-white"
+            style={{ textShadow: '0 1px 6px rgba(10,22,40,.9)' }}
+          >
+            {active.title}
+          </p>
         </div>
       </div>
 

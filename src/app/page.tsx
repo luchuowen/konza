@@ -11,7 +11,7 @@ import { IMAGES, projectImageSrc } from '@/lib/images';
 import { HomeJsonLd } from '@/components/seo/HomeJsonLd';
 
 export const metadata: Metadata = {
-  title: "Vertical Transportation for Nairobi's Skyline",
+  title: 'Elevators & Escalators for Every Building in Nairobi',
   description:
     "Nairobi's authorized Fuji Elevator distributor since 2013 — 13 years, 50 completed installations, vertical transportation for the city's next skyline.",
   alternates: {
@@ -51,8 +51,23 @@ const PROJECT_SLIDES: CarouselSlide[] = [
 ];
 
 const TRUST_SLIDES: CarouselSlide[] = [
-  { tag: 'Trusted By', title: 'Radiant Group of Hospitals' },
-  { tag: 'Trusted By', title: 'Greenhills Investment Ltd' },
+  {
+    tag: 'Trusted By',
+    title: 'Radiant Group of Hospitals',
+    image: projectImageSrc('Project — Radiant Hospital.jpg'),
+  },
+  {
+    // Sanjay Shah, the quoted Greenhills Investment Ltd testimonial, is
+    // Director of Greenhills — the developer behind Village Market
+    // (docs/KONZA_SPEC.md §2's testimonial attribution) — same real
+    // installation, not a substitute photo.
+    tag: 'Trusted By',
+    title: 'Greenhills Investment Ltd',
+    image: projectImageSrc('Project — Village Market.jpg'),
+  },
+  // Harvest Family Church Ministries has no matching photo anywhere in
+  // public/images/ — left on the .ph-trust placeholder rather than
+  // attaching an unrelated real building's photo to their name.
   { tag: 'Trusted By', title: 'Harvest Family Church Ministries' },
 ];
 
@@ -324,13 +339,15 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-6">
-                    <span className="font-sans text-2xl font-bold text-red">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <p className="mt-2 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-red">
-                      {project.sector}
-                    </p>
-                    <h3 className="mt-1 font-sans text-lg font-bold text-navy-950 group-hover:text-red">
+                    <div className="flex items-baseline justify-center gap-2 md:justify-start">
+                      <span className="font-sans text-2xl font-bold text-red">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span className="text-[0.65rem] font-bold uppercase tracking-[0.1em] text-red/70">
+                        {project.sector}
+                      </span>
+                    </div>
+                    <h3 className="mt-2 font-sans text-lg font-bold text-navy-950 group-hover:text-red">
                       {project.name}
                     </h3>
                     <p className="mt-2 text-sm text-slate">{project.spec}</p>

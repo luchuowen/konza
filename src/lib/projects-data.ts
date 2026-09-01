@@ -33,16 +33,19 @@ export const PROJECTS: Project[] = [
     name: 'Jesse Kay Hospital, Roysambu',
     sector: 'healthcare',
     detail: '2× 5-stop elevators, Delfar.',
+    image: 'Project — Jesse Kay Hospital.jpg',
   },
   {
     name: 'Ruai Family Hospital',
     sector: 'healthcare',
     detail: '3× 7-stop elevators, Delfar.',
+    image: 'Project — Ruai Family Hospital.jpg',
   },
   {
     name: 'Halisi Family Hospital, Kitengela',
     sector: 'healthcare',
     detail: 'Elevator installation for a private hospital in Kitengela.',
+    image: 'Project — Halisi Family Hospital Kitengela.jpg',
   },
   {
     name: 'Village Market',
@@ -60,11 +63,13 @@ export const PROJECTS: Project[] = [
     name: 'Ruai Mega Mall',
     sector: 'commercial',
     detail: 'Elevator installation for a retail mall development.',
+    image: 'Project — Ruai Mega Mall.jpg',
   },
   {
     name: 'Kajiado Law Courts',
     sector: 'institutional',
     detail: '2× 5-stop elevators, Fuji.',
+    image: 'Project — Kajiado Law Courts.jpg',
   },
   {
     name: 'MPESA Foundation Academy',
@@ -76,6 +81,7 @@ export const PROJECTS: Project[] = [
     name: 'Biodeal Industries, Mombasa Road',
     sector: 'industrial',
     detail: '1× 7-stop passenger elevator + 1× 7-stop goods elevator, Fuji.',
+    image: 'Project — Biodeal Industries.jpg',
   },
   {
     name: 'The Moon Apartments, Ruaka',
@@ -87,6 +93,7 @@ export const PROJECTS: Project[] = [
     name: 'Sycamore Court, Ruaka',
     sector: 'residential',
     detail: 'Passenger lift installation for a residential development in Ruaka.',
+    image: 'Project — Sycamore Court Ruaka.jpg',
   },
   {
     name: 'Blessed House, Thika Road',
@@ -98,10 +105,12 @@ export const PROJECTS: Project[] = [
     name: 'Khamakis Fewa Palace',
     sector: 'residential',
     detail: 'Passenger lift installation for a private residential property.',
+    image: 'Project — Khamakis Fewa Palace.jpg',
   },
   {
     name: 'Villa Platform Elevators',
     sector: 'residential',
     detail: 'Villa platform elevator installations for residential properties across Nairobi.',
+    image: 'Project — Villa Platform Elevators.jpg',
   },
 ];
